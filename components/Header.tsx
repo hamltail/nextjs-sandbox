@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import Container from "./Container";
 
 const navigationItems = [
@@ -32,6 +31,15 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
+
+              <li>
+                <Link
+                  href="/signup"
+                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-emerald-500 px-5 text-base font-semibold text-white transition hover:bg-emerald-600"
+                >
+                  Sign up
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
