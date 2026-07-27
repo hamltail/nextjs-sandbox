@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans-jp), sans-serif;
+}
+
+.font-en {
+  font-family: var(--font-barlow-condensed), sans-serif;
+}
+
+@theme {
+  --breakpoint-md: 48rem;  /* 768px */
+  --breakpoint-xl: 75rem;  /* 1200px */
 }
