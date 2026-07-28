@@ -53,3 +53,17 @@ test("Contactページへ遷移できる", async ({ page }) => {
     }),
   ).toBeVisible();
 });
+
+test("Sign upページへ遷移できる", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByRole("link", { name: "Sign up" }).click();
+
+  await expect(page).toHaveURL("/signup");
+
+  await expect(
+    page.getByRole("heading", {
+      name: "Sign up",
+    }),
+  ).toBeVisible();
+});

@@ -11,7 +11,7 @@ export default function Hero() {
 
       <Container>
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <p className="font-en mb-5 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-semibold tracking-widest text-emerald-700">
+          <p className="font-en mb-5 rounded-full border border-teal-200 bg-teal-50 px-4 py-1.5 text-sm font-semibold tracking-widest text-teal-700">
             NEXT.JS LEARNING SANDBOX
           </p>
 
@@ -27,7 +27,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
             <Link
               href="/signup"
-              className="font-en inline-flex min-h-12 items-center justify-center rounded-full bg-emerald-500 px-8 text-lg font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:-translate-y-0.5 hover:bg-emerald-600"
+              className="font-en inline-flex min-h-12 items-center justify-center rounded-full bg-teal-500 px-8 text-lg font-semibold text-white shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-600"
             >
               Get Started
             </Link>
