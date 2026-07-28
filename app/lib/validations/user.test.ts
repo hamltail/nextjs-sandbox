@@ -6,6 +6,7 @@ describe("createUserSchema", () => {
     const result = createUserSchema.safeParse({
       name: "Example User",
       email: "user@example.com",
+      password: "password",
     });
 
     expect(result.success).toBe(true);
@@ -15,6 +16,7 @@ describe("createUserSchema", () => {
     const result = createUserSchema.safeParse({
       name: "",
       email: "user@example.com",
+      password: "password",
     });
 
     expect(result.success).toBe(false);
@@ -24,6 +26,7 @@ describe("createUserSchema", () => {
     const result = createUserSchema.safeParse({
       name: "     ",
       email: "user@example.com",
+      password: "password",
     });
 
     expect(result.success).toBe(false);
@@ -33,6 +36,7 @@ describe("createUserSchema", () => {
     const result = createUserSchema.safeParse({
       name: "a".repeat(51),
       email: "user@example.com",
+      password: "password",
     });
 
     expect(result.success).toBe(false);
@@ -42,6 +46,47 @@ describe("createUserSchema", () => {
     const result = createUserSchema.safeParse({
       name: "Example User",
       email: "abc",
+      password: "password",
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("パスワードが8文字なら成功する", () => {
+    const result = createUserSchema.safeParse({
+      name: "Example User",
+      email: "user@example.com",
+      password: "password",
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it("パスワードが7文字なら失敗する", () => {
+    const result = createUserSchema.safeParse({
+      name: "Example User",
+      email: "user@example.com",
+      password: "abcdefg",
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it("パスワードが72文字なら成功する", () => {
+    const result = createUserSchema.safeParse({
+      name: "Example User",
+      email: "user@example.com",
+      password: "a".repeat(72),
+    });
+
+    expect(result.success).toBe(true);
+  });
+
+  it("パスワードが73文字なら失敗する", () => {
+    const result = createUserSchema.safeParse({
+      name: "Example User",
+      email: "user@example.com",
+      password: "a".repeat(73),
     });
 
     expect(result.success).toBe(false);

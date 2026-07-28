@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient, Prisma } from "@/app/generated/prisma/client";
 import { createUserSchema } from "@/app/lib/validations/user";
@@ -31,8 +32,16 @@ export async function POST(request: Request) {
   }
 
   try {
+    const { name, email, password } = result.data;
+    
+    const passwordDigest = await bcrypt.hash(password, 10);
+
     const user = await prisma.user.create({
-      data: result.data,
+      data: {
+        name,
+        email,
+        passwordDigest,
+      },
     });
 
     return Response.json(user, {
