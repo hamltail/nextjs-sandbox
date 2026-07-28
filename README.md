@@ -26,6 +26,44 @@ Next.js や周辺技術を学習・検証し、
 - Route Handlers
 - Vercel Deployment
 
+## Requirements
+
+- Node.js 24
+- npm
+
+Node.js のバージョンは `.nvmrc` で管理しています。
+
+## Setup
+
+```bash
+nvm use
+npm install
+npm run dev
+```
+
+## Database
+
+現在は Prisma + SQLite を使用しています。
+
+`.env` に以下を設定してください。
+
+```env
+DATABASE_URL="file:./prisma/dev.db"
+```
+
+マイグレーションを適用し、Prisma Client を生成します。
+
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+
+データベースを確認する場合は、Prisma Studio を起動します。
+
+```bash
+npx prisma studio
+```
+
 ## License
 
 このリポジトリは学習・技術検証目的で公開しています。

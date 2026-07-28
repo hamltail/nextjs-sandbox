@@ -35,7 +35,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/signup"
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-emerald-500 px-5 text-base font-semibold text-white transition hover:bg-emerald-600"
+                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600"
                 >
                   Sign up
                 </Link>

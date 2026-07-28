@@ -41,9 +41,21 @@ yarn-error.log*
 next-env.d.ts
 
 # Playwright
-node_modules/
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Local AI coding tools
+/.agents/
+/.claude/
+/.windsurf/
+/skills-lock.json
+
+# Prisma generated client
+/app/generated/prisma/
+
+# Prisma SQLite database
+/prisma/*.db
+/prisma/*.db-journal
