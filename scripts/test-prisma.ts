@@ -1,4 +1,5 @@
 import "dotenv/config";
+import bcrypt from "bcryptjs";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "../app/generated/prisma/client";
 
@@ -9,10 +10,14 @@ const adapter = new PrismaBetterSqlite3({
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
+  const email = `hamru-${Date.now()}@example.com`;
+  const passwordDigest = await bcrypt.hash("password", 10);
+
   const user = await prisma.user.create({
     data: {
       name: "Hamru",
-      email: "hamru@example.com",
+      email,
+      passwordDigest,
     },
   });
 

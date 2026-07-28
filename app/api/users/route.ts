@@ -45,15 +45,15 @@ export async function POST(request: Request) {
     });
 
     return Response.json(
-    {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    },
-    {
-      status: 201,
-    },
-  );
+      {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      },
+      {
+        status: 201,
+      },
+    );
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&

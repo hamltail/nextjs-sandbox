@@ -39,7 +39,7 @@ export default function SignupPage() {
 
       if (Array.isArray(data.errors) && data.errors.length > 0) {
         const messages = data.errors.map(
-          (error: { message: string }) => error.message
+          (error: { message: string }) => error.message,
         );
         message = messages.join("\n");
       }
@@ -58,9 +58,7 @@ export default function SignupPage() {
         <div className="mx-auto max-w-md">
           <h1 className="font-en text-4xl font-bold">Sign up</h1>
 
-          <p className="mt-3 text-gray-600">
-            Create your account.
-          </p>
+          <p className="mt-3 text-gray-600">Create your account.</p>
 
           {errorMessage && (
             <div
@@ -71,15 +69,9 @@ export default function SignupPage() {
             </div>
           )}
 
-          <form
-            className="mt-8 space-y-6"
-            onSubmit={handleSubmit}
-          >
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="name" className="block text-sm font-medium">
                 Name
               </label>
 
@@ -93,10 +85,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="email" className="block text-sm font-medium">
                 Email
               </label>
 
@@ -110,10 +99,7 @@ export default function SignupPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium"
-              >
+              <label htmlFor="password" className="block text-sm font-medium">
                 Password
               </label>
 
