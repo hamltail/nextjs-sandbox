@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 
   try {
     const { name, email, password } = result.data;
-    
+
     const passwordDigest = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
@@ -44,9 +44,16 @@ export async function POST(request: Request) {
       },
     });
 
-    return Response.json(user, {
+    return Response.json(
+    {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    },
+    {
       status: 201,
-    });
+    },
+  );
   } catch (error) {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
