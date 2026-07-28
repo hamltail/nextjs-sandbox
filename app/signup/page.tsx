@@ -1,6 +1,57 @@
+"use client";
+
+import { SubmitEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Container from "@/components/Container";
 
 export default function SignupPage() {
+  const router = useRouter();
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setErrorMessage("");
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    const response = await fetch("/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        passwordConfirmation: formData.get("passwordConfirmation"),
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      let message = data.message ?? "ユーザー登録に失敗しました。";
+
+      if (Array.isArray(data.errors) && data.errors.length > 0) {
+        const messages = data.errors.map(
+          (error: { message: string }) => error.message
+        );
+        message = messages.join("\n");
+      }
+
+      setErrorMessage(message);
+      setIsSubmitting(false);
+      return;
+    }
+
+    router.push(`/users/${data.id}`);
+  }
+
   return (
     <section className="px-7 py-12 md:px-11 xl:px-0">
       <Container>
@@ -11,7 +62,19 @@ export default function SignupPage() {
             Create your account.
           </p>
 
-          <form className="mt-8 space-y-6">
+          {errorMessage && (
+            <div
+              role="alert"
+              className="mt-6 whitespace-pre-line rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
+            >
+              {errorMessage}
+            </div>
+          )}
+
+          <form
+            className="mt-8 space-y-6"
+            onSubmit={handleSubmit}
+          >
             <div>
               <label
                 htmlFor="name"
@@ -82,9 +145,10 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600"
+              disabled={isSubmitting}
+              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Create account
+              {isSubmitting ? "Creating..." : "Create account"}
             </button>
           </form>
         </div>
