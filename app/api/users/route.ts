@@ -1,5 +1,5 @@
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient } from "@/app/generated/prisma/client";
+import { PrismaClient, Prisma } from "@/app/generated/prisma/client";
 import { createUserSchema } from "@/app/lib/validations/user";
 
 const adapter = new PrismaBetterSqlite3({
@@ -30,11 +30,34 @@ export async function POST(request: Request) {
     );
   }
 
-  const user = await prisma.user.create({
-    data: result.data,
-  });
+  try {
+    const user = await prisma.user.create({
+      data: result.data,
+    });
 
-  return Response.json(user, {
-    status: 201,
-  });
+    return Response.json(user, {
+      status: 201,
+    });
+  } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
+      return Response.json(
+        {
+          errors: [
+            {
+              path: ["email"],
+              message: "このメールアドレスはすでに使用されています",
+            },
+          ],
+        },
+        {
+          status: 409,
+        },
+      );
+    }
+
+    throw error;
+  }
 }
