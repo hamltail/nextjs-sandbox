@@ -1,6 +1,8 @@
-import bcrypt from "bcryptjs";
-import { NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
+
+import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
@@ -70,6 +72,16 @@ export async function POST(request: Request) {
       expiresAt,
       userId: user.id,
     },
+  });
+
+  const cookieStore = await cookies();
+
+  cookieStore.set("session_token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    expires: expiresAt,
+    path: "/",
   });
 
   return NextResponse.json({
