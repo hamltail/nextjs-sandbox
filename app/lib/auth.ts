@@ -16,6 +16,7 @@ export async function currentUser() {
       token,
     },
     select: {
+      expiresAt: true,
       user: {
         select: {
           id: true,
@@ -29,6 +30,10 @@ export async function currentUser() {
   });
 
   if (!session) {
+    return null;
+  }
+
+  if (session.expiresAt < new Date()) {
     return null;
   }
 
