@@ -13,10 +13,11 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",
     "bcryptjs": "^3.0.3",
     "next": "16.2.12",
+    "pg": "^8.22.0",
     "prisma": "^7.9.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -25,7 +26,6 @@
   "devDependencies": {
     "@playwright/test": "^1.62.0",
     "@tailwindcss/postcss": "^4",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
