@@ -1,5 +1,6 @@
-import { z } from "zod";
+import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
 import { loginSchema } from "@/app/lib/validations/session";
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { email } = result.data;
+  const { email, password } = result.data;
 
   const user = await prisma.user.findUnique({
     where: {
@@ -31,6 +32,22 @@ export async function POST(request: Request) {
   });
 
   if (!user) {
+    return NextResponse.json(
+      {
+        message: "メールアドレスまたはパスワードが正しくありません",
+      },
+      {
+        status: 401,
+      },
+    );
+  }
+
+  const isPasswordValid = await bcrypt.compare(
+    password,
+    user.passwordDigest,
+  );
+
+  if (!isPasswordValid) {
     return NextResponse.json(
       {
         message: "メールアドレスまたはパスワードが正しくありません",
