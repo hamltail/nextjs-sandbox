@@ -5,6 +5,12 @@ Next.js の学習・技術検証用リポジトリです。
 Next.js や周辺技術を学習・検証し、
 次のプロダクト開発へ活かすことを目的としています。
 
+⚠️ 登録されたテストデータは、毎日 03:00（JST）に自動削除されます。
+
+## Live Demo
+
+🌐 [Webサイトを見る](https://next.hamltail.dev/)
+
 ## Tech Stack
 
 - Next.js
@@ -20,12 +26,13 @@ Next.js や周辺技術を学習・検証し、
 ## Learning Topics
 
 - App Router
+- Route Handlers
+- Server Actions
 - CRUD
 - Authentication
 - Prisma ORM
 - Supabase
-- Server Actions
-- Route Handlers
+- Testing (Vitest / Playwright)
 - Vercel Deployment
 
 ## Requirements
@@ -67,7 +74,7 @@ docker compose down
 
 ### Environment Variables
 
-`.env` にデータベース接続情報を設定してください。
+ローカル開発では `.env.local` を使用します。
 
 ```env
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nextjs_sandbox"
