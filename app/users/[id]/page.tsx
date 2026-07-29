@@ -1,15 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
-import { PrismaClient } from "@/app/generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-
-const adapter = new PrismaBetterSqlite3({
-  url: process.env.DATABASE_URL!,
-});
-
-const prisma = new PrismaClient({
-  adapter,
-});
+import { currentUser } from "@/app/lib/auth";
+import { prisma } from "@/app/lib/prisma";
+import Container from "@/components/Container";
 
 type PageProps = {
   params: Promise<{
@@ -19,6 +12,15 @@ type PageProps = {
 
 export default async function UserPage({ params }: PageProps) {
   const { id } = await params;
+  const current = await currentUser();
+
+  if (!current) {
+    redirect("/login");
+  }
+
+  if (current.id !== id) {
+    notFound();
+  }
 
   const user = await prisma.user.findUnique({
     where: {
@@ -32,9 +34,11 @@ export default async function UserPage({ params }: PageProps) {
 
   return (
     <section className="px-7 py-12 md:px-11 xl:px-0">
-      <h1 className="text-4xl font-bold">{user.name}</h1>
+      <Container>
+        <h1 className="text-4xl font-bold">{user.name}</h1>
 
-      <p className="mt-4 text-gray-600">{user.email}</p>
+        <p className="mt-4 text-gray-600">{user.email}</p>
+      </Container>
     </section>
   );
 }

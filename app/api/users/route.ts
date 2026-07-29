@@ -1,13 +1,8 @@
 import bcrypt from "bcryptjs";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
-import { PrismaClient, Prisma } from "@/app/generated/prisma/client";
+
+import { Prisma } from "@/app/generated/prisma/client";
+import { prisma } from "@/app/lib/prisma";
 import { createUserSchema } from "@/app/lib/validations/user";
-
-const adapter = new PrismaBetterSqlite3({
-  url: process.env.DATABASE_URL!,
-});
-
-const prisma = new PrismaClient({ adapter });
 
 export async function GET() {
   const users = await prisma.user.findMany();
