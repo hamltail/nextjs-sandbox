@@ -2,13 +2,10 @@
 
 import { SubmitEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import Container from "@/components/Container";
 
 export default function LoginPage() {
-  const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -39,7 +36,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/");
+    window.location.assign("/");
   }
 
   return (
