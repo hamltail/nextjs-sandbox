@@ -12,6 +12,8 @@ Next.js や周辺技術を学習・検証し、
 - TypeScript
 - Tailwind CSS
 - Prisma
+- PostgreSQL
+- Docker
 - Supabase
 - Vercel
 
@@ -30,6 +32,7 @@ Next.js や周辺技術を学習・検証し、
 
 - Node.js 24
 - npm
+- Docker Desktop
 
 Node.js のバージョンは `.nvmrc` で管理しています。
 
@@ -38,18 +41,39 @@ Node.js のバージョンは `.nvmrc` で管理しています。
 ```bash
 nvm use
 npm install
-npm run dev
 ```
 
-## Database
+### Start PostgreSQL
 
-現在は Prisma + SQLite を使用しています。
+ローカル開発では Docker 上の PostgreSQL を使用します。
 
-`.env` に以下を設定してください。
+```bash
+docker compose up -d
+```
+
+起動状態を確認します。
+
+```bash
+docker compose ps
+```
+
+### Stop PostgreSQL
+
+PostgreSQL を停止する場合は、以下を実行します。
+
+```bash
+docker compose down
+```
+
+### Environment Variables
+
+`.env` にデータベース接続情報を設定してください。
 
 ```env
-DATABASE_URL="file:./prisma/dev.db"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/nextjs_sandbox"
 ```
+
+### Database
 
 マイグレーションを適用し、Prisma Client を生成します。
 
@@ -58,7 +82,15 @@ npx prisma migrate dev
 npx prisma generate
 ```
 
-データベースを確認する場合は、Prisma Studio を起動します。
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Prisma Studio
+
+データベースを確認する場合は Prisma Studio を起動します。
 
 ```bash
 npx prisma studio
