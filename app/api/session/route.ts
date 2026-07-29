@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
+import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
@@ -57,6 +58,19 @@ export async function POST(request: Request) {
       },
     );
   }
+
+  const token = randomUUID();
+
+  const expiresAt = new Date();
+  expiresAt.setDate(expiresAt.getDate() + 30);
+
+  await prisma.session.create({
+    data: {
+      token,
+      expiresAt,
+      userId: user.id,
+    },
+  });
 
   return NextResponse.json({
     message: "OK",
