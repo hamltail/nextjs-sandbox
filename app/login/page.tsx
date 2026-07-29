@@ -1,8 +1,47 @@
+"use client";
+
+import { SubmitEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import Container from "@/components/Container";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setErrorMessage("");
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    const response = await fetch("/api/session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setErrorMessage(data.message ?? "ログインに失敗しました。");
+      setIsSubmitting(false);
+      return;
+    }
+
+    router.push("/");
+  }
+
   return (
     <section className="px-7 py-12 md:px-11 xl:px-0">
       <Container>
@@ -13,7 +52,16 @@ export default function LoginPage() {
             Log in to your account.
           </p>
 
-          <form className="mt-8 space-y-6">
+          {errorMessage && (
+            <div
+              role="alert"
+              className="mt-6 whitespace-pre-line rounded-md border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
+            >
+              {errorMessage}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
                 Email
@@ -44,9 +92,10 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600"
+              disabled={isSubmitting}
+              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Log in
+              {isSubmitting ? "Logging in..." : "Log in"}
             </button>
           </form>
 
