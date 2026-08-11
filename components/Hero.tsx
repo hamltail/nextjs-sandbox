@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative overflow-hidden px-7 py-20 md:px-11 md:py-28 xl:px-0">
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.14),_transparent_42%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(94,234,212,0.18),_transparent_42%)]"
       />
 
       <Container>
