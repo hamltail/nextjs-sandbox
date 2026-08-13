@@ -1,7 +1,7 @@
-import { createHash } from "node:crypto";
 import { cookies } from "next/headers";
 
 import { prisma } from "@/app/lib/prisma";
+import { hashSessionToken } from "@/app/lib/session";
 
 export async function currentUser() {
   const cookieStore = await cookies();
@@ -12,7 +12,7 @@ export async function currentUser() {
     return null;
   }
 
-  const tokenHash = createHash("sha256").update(token).digest("hex");
+  const tokenHash = hashSessionToken(token);
 
   const session = await prisma.session.findUnique({
     where: {

@@ -1,5 +1,6 @@
 import { config } from "dotenv";
-import { createHash } from "node:crypto";
+
+import { hashSessionToken } from "@/app/lib/session";
 
 config({ path: ".env.local" });
 
@@ -7,7 +8,7 @@ async function main() {
   const { prisma } = await import("@/app/lib/prisma");
 
   const token = "c974dafe-d8a4-4fee-ae47-d310431e77b3";
-  const tokenHash = createHash("sha256").update(token).digest("hex");
+  const tokenHash = hashSessionToken(token);
 
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() - 1);

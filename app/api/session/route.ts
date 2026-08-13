@@ -1,4 +1,4 @@
-import { createHash, randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto";
 
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
+import { hashSessionToken } from "@/app/lib/session";
 import { loginSchema } from "@/app/lib/validations/session";
 
 export async function POST(request: Request) {
@@ -62,7 +63,7 @@ export async function POST(request: Request) {
   }
 
   const token = randomUUID();
-  const tokenHash = createHash("sha256").update(token).digest("hex");
+  const tokenHash = hashSessionToken(token);
 
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + 30);
@@ -96,7 +97,7 @@ export async function DELETE() {
   const token = cookieStore.get("session_token")?.value;
 
   if (token) {
-    const tokenHash = createHash("sha256").update(token).digest("hex");
+    const tokenHash = hashSessionToken(token);
 
     await prisma.session.deleteMany({
       where: {
