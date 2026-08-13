@@ -1,21 +1,30 @@
-import "dotenv/config";
+import { config } from "dotenv";
+import { createHash } from "node:crypto";
 
-import { prisma } from "@/app/lib/prisma";
+config({ path: ".env.local" });
 
 async function main() {
-  const token = "aba50cf6-1bed-43d0-a1dc-ebcd6d765a62";
+  const { prisma } = await import("@/app/lib/prisma");
+
+  const token = "c974dafe-d8a4-4fee-ae47-d310431e77b3";
+  const tokenHash = createHash("sha256").update(token).digest("hex");
 
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() - 1);
 
-  await prisma.session.update({
+  const result = await prisma.session.updateMany({
     where: {
-      token,
+      tokenHash,
     },
     data: {
       expiresAt,
     },
   });
+
+  if (result.count === 0) {
+    console.log("対象のセッションが見つかりませんでした");
+    return;
+  }
 
   console.log("セッション期限を昨日に変更しました");
 }
@@ -26,5 +35,6 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
+    const { prisma } = await import("@/app/lib/prisma");
     await prisma.$disconnect();
   });
