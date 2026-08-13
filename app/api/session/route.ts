@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
+import { hashSessionToken } from "@/app/lib/session";
 import { loginSchema } from "@/app/lib/validations/session";
 
 export async function POST(request: Request) {
@@ -61,14 +62,24 @@ export async function POST(request: Request) {
     );
   }
 
+  await prisma.session.deleteMany({
+    where: {
+      userId: user.id,
+      expiresAt: {
+        lt: new Date(),
+      },
+    },
+  });
+
   const token = randomUUID();
+  const tokenHash = hashSessionToken(token);
 
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + 30);
 
   await prisma.session.create({
     data: {
-      token,
+      tokenHash,
       expiresAt,
       userId: user.id,
     },
@@ -95,9 +106,11 @@ export async function DELETE() {
   const token = cookieStore.get("session_token")?.value;
 
   if (token) {
+    const tokenHash = hashSessionToken(token);
+
     await prisma.session.deleteMany({
       where: {
-        token,
+        tokenHash,
       },
     });
   }
