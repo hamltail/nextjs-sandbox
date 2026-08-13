@@ -62,6 +62,15 @@ export async function POST(request: Request) {
     );
   }
 
+  await prisma.session.deleteMany({
+    where: {
+      userId: user.id,
+      expiresAt: {
+        lt: new Date(),
+      },
+    },
+  });
+
   const token = randomUUID();
   const tokenHash = hashSessionToken(token);
 
