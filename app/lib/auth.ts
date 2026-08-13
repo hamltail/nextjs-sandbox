@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { cookies } from "next/headers";
 
 import { prisma } from "@/app/lib/prisma";
@@ -11,9 +12,11 @@ export async function currentUser() {
     return null;
   }
 
+  const tokenHash = createHash("sha256").update(token).digest("hex");
+
   const session = await prisma.session.findUnique({
     where: {
-      token,
+      tokenHash,
     },
     select: {
       expiresAt: true,
