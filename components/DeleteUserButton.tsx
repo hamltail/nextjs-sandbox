@@ -12,6 +12,14 @@ export default function DeleteUserButton({
   const router = useRouter();
 
   async function handleDelete() {
+    const confirmed = window.confirm(
+      "このユーザーを削除しますか？",
+    );
+
+    if (!confirmed) {
+      return;
+    }
+    
     const response = await fetch(`/api/users/${id}`, {
       method: "DELETE",
     });
