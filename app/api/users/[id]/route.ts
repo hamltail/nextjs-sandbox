@@ -96,3 +96,73 @@ export async function PATCH(
     throw error;
   }
 }
+
+export async function DELETE(
+  _request: Request,
+  { params }: RouteContext,
+) {
+  const { id } = await params;
+
+  const current = await currentUser();
+
+  if (!current) {
+    return NextResponse.json(
+      {
+        message: "ログインが必要です",
+      },
+      {
+        status: 401,
+      },
+    );
+  }
+
+  if (!current.admin) {
+    return NextResponse.json(
+      {
+        message: "この操作を実行する権限がありません",
+      },
+      {
+        status: 403,
+      },
+    );
+  }
+
+  if (current.id === id) {
+    return NextResponse.json(
+      {
+        message: "自分自身は削除できません",
+      },
+      {
+        status: 403,
+      },
+    );
+  }
+
+  try {
+    await prisma.user.delete({
+      where: {
+        id,
+      },
+    });
+  } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2025"
+    ) {
+      return NextResponse.json(
+        {
+          message: "ユーザーが見つかりません",
+        },
+        {
+          status: 404,
+        },
+      );
+    }
+
+    throw error;
+  }
+
+  return NextResponse.json({
+    message: "ユーザーを削除しました",
+  });
+}
