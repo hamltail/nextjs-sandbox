@@ -11,11 +11,12 @@ const USERS_PER_PAGE = 10;
 type PageProps = {
   searchParams: Promise<{
     page?: string;
+    deleted?: string;
   }>;
 };
 
 export default async function UsersPage({ searchParams }: PageProps) {
-  const { page } = await searchParams;
+  const { page, deleted } = await searchParams;
 
   const currentPage = Math.max(Number(page) || 1, 1);
 
@@ -43,6 +44,15 @@ export default async function UsersPage({ searchParams }: PageProps) {
 
       <Container>
         <div className="mx-auto max-w-3xl">
+          {deleted === "true" && (
+            <div
+              role="status"
+              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700"
+            >
+              User deleted successfully.
+            </div>
+          )}
+          
           <div className="mb-8">
             <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
               USERS
