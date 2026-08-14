@@ -9,11 +9,7 @@ type EditUserFormProps = {
   email: string;
 };
 
-export default function EditUserForm({
-  id,
-  name,
-  email,
-}: EditUserFormProps) {
+export default function EditUserForm({ id, name, email }: EditUserFormProps) {
   const router = useRouter();
 
   const [errorMessage, setErrorMessage] = useState("");

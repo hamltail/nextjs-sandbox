@@ -31,9 +31,7 @@ export default function NewsSection({ newsList }: NewsSectionProps) {
               NEWS
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight">
-              お知らせ
-            </h2>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight">お知らせ</h2>
           </div>
 
           <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">

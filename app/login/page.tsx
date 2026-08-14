@@ -45,9 +45,7 @@ export default function LoginPage() {
         <div className="mx-auto max-w-md">
           <h1 className="font-en text-4xl font-bold">Log in</h1>
 
-          <p className="mt-3 text-gray-600">
-            Log in to your account.
-          </p>
+          <p className="mt-3 text-gray-600">Log in to your account.</p>
 
           {errorMessage && (
             <div

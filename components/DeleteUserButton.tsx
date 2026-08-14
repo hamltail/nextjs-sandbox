@@ -6,20 +6,16 @@ type DeleteUserButtonProps = {
   id: string;
 };
 
-export default function DeleteUserButton({
-  id,
-}: DeleteUserButtonProps) {
+export default function DeleteUserButton({ id }: DeleteUserButtonProps) {
   const router = useRouter();
 
   async function handleDelete() {
-    const confirmed = window.confirm(
-      "このユーザーを削除しますか？",
-    );
+    const confirmed = window.confirm("このユーザーを削除しますか？");
 
     if (!confirmed) {
       return;
     }
-    
+
     const response = await fetch(`/api/users/${id}`, {
       method: "DELETE",
     });

@@ -40,16 +40,9 @@ export default async function EditUserPage({ params }: PageProps) {
         <div className="mx-auto max-w-md">
           <h1 className="font-en text-4xl font-bold">Edit profile</h1>
 
-          <p className="mt-3 text-gray-600">
-            Update your account information.
-          </p>
+          <p className="mt-3 text-gray-600">Update your account information.</p>
 
-          <EditUserForm
-            id={user.id}
-            name={user.name}
-            email={user.email}
-          />
-          
+          <EditUserForm id={user.id} name={user.name} email={user.email} />
         </div>
       </Container>
     </section>

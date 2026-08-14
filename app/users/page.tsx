@@ -52,15 +52,13 @@ export default async function UsersPage({ searchParams }: PageProps) {
               User deleted successfully.
             </div>
           )}
-          
+
           <div className="mb-8">
             <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
               USERS
             </p>
 
-            <h1 className="mt-2 text-4xl font-bold tracking-tight">
-              Users
-            </h1>
+            <h1 className="mt-2 text-4xl font-bold tracking-tight">Users</h1>
           </div>
 
           <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
@@ -77,9 +75,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
                     {user.name}
                   </Link>
 
-                  <p className="mt-1 text-sm text-gray-500">
-                    {user.email}
-                  </p>
+                  <p className="mt-1 text-sm text-gray-500">{user.email}</p>
                 </div>
 
                 {current.admin && current.id !== user.id && (

@@ -11,10 +11,7 @@ type RouteContext = {
   }>;
 };
 
-export async function PATCH(
-  request: Request,
-  { params }: RouteContext,
-) {
+export async function PATCH(request: Request, { params }: RouteContext) {
   const { id } = await params;
 
   const current = await currentUser();
@@ -40,7 +37,7 @@ export async function PATCH(
       },
     );
   }
-  
+
   const body = await request.json();
   const result = updateUserSchema.safeParse(body);
 
@@ -97,10 +94,7 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
-  _request: Request,
-  { params }: RouteContext,
-) {
+export async function DELETE(_request: Request, { params }: RouteContext) {
   const { id } = await params;
 
   const current = await currentUser();
