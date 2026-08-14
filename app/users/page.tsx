@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
+import DeleteUserButton from "@/components/DeleteUserButton";
 
 const USERS_PER_PAGE = 10;
 
@@ -54,17 +55,26 @@ export default async function UsersPage({ searchParams }: PageProps) {
 
           <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
             {users.map((user) => (
-              <div key={user.id} className="py-6">
-                <Link
-                  href={`/users/${user.id}`}
-                  className="text-lg font-semibold transition hover:text-teal-600"
-                >
-                  {user.name}
-                </Link>
+              <div
+                key={user.id}
+                className="flex items-center justify-between gap-4 py-6"
+              >
+                <div>
+                  <Link
+                    href={`/users/${user.id}`}
+                    className="text-lg font-semibold transition hover:text-teal-600"
+                  >
+                    {user.name}
+                  </Link>
 
-                <p className="mt-1 text-sm text-gray-500">
-                  {user.email}
-                </p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {user.email}
+                  </p>
+                </div>
+
+                {current.admin && current.id !== user.id && (
+                  <DeleteUserButton id={user.id} />
+                )}
               </div>
             ))}
           </div>
