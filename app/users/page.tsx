@@ -5,14 +5,33 @@ import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 
-export default async function UsersPage() {
+const USERS_PER_PAGE = 10;
+
+type PageProps = {
+  searchParams: Promise<{
+    page?: string;
+  }>;
+};
+
+export default async function UsersPage({ searchParams }: PageProps) {
+  const { page } = await searchParams;
+
+  const currentPage = Math.max(Number(page) || 1, 1);
+
   const current = await currentUser();
 
   if (!current) {
     redirect("/login");
   }
 
-  const users = await prisma.user.findMany();
+  const users = await prisma.user.findMany({
+    skip: (currentPage - 1) * USERS_PER_PAGE,
+    take: USERS_PER_PAGE,
+  });
+
+  const totalUsers = await prisma.user.count();
+
+  const totalPages = Math.ceil(totalUsers / USERS_PER_PAGE);
 
   return (
     <section className="relative overflow-hidden px-7 py-16 md:px-11 md:py-20 xl:px-0">
@@ -49,6 +68,49 @@ export default async function UsersPage() {
               </div>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <nav
+              aria-label="ユーザー一覧のページネーション"
+              className="mt-8 flex items-center justify-center gap-2"
+            >
+              {currentPage > 1 && (
+                <Link
+                  href={`/users?page=${currentPage - 1}`}
+                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                >
+                  Previous
+                </Link>
+              )}
+
+              {Array.from({ length: totalPages }, (_, index) => {
+                const pageNumber = index + 1;
+
+                return (
+                  <Link
+                    key={pageNumber}
+                    href={`/users?page=${pageNumber}`}
+                    className={
+                      pageNumber === currentPage
+                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white"
+                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                    }
+                  >
+                    {pageNumber}
+                  </Link>
+                );
+              })}
+
+              {currentPage < totalPages && (
+                <Link
+                  href={`/users?page=${currentPage + 1}`}
+                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                >
+                  Next
+                </Link>
+              )}
+            </nav>
+          )}
         </div>
       </Container>
     </section>
