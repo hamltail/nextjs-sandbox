@@ -41,4 +41,75 @@ describe("PATCH /api/users/[id]", () => {
       message: "ログインが必要です",
     });
   });
+
+  it("別のユーザーを更新しようとすると403を返す", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-1",
+      name: "Example User",
+      email: "user@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    const request = new Request("http://localhost/api/users/user-2", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "Other User",
+        email: "other@example.com",
+      }),
+    });
+
+    const response = await PATCH(request, {
+      params: Promise.resolve({
+        id: "user-2",
+      }),
+    });
+
+    expect(response.status).toBe(403);
+
+    const data = await response.json();
+
+    expect(data).toEqual({
+      message: "このユーザーは更新できません",
+    });
+  });
+
+  it("入力値が不正なら422を返す", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-1",
+      name: "Example User",
+      email: "user@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    const request = new Request("http://localhost/api/users/user-1", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "",
+        email: "abc",
+      }),
+    });
+
+    const response = await PATCH(request, {
+      params: Promise.resolve({
+        id: "user-1",
+      }),
+    });
+
+    expect(response.status).toBe(422);
+
+    const data = await response.json();
+
+    expect(Array.isArray(data.errors)).toBe(true);
+    expect(data.errors.length).toBeGreaterThan(0);
+  });
 });
