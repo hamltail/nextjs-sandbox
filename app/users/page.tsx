@@ -1,7 +1,16 @@
+import { redirect } from "next/navigation";
+
+import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 
 export default async function UsersPage() {
+  const current = await currentUser();
+
+  if (!current) {
+    redirect("/login");
+  }
+  
   const users = await prisma.user.findMany();
 
   return (
