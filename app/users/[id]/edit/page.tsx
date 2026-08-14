@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { currentUser } from "@/app/lib/auth";
 import Container from "@/components/Container";
 import EditUserForm from "@/components/EditUserForm";
 import { prisma } from "@/app/lib/prisma";
@@ -12,6 +13,16 @@ type PageProps = {
 
 export default async function EditUserPage({ params }: PageProps) {
   const { id } = await params;
+
+  const current = await currentUser();
+
+  if (!current) {
+    redirect("/login");
+  }
+
+  if (current.id !== id) {
+    notFound();
+  }
 
   const user = await prisma.user.findUnique({
     where: {
