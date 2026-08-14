@@ -49,6 +49,15 @@ export default async function Header() {
                   </li>
 
                   <li>
+                    <Link
+                      href={`/users/${user.id}/edit`}
+                      className="transition-opacity hover:opacity-60"
+                    >
+                      Settings
+                    </Link>
+                  </li>
+
+                  <li>
                     <LogoutButton />
                   </li>
                 </>
