@@ -25,6 +25,7 @@ export async function currentUser() {
           id: true,
           name: true,
           email: true,
+          admin: true,
           createdAt: true,
           updatedAt: true,
         },
