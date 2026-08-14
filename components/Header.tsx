@@ -41,6 +41,15 @@ export default async function Header() {
                 <>
                   <li>
                     <Link
+                      href="/users"
+                      className="transition-opacity hover:opacity-60"
+                    >
+                      Users
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
                       href={`/users/${user.id}`}
                       className="transition-opacity hover:opacity-60"
                     >
