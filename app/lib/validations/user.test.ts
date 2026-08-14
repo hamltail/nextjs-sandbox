@@ -10,9 +10,7 @@ const validUser = (overrides: Record<string, unknown> = {}) => ({
   ...overrides,
 });
 
-const validUpdateUser = (
-  overrides: Record<string, unknown> = {},
-) => ({
+const validUpdateUser = (overrides: Record<string, unknown> = {}) => ({
   name: "Example User",
   email: "user@example.com",
   ...overrides,
