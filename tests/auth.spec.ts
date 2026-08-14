@@ -28,4 +28,18 @@ test.describe("認証機能", () => {
       }),
     ).toBeVisible();
   });
+
+  test("未ログインでユーザー一覧へアクセスするとログインページへリダイレクトされる", async ({
+    page,
+  }) => {
+    await page.goto("/users");
+
+    await expect(page).toHaveURL("/login");
+
+    await expect(
+      page.getByRole("heading", {
+        name: "Log in",
+      }),
+    ).toBeVisible();
+  });
 });
