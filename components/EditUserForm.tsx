@@ -56,7 +56,7 @@ export default function EditUserForm({
       return;
     }
 
-    router.push(`/users/${id}`);
+    router.push(`/users/${id}?updated=true`);
   }
 
   return (
