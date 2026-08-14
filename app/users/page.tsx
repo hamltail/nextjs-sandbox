@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { currentUser } from "@/app/lib/auth";
@@ -10,7 +11,7 @@ export default async function UsersPage() {
   if (!current) {
     redirect("/login");
   }
-  
+
   const users = await prisma.user.findMany();
 
   return (
@@ -21,7 +22,12 @@ export default async function UsersPage() {
         <div className="mt-8 space-y-4">
           {users.map((user) => (
             <div key={user.id}>
-              <p className="font-medium">{user.name}</p>
+              <Link
+                href={`/users/${user.id}`}
+                className="font-medium transition-opacity hover:opacity-60"
+              >
+                {user.name}
+              </Link>
               <p className="text-sm text-gray-600">{user.email}</p>
             </div>
           ))}

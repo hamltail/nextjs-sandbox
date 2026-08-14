@@ -22,10 +22,6 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     redirect("/login");
   }
 
-  if (current.id !== id) {
-    notFound();
-  }
-
   const user = await prisma.user.findUnique({
     where: {
       id,
