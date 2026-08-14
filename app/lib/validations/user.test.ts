@@ -1,12 +1,18 @@
 import { describe, expect, it } from "vitest";
 
-import { createUserSchema } from "./user";
+import { createUserSchema, updateUserSchema } from "./user";
 
 const validUser = (overrides: Record<string, unknown> = {}) => ({
   name: "Example User",
   email: "user@example.com",
   password: "password",
   passwordConfirmation: "password",
+  ...overrides,
+});
+
+const validUpdateUser = (overrides: Record<string, unknown> = {}) => ({
+  name: "Example User",
+  email: "user@example.com",
   ...overrides,
 });
 
@@ -131,5 +137,53 @@ describe("createUserSchema", () => {
     );
 
     expect(result.success).toBe(true);
+  });
+});
+
+describe("updateUserSchema", () => {
+  it("正常なユーザー情報はバリデーションに成功する", () => {
+    const result = updateUserSchema.safeParse(validUpdateUser());
+
+    expect(result.success).toBe(true);
+  });
+
+  it("名前が空なら失敗する", () => {
+    const result = updateUserSchema.safeParse(
+      validUpdateUser({
+        name: "",
+      }),
+    );
+
+    expect(result.success).toBe(false);
+  });
+
+  it("名前が空白のみなら失敗する", () => {
+    const result = updateUserSchema.safeParse(
+      validUpdateUser({
+        name: "     ",
+      }),
+    );
+
+    expect(result.success).toBe(false);
+  });
+
+  it("名前が51文字なら失敗する", () => {
+    const result = updateUserSchema.safeParse(
+      validUpdateUser({
+        name: "a".repeat(51),
+      }),
+    );
+
+    expect(result.success).toBe(false);
+  });
+
+  it("メール形式が不正なら失敗する", () => {
+    const result = updateUserSchema.safeParse(
+      validUpdateUser({
+        email: "abc",
+      }),
+    );
+
+    expect(result.success).toBe(false);
   });
 });
