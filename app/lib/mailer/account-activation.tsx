@@ -20,7 +20,7 @@ export async function sendAccountActivationEmail({
   activationUrl.searchParams.set("email", email);
 
   const { data, error } = await resend.emails.send({
-    from: "Next.js Sandbox <onboarding@resend.dev>",
+    from: "Next.js Sandbox <noreply@mail.hamltail.dev>",
     to: email,
     subject: "Account activation",
     react: AccountActivationEmail({

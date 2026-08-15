@@ -34,7 +34,7 @@ describe("sendAccountActivationEmail", () => {
 
     expect(resend.emails.send).toHaveBeenCalledWith(
       expect.objectContaining({
-        from: "Next.js Sandbox <onboarding@resend.dev>",
+        from: "Next.js Sandbox <noreply@mail.hamltail.dev>",
         to: "hamru@example.com",
         subject: "Account activation",
       }),
