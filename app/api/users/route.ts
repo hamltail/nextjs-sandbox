@@ -1,7 +1,10 @@
 import bcrypt from "bcryptjs";
 
 import { sendAccountActivationEmail } from "@/app/lib/mailer/account-activation";
-import { createActivationToken, hashActivationToken } from "@/app/lib/account-activation";
+import {
+  createActivationToken,
+  hashActivationToken,
+} from "@/app/lib/account-activation";
 import { Prisma } from "@/app/generated/prisma/client";
 import { prisma } from "@/app/lib/prisma";
 import { createUserSchema } from "@/app/lib/validations/user";

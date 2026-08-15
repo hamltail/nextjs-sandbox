@@ -9,10 +9,7 @@ type RouteContext = {
   }>;
 };
 
-export async function GET(
-  request: NextRequest,
-  context: RouteContext,
-) {
+export async function GET(request: NextRequest, context: RouteContext) {
   const { token } = await context.params;
   const email = request.nextUrl.searchParams.get("email");
 
