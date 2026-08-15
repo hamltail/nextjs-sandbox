@@ -13,15 +13,14 @@ Next.js や周辺技術を学習・検証し、
 
 ## Tech Stack
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Prisma
-- PostgreSQL
-- Docker
-- Supabase
-- Vercel
+| Category | Technologies |
+| --- | --- |
+| Frontend | Next.js, React, TypeScript, Tailwind CSS |
+| Backend / Data | Prisma, PostgreSQL, Supabase, microCMS |
+| Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation) |
+| Email | Resend, React Email |
+| Testing | Vitest, Playwright |
+| Infrastructure | Docker, Vercel |
 
 ## Learning Topics
 
