@@ -22,9 +22,10 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     redirect("/login");
   }
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.user.findFirst({
     where: {
       id,
+      activated: true,
     },
   });
 

@@ -27,11 +27,18 @@ export default async function UsersPage({ searchParams }: PageProps) {
   }
 
   const users = await prisma.user.findMany({
+    where: {
+      activated: true,
+    },
     skip: (currentPage - 1) * USERS_PER_PAGE,
     take: USERS_PER_PAGE,
   });
 
-  const totalUsers = await prisma.user.count();
+  const totalUsers = await prisma.user.count({
+    where: {
+      activated: true,
+    },
+  });
 
   const totalPages = Math.ceil(totalUsers / USERS_PER_PAGE);
 
