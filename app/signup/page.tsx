@@ -49,7 +49,7 @@ export default function SignupPage() {
       return;
     }
 
-    router.push(`/users/${data.id}`);
+    router.push("/");
   }
 
   return (
