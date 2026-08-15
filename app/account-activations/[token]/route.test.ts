@@ -64,4 +64,59 @@ describe("GET /account-activations/[token]", () => {
       "http://localhost:3000/login",
     );
   });
+
+  it("トークンが不正ならアカウントを有効化しない", async () => {
+    const token = "invalid-token";
+    const email = "hamru@example.com";
+
+    vi.mocked(prisma.user.findUnique).mockResolvedValue({
+      id: "user-id",
+      name: "Hamru",
+      email,
+      passwordDigest: "password-digest",
+      admin: false,
+
+      // DBには「正しいトークン」から作ったdigestが保存されている
+      activationDigest: hashActivationToken("valid-token"),
+
+      activated: false,
+      activatedAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    const request = new NextRequest(
+      `http://localhost:3000/account-activations/${token}?email=${email}`,
+    );
+
+    const response = await GET(request, {
+      params: Promise.resolve({
+        token,
+      }),
+    });
+
+    expect(prisma.user.update).not.toHaveBeenCalled();
+    expect(response.status).toBe(400);
+  });
+
+  it("メールアドレスに一致するユーザーが存在しなければアカウントを有効化しない", async () => {
+    const token = "test-activation-token";
+    const email = "unknown@example.com";
+
+    // findUnique() でユーザーが見つからなかった状況を再現する。
+    vi.mocked(prisma.user.findUnique).mockResolvedValue(null);
+
+    const request = new NextRequest(
+      `http://localhost:3000/account-activations/${token}?email=${email}`,
+    );
+
+    const response = await GET(request, {
+      params: Promise.resolve({
+        token,
+      }),
+    });
+
+    expect(prisma.user.update).not.toHaveBeenCalled();
+    expect(response.status).toBe(400);
+  });
 });
