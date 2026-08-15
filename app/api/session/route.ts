@@ -59,6 +59,17 @@ export async function POST(request: Request) {
     );
   }
 
+  if (!user.activated) {
+    return NextResponse.json(
+      {
+        message: "アカウントを有効化してください",
+      },
+      {
+        status: 403,
+      },
+    );
+  }
+
   await prisma.session.deleteMany({
     where: {
       userId: user.id,
