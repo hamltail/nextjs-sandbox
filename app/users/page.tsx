@@ -82,7 +82,9 @@ export default async function UsersPage({ searchParams }: PageProps) {
                     {user.name}
                   </Link>
 
-                  <p className="mt-1 text-sm text-gray-500">{user.email}</p>
+                  {current.admin && (
+                    <p className="mt-1 text-sm text-gray-500">{user.email}</p>
+                  )}
                 </div>
 
                 {current.admin && current.id !== user.id && (
