@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 
+import { sendAccountActivationEmail } from "@/app/lib/mailer/account-activation";
 import { createActivationToken, hashActivationToken } from "@/app/lib/account-activation";
 import { Prisma } from "@/app/generated/prisma/client";
 import { prisma } from "@/app/lib/prisma";
@@ -42,6 +43,12 @@ export async function POST(request: Request) {
         passwordDigest,
         activationDigest,
       },
+    });
+
+    await sendAccountActivationEmail({
+      name: user.name,
+      email: user.email,
+      activationToken,
     });
 
     return Response.json(
