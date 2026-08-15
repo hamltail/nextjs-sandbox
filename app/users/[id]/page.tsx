@@ -67,7 +67,9 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                 Email
               </p>
 
-              <p className="mt-2 text-lg">{user.email}</p>
+              <p className="mt-2 text-lg">
+                {current.admin ? user.email : "********@********"}
+              </p>
             </div>
           </div>
         </div>
