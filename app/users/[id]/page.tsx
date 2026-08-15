@@ -68,7 +68,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               </p>
 
               <p className="mt-2 text-lg">
-                {current.admin ? user.email : "********@********"}
+                {current.admin || current.id === user.id ? user.email : "********@********"}
               </p>
             </div>
           </div>
