@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
+import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
 import { createPasswordReset } from "@/app/lib/password-reset";
 
 const passwordResetSchema = z.object({
@@ -45,7 +46,12 @@ export async function POST(request: Request) {
 
   const resetToken = await createPasswordReset(user.id);
 
-  return NextResponse.json({
+  await sendPasswordResetEmail({
+    email: user.email,
     resetToken,
+  });
+
+  return NextResponse.json({
+    message: "パスワード再設定メールを送信しました",
   });
 }
