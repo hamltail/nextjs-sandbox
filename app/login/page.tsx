@@ -76,6 +76,10 @@ export default function LoginPage() {
                 Password
               </label>
 
+              <Link href="/password-resets" className="text-sm text-teal-600 hover:text-teal-700">
+                (forgot password)
+              </Link>
+
               <input
                 id="password"
                 name="password"
