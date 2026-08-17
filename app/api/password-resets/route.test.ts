@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { prisma } from "@/app/lib/prisma";
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
 import { createPasswordReset } from "@/app/lib/password-reset";
+import { prisma } from "@/app/lib/prisma";
 import { POST } from "@/app/api/password-resets/route";
 
 vi.mock("@/app/lib/prisma", () => ({
@@ -57,6 +57,7 @@ describe("POST /api/password-resets", () => {
     });
 
     const response = await POST(request);
+    const data = await response.json();
 
     expect(createPasswordReset).toHaveBeenCalledWith("user-id");
 
@@ -66,9 +67,13 @@ describe("POST /api/password-resets", () => {
     });
 
     expect(response.status).toBe(200);
+    expect(data).toEqual({
+      message:
+        "登録されているメールアドレスの場合、パスワード再設定メールを送信しました",
+    });
   });
 
-  it("ユーザーが存在しなければ404を返す", async () => {
+  it("ユーザーが存在しなくても成功レスポンスを返す", async () => {
     vi.mocked(prisma.user.findUnique).mockResolvedValue(null);
 
     const request = new Request("http://localhost:3000/api/password-resets", {
@@ -82,10 +87,16 @@ describe("POST /api/password-resets", () => {
     });
 
     const response = await POST(request);
+    const data = await response.json();
 
     expect(createPasswordReset).not.toHaveBeenCalled();
     expect(sendPasswordResetEmail).not.toHaveBeenCalled();
-    expect(response.status).toBe(404);
+
+    expect(response.status).toBe(200);
+    expect(data).toEqual({
+      message:
+        "登録されているメールアドレスの場合、パスワード再設定メールを送信しました",
+    });
   });
 
   it("メールアドレスが不正なら422を返す", async () => {
@@ -104,6 +115,7 @@ describe("POST /api/password-resets", () => {
     expect(prisma.user.findUnique).not.toHaveBeenCalled();
     expect(createPasswordReset).not.toHaveBeenCalled();
     expect(sendPasswordResetEmail).not.toHaveBeenCalled();
+
     expect(response.status).toBe(422);
   });
 });

@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { prisma } from "@/app/lib/prisma";
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
 import { createPasswordReset } from "@/app/lib/password-reset";
+import { prisma } from "@/app/lib/prisma";
 import { passwordResetSchema } from "@/app/lib/validations/password-reset";
+
+const passwordResetResponseMessage =
+  "登録されているメールアドレスの場合、パスワード再設定メールを送信しました";
 
 export async function POST(request: Request) {
   const json = await request.json();
@@ -30,14 +33,9 @@ export async function POST(request: Request) {
   });
 
   if (!user) {
-    return NextResponse.json(
-      {
-        message: "ユーザーが見つかりません",
-      },
-      {
-        status: 404,
-      },
-    );
+    return NextResponse.json({
+      message: passwordResetResponseMessage,
+    });
   }
 
   const resetToken = await createPasswordReset(user.id);
@@ -48,6 +46,6 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({
-    message: "パスワード再設定メールを送信しました",
+    message: passwordResetResponseMessage,
   });
 }
