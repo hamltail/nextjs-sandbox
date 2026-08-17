@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "@/app/lib/prisma";
-import { hashActivationToken } from "@/app/lib/account-activation";
+import { hashToken } from "@/app/lib/token";
 
 type RouteContext = {
   params: Promise<{
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
     );
   }
 
-  const activationDigest = hashActivationToken(token);
+  const activationDigest = hashToken(token);
 
   if (activationDigest !== user.activationDigest) {
     return NextResponse.json(
