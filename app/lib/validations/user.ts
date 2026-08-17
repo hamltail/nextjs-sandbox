@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { passwordSchema } from "@/app/lib/validations/password";
+
 export const createUserSchema = z
   .object({
     name: z
@@ -19,11 +21,7 @@ export const createUserSchema = z
         }),
       ),
 
-    password: z
-      .string()
-      .min(8, "パスワードは8文字以上で入力してください")
-      .max(72, "パスワードは72文字以内で入力してください"),
-
+    password: passwordSchema,
     passwordConfirmation: z.string(),
   })
   .refine((data) => data.password === data.passwordConfirmation, {

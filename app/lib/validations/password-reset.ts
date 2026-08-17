@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { passwordSchema } from "@/app/lib/validations/password";
+
 export const passwordResetSchema = z.object({
   email: z.email(),
 });
@@ -7,8 +9,8 @@ export const passwordResetSchema = z.object({
 export const passwordResetUpdateSchema = z
   .object({
     email: z.email(),
-    password: z.string().min(6),
-    passwordConfirmation: z.string().min(6),
+    password: passwordSchema,
+    passwordConfirmation: z.string(),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
     message: "パスワードが一致しません",
