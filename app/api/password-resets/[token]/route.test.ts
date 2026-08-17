@@ -20,6 +20,10 @@ vi.mock("@/app/lib/prisma", () => ({
     user: {
       update: vi.fn(),
     },
+    session: {
+      deleteMany: vi.fn(),
+    },
+    $transaction: vi.fn(),
   },
 }));
 
@@ -78,8 +82,18 @@ describe("PATCH /api/password-resets/[token]", () => {
       },
       data: {
         passwordDigest: "new-password-digest",
+        resetDigest: null,
+        resetSentAt: null,
       },
     });
+
+    expect(prisma.session.deleteMany).toHaveBeenCalledWith({
+      where: {
+        userId: "user-id",
+      },
+    });
+
+    expect(prisma.$transaction).toHaveBeenCalled();
 
     expect(response.status).toBe(200);
   });
@@ -109,6 +123,8 @@ describe("PATCH /api/password-resets/[token]", () => {
     expect(findValidPasswordResetUser).not.toHaveBeenCalled();
     expect(bcrypt.hash).not.toHaveBeenCalled();
     expect(prisma.user.update).not.toHaveBeenCalled();
+    expect(prisma.session.deleteMany).not.toHaveBeenCalled();
+    expect(prisma.$transaction).not.toHaveBeenCalled();
 
     expect(response.status).toBe(422);
   });
@@ -144,6 +160,8 @@ describe("PATCH /api/password-resets/[token]", () => {
 
     expect(bcrypt.hash).not.toHaveBeenCalled();
     expect(prisma.user.update).not.toHaveBeenCalled();
+    expect(prisma.session.deleteMany).not.toHaveBeenCalled();
+    expect(prisma.$transaction).not.toHaveBeenCalled();
 
     expect(response.status).toBe(400);
   });

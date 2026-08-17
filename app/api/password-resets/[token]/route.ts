@@ -56,14 +56,24 @@ export async function PATCH(request: Request, context: RouteContext) {
 
   const passwordDigest = await bcrypt.hash(password, 10);
 
-  await prisma.user.update({
-    where: {
-      id: user.id,
-    },
-    data: {
-      passwordDigest,
-    },
-  });
+  await prisma.$transaction([
+    prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        passwordDigest,
+        resetDigest: null,
+        resetSentAt: null,
+      },
+    }),
+
+    prisma.session.deleteMany({
+      where: {
+        userId: user.id,
+      },
+    }),
+  ]);
 
   return NextResponse.json({
     message: "パスワードを更新しました",
