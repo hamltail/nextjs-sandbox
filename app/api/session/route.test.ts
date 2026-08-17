@@ -43,6 +43,8 @@ describe("POST /api/session", () => {
       activationDigest: "activation-digest",
       activated: false,
       activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -80,6 +82,8 @@ describe("POST /api/session", () => {
       activationDigest: "activation-digest",
       activated: true,
       activatedAt: new Date(),
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

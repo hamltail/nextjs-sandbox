@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 
 import { prisma } from "@/app/lib/prisma";
-import { hashActivationToken } from "@/app/lib/account-activation";
+import { hashToken } from "@/app/lib/token";
 import { GET } from "@/app/account-activations/[token]/route";
 
 vi.mock("@/app/lib/prisma", () => ({
@@ -29,9 +29,11 @@ describe("GET /account-activations/[token]", () => {
       email,
       passwordDigest: "password-digest",
       admin: false,
-      activationDigest: hashActivationToken(token),
+      activationDigest: hashToken(token),
       activated: false,
       activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -77,10 +79,12 @@ describe("GET /account-activations/[token]", () => {
       admin: false,
 
       // DBには「正しいトークン」から作ったdigestが保存されている
-      activationDigest: hashActivationToken("valid-token"),
+      activationDigest: hashToken("valid-token"),
 
       activated: false,
       activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

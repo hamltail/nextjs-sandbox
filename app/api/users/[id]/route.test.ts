@@ -143,6 +143,11 @@ describe("PATCH /api/users/[id]", () => {
       email: "updated@example.com",
       passwordDigest: "hashed-password",
       admin: false,
+      activationDigest: null,
+      activated: false,
+      activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -280,6 +285,11 @@ describe("DELETE /api/users/[id]", () => {
       email: "delete@example.com",
       passwordDigest: "hashed-password",
       admin: false,
+      activationDigest: null,
+      activated: false,
+      activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
