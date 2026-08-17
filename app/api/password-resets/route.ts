@@ -1,13 +1,9 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
 import { createPasswordReset } from "@/app/lib/password-reset";
-
-const passwordResetSchema = z.object({
-  email: z.email(),
-});
+import { passwordResetSchema } from "@/app/lib/validations/password-reset";
 
 export async function POST(request: Request) {
   const json = await request.json();

@@ -1,20 +1,9 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
 import { findValidPasswordResetUser } from "@/app/lib/password-reset";
 import { prisma } from "@/app/lib/prisma";
-
-const passwordResetUpdateSchema = z
-  .object({
-    email: z.email(),
-    password: z.string().min(6),
-    passwordConfirmation: z.string().min(6),
-  })
-  .refine((data) => data.password === data.passwordConfirmation, {
-    message: "パスワードが一致しません",
-    path: ["passwordConfirmation"],
-  });
+import { passwordResetUpdateSchema } from "@/app/lib/validations/password-reset";
 
 type RouteContext = {
   params: Promise<{
