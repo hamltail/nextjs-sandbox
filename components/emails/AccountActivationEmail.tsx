@@ -1,3 +1,15 @@
+import {
+  Body,
+  Button,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Preview,
+  Section,
+  Text,
+} from "@react-email/components";
+
 type AccountActivationEmailProps = {
   name: string;
   activationUrl: string;
@@ -8,19 +20,43 @@ export default function AccountActivationEmail({
   activationUrl,
 }: AccountActivationEmailProps) {
   return (
-    <div>
-      <h1>Next.js Sandbox</h1>
+    <Html>
+      <Head />
+      <Preview>Activate your account</Preview>
 
-      <p>Hi {name},</p>
+      <Body>
+        <Container>
+          <Heading>Next.js Sandbox</Heading>
 
-      <p>
-        Welcome to Next.js Sandbox! Click on the link below to activate your
-        account:
-      </p>
+          <Text>Hi {name},</Text>
 
-      <p>
-        <a href={activationUrl}>Activate</a>
-      </p>
-    </div>
+          <Text>
+            Welcome to Next.js Sandbox! Click the button below to activate your
+            account:
+          </Text>
+
+          <Section>
+            <Button
+              href={activationUrl}
+              style={{
+                backgroundColor: "#14b8a6",
+                borderRadius: "9999px",
+                color: "#ffffff",
+                padding: "12px 24px",
+                textDecoration: "none",
+              }}
+            >
+              Activate
+            </Button>
+          </Section>
+        </Container>
+      </Body>
+    </Html>
   );
 }
+
+AccountActivationEmail.PreviewProps = {
+  name: "Hamru",
+  activationUrl:
+    "http://localhost:3000/account-activations/test-token?email=hamru@example.com",
+} satisfies AccountActivationEmailProps;
