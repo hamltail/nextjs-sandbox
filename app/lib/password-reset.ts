@@ -17,3 +17,34 @@ export async function createPasswordReset(userId: string) {
 
   return resetToken;
 }
+
+export function isPasswordResetExpired(resetSentAt: Date) {
+  const twoHoursInMilliseconds = 2 * 60 * 60 * 1000;
+
+  return Date.now() - resetSentAt.getTime() > twoHoursInMilliseconds;
+}
+
+export async function findValidPasswordResetUser(
+  email: string,
+  resetToken: string,
+) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+
+  if (!user || !user.resetDigest || !user.resetSentAt) {
+    return null;
+  }
+
+  if (hashToken(resetToken) !== user.resetDigest) {
+    return null;
+  }
+
+  if (isPasswordResetExpired(user.resetSentAt)) {
+    return null;
+  }
+
+  return user;
+}
