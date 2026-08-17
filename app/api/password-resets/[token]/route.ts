@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 import { findValidPasswordResetUser } from "@/app/lib/password-reset";
+import { hashPassword } from "@/app/lib/password";
 import { prisma } from "@/app/lib/prisma";
 import { passwordResetUpdateSchema } from "@/app/lib/validations/password-reset";
 
@@ -43,7 +44,7 @@ export async function PATCH(request: Request, context: RouteContext) {
     );
   }
 
-  const passwordDigest = await bcrypt.hash(password, 10);
+  const passwordDigest = await hashPassword(password);
 
   await prisma.$transaction([
     prisma.user.update({
