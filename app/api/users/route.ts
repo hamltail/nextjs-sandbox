@@ -1,10 +1,7 @@
 import bcrypt from "bcryptjs";
 
 import { sendAccountActivationEmail } from "@/app/lib/mailer/account-activation";
-import {
-  createActivationToken,
-  hashActivationToken,
-} from "@/app/lib/account-activation";
+import { createToken, hashToken } from "@/app/lib/token";
 import { Prisma } from "@/app/generated/prisma/client";
 import { prisma } from "@/app/lib/prisma";
 import { createUserSchema } from "@/app/lib/validations/user";
@@ -30,8 +27,8 @@ export async function POST(request: Request) {
 
     const passwordDigest = await bcrypt.hash(password, 10);
 
-    const activationToken = createActivationToken();
-    const activationDigest = hashActivationToken(activationToken);
+    const activationToken = createToken();
+    const activationDigest = hashToken(activationToken);
 
     const user = await prisma.user.create({
       data: {
