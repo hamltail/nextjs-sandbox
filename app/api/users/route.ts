@@ -1,5 +1,3 @@
-import bcrypt from "bcryptjs";
-
 import { sendAccountActivationEmail } from "@/app/lib/mailer/account-activation";
 import { createToken, hashToken } from "@/app/lib/token";
 import { Prisma } from "@/app/generated/prisma/client";
