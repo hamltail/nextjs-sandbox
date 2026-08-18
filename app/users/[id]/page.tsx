@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
+import MicropostForm from "@/components/MicropostForm";
 
 type PageProps = {
   params: Promise<{
@@ -81,6 +82,12 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               </p>
             </div>
           </div>
+
+          {current.id === user.id && (
+            <div className="mt-10 rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm md:p-8">
+              <MicropostForm />
+            </div>
+          )}
 
           <div className="mt-10">
             <div className="mb-6 flex items-end justify-between">
