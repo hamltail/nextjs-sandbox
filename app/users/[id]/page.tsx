@@ -3,6 +3,9 @@ import { notFound, redirect } from "next/navigation";
 import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
+import DeleteMicropostButton from "@/components/DeleteMicropostButton";
+import MicropostForm from "@/components/MicropostForm";
+import MicropostItem from "@/components/MicropostItem";
 
 type PageProps = {
   params: Promise<{
@@ -26,6 +29,13 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     where: {
       id,
       activated: true,
+    },
+    include: {
+      microposts: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 
@@ -73,6 +83,46 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                   : "********@********"}
               </p>
             </div>
+          </div>
+
+          {current.id === user.id && (
+            <div className="mt-10 rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm md:p-8">
+              <MicropostForm />
+            </div>
+          )}
+
+          <div className="mt-10">
+            <div className="mb-6 flex items-end justify-between">
+              <div>
+                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+                  MICROPOSTS
+                </p>
+
+                <h2 className="mt-2 text-2xl font-bold">
+                  Microposts ({user.microposts.length})
+                </h2>
+              </div>
+            </div>
+
+            {user.microposts.length > 0 ? (
+              <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
+                {user.microposts.map((micropost) => (
+                  <MicropostItem
+                    key={micropost.id}
+                    micropost={micropost}
+                    action={
+                      current.id === user.id ? (
+                        <DeleteMicropostButton id={micropost.id} />
+                      ) : null
+                    }
+                  />
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm">
+                投稿はまだありません。
+              </p>
+            )}
           </div>
         </div>
       </Container>

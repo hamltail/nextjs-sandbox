@@ -20,7 +20,7 @@ Next.js や周辺技術を学習・検証し、
 | Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation, password reset) |
 | Email          | Resend, React Email                                                                            |
 | Testing        | Vitest, Playwright                                                                             |
-| Infrastructure | Docker, Vercel                                                                                 |
+| Infrastructure | Docker, Vercel, Cloudflare R2                                                                  |
 
 ## Requirements
 

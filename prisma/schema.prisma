@@ -24,6 +24,7 @@ model User {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   sessions         Session[]
+  microposts       Micropost[]
 }
 
 model Session {
@@ -36,4 +37,17 @@ model Session {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+model Micropost {
+  id        String   @id @default(cuid())
+  content   String
+  imageKey  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
 }

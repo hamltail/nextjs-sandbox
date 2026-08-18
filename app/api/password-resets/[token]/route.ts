@@ -1,4 +1,3 @@
-import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 import { findValidPasswordResetUser } from "@/app/lib/password-reset";
