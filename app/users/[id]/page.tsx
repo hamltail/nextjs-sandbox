@@ -27,6 +27,13 @@ export default async function UserPage({ params, searchParams }: PageProps) {
       id,
       activated: true,
     },
+    include: {
+      microposts: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   });
 
   if (!user) {
@@ -73,6 +80,38 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                   : "********@********"}
               </p>
             </div>
+          </div>
+
+          <div className="mt-10">
+            <div className="mb-6 flex items-end justify-between">
+              <div>
+                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+                  MICROPOSTS
+                </p>
+
+                <h2 className="mt-2 text-2xl font-bold">
+                  Microposts ({user.microposts.length})
+                </h2>
+              </div>
+            </div>
+
+            {user.microposts.length > 0 ? (
+              <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
+                {user.microposts.map((micropost) => (
+                  <article key={micropost.id} className="py-6">
+                    <p className="whitespace-pre-wrap">{micropost.content}</p>
+
+                    <p className="mt-3 text-sm text-gray-500">
+                      {micropost.createdAt.toLocaleString("ja-JP")}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm">
+                投稿はまだありません。
+              </p>
+            )}
           </div>
         </div>
       </Container>
