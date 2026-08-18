@@ -86,6 +86,7 @@ describe("DELETE /api/microposts/[id]", () => {
       id: "micropost-id",
       content: "他人の投稿",
       userId: "other-user-id",
+      imageKey: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -121,6 +122,7 @@ describe("DELETE /api/microposts/[id]", () => {
       id: "micropost-id",
       content: "自分の投稿",
       userId: "user-id",
+      imageKey: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -129,6 +131,7 @@ describe("DELETE /api/microposts/[id]", () => {
       id: "micropost-id",
       content: "自分の投稿",
       userId: "user-id",
+      imageKey: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

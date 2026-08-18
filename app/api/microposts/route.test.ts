@@ -106,6 +106,7 @@ describe("POST /api/microposts", () => {
       id: "micropost-id",
       content: "Next.js修練中",
       userId: "user-id",
+      imageKey: null,
       createdAt: new Date("2026-08-18T03:00:00.000Z"),
       updatedAt: new Date("2026-08-18T03:00:00.000Z"),
     });
