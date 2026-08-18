@@ -24,9 +24,6 @@ export async function POST(request: Request) {
   const content = formData.get("content");
   const image = formData.get("image");
 
-  const imageKey =
-    image instanceof File && image.size > 0 ? await uploadImage(image) : null;
-
   const result = micropostSchema.safeParse({
     content,
   });
@@ -41,6 +38,9 @@ export async function POST(request: Request) {
       },
     );
   }
+
+  const imageKey =
+    image instanceof File && image.size > 0 ? await uploadImage(image) : null;
 
   const micropost = await prisma.micropost.create({
     data: {
