@@ -26,6 +26,7 @@ describe("uploadImage", () => {
     process.env.R2_ACCESS_KEY_ID = "test-access-key-id";
     process.env.R2_SECRET_ACCESS_KEY = "test-secret-access-key";
     process.env.R2_BUCKET_NAME = "test-bucket";
+    process.env.R2_PREFIX = "test";
   });
 
   it("JPEG画像をアップロードできる", async () => {
@@ -38,7 +39,33 @@ describe("uploadImage", () => {
     const key = await uploadImage(file);
 
     expect(sendMock).toHaveBeenCalledOnce();
-    expect(key).toMatch(/^microposts\/.+\.jpg$/);
+    expect(key).toMatch(/^test\/microposts\/.+\.jpg$/);
+  });
+
+  it("PNG画像をアップロードできる", async () => {
+    const { uploadImage } = await import("./r2");
+
+    const file = new File(["image-data"], "test.png", {
+      type: "image/png",
+    });
+
+    const key = await uploadImage(file);
+
+    expect(sendMock).toHaveBeenCalledOnce();
+    expect(key).toMatch(/^test\/microposts\/.+\.png$/);
+  });
+
+  it("WebP画像をアップロードできる", async () => {
+    const { uploadImage } = await import("./r2");
+
+    const file = new File(["image-data"], "test.webp", {
+      type: "image/webp",
+    });
+
+    const key = await uploadImage(file);
+
+    expect(sendMock).toHaveBeenCalledOnce();
+    expect(key).toMatch(/^test\/microposts\/.+\.webp$/);
   });
 
   it("対応していないファイル形式は拒否する", async () => {
