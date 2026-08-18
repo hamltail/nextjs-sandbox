@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import { getMicropostFeed } from "@/app/lib/micropost";
+import MicropostItem from "@/components/MicropostItem";
 
 type MicropostFeedProps = {
   userId: string;
@@ -21,23 +20,7 @@ export default async function MicropostFeed({ userId }: MicropostFeedProps) {
         {microposts.length > 0 ? (
           <div className="mt-6 divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm">
             {microposts.map((micropost) => (
-              <article key={micropost.id} className="py-6">
-                <p className="whitespace-pre-wrap">{micropost.content}</p>
-
-                {micropost.imageKey && (
-                  <Image
-                    src={`${process.env.R2_PUBLIC_URL}/${micropost.imageKey}`}
-                    alt="Micropost image"
-                    width={800}
-                    height={600}
-                    className="mt-4 rounded-xl object-cover"
-                  />
-                )}
-
-                <p className="mt-3 text-sm text-gray-500">
-                  {micropost.createdAt.toLocaleString("ja-JP")}
-                </p>
-              </article>
+              <MicropostItem key={micropost.id} micropost={micropost} />
             ))}
           </div>
         ) : (

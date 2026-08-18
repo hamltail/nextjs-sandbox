@@ -5,6 +5,7 @@ import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";
 import MicropostForm from "@/components/MicropostForm";
+import MicropostItem from "@/components/MicropostItem";
 
 type PageProps = {
   params: Promise<{
@@ -106,22 +107,15 @@ export default async function UserPage({ params, searchParams }: PageProps) {
             {user.microposts.length > 0 ? (
               <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
                 {user.microposts.map((micropost) => (
-                  <article
+                  <MicropostItem
                     key={micropost.id}
-                    className="flex items-start justify-between gap-4 py-6"
-                  >
-                    <div>
-                      <p className="whitespace-pre-wrap">{micropost.content}</p>
-
-                      <p className="mt-3 text-sm text-gray-500">
-                        {micropost.createdAt.toLocaleString("ja-JP")}
-                      </p>
-                    </div>
-
-                    {current.id === user.id && (
-                      <DeleteMicropostButton id={micropost.id} />
-                    )}
-                  </article>
+                    micropost={micropost}
+                    action={
+                      current.id === user.id ? (
+                        <DeleteMicropostButton id={micropost.id} />
+                      ) : null
+                    }
+                  />
                 ))}
               </div>
             ) : (
