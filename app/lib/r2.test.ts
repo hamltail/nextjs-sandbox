@@ -94,3 +94,31 @@ describe("uploadImage", () => {
     expect(sendMock).not.toHaveBeenCalled();
   });
 });
+
+describe("deleteImage", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.resetModules();
+
+    process.env.R2_ACCOUNT_ID = "test-account-id";
+    process.env.R2_ACCESS_KEY_ID = "test-access-key-id";
+    process.env.R2_SECRET_ACCESS_KEY = "test-secret-access-key";
+    process.env.R2_BUCKET_NAME = "test-bucket";
+    process.env.R2_PREFIX = "test";
+  });
+
+  it("指定した画像を削除できる", async () => {
+    const { deleteImage } = await import("./r2");
+
+    await deleteImage("test/microposts/test-image.jpg");
+
+    expect(sendMock).toHaveBeenCalledOnce();
+
+    const command = sendMock.mock.calls[0][0];
+
+    expect(command.input).toEqual({
+      Bucket: "test-bucket",
+      Key: "test/microposts/test-image.jpg",
+    });
+  });
+});

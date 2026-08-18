@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
+import { deleteImage } from "@/app/lib/r2";
 
 type RouteContext = {
   params: Promise<{
@@ -46,6 +47,10 @@ export async function DELETE(_request: Request, { params }: RouteContext) {
       id,
     },
   });
+
+  if (micropost.imageKey) {
+    await deleteImage(micropost.imageKey);
+  }
 
   return new NextResponse(null, {
     status: 204,
