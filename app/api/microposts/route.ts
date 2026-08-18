@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { currentUser } from "@/app/lib/auth";
 import { prisma } from "@/app/lib/prisma";
+import { uploadImage } from "@/app/lib/r2";
 import { micropostSchema } from "@/app/lib/validations/micropost";
 
 export async function POST(request: Request) {
@@ -18,8 +19,17 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = await request.json();
-  const result = micropostSchema.safeParse(body);
+  const formData = await request.formData();
+
+  const content = formData.get("content");
+  const image = formData.get("image");
+
+  const imageKey =
+    image instanceof File && image.size > 0 ? await uploadImage(image) : null;
+
+  const result = micropostSchema.safeParse({
+    content,
+  });
 
   if (!result.success) {
     return NextResponse.json(
@@ -35,6 +45,7 @@ export async function POST(request: Request) {
   const micropost = await prisma.micropost.create({
     data: {
       content: result.data.content,
+      imageKey,
       userId: current.id,
     },
   });

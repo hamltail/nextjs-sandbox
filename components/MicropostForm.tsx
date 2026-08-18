@@ -7,19 +7,23 @@ export default function MicropostForm() {
   const router = useRouter();
 
   const [content, setContent] = useState("");
+  const [image, setImage] = useState<File | null>(null);
   const [error, setError] = useState("");
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    const formData = new FormData();
+
+    formData.append("content", content);
+
+    if (image) {
+      formData.append("image", image);
+    }
+
     const response = await fetch("/api/microposts", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content,
-      }),
+      body: formData,
     });
 
     if (!response.ok) {
@@ -28,6 +32,7 @@ export default function MicropostForm() {
     }
 
     setContent("");
+    setImage(null);
     setError("");
 
     router.refresh();
@@ -42,6 +47,16 @@ export default function MicropostForm() {
         placeholder="Micropostを入力"
         className="min-h-32 w-full rounded-xl border border-gray-300 p-4"
       />
+
+      <div className="mt-4">
+        <input
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={(event) => {
+            setImage(event.target.files?.[0] ?? null);
+          }}
+        />
+      </div>
 
       {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
 
