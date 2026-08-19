@@ -20,6 +20,18 @@ export async function getMicropostFeed(userId: string) {
         },
       ],
     },
+    select: {
+      id: true,
+      content: true,
+      imageKey: true,
+      createdAt: true,
+      user: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
     orderBy: {
       createdAt: "desc",
     },

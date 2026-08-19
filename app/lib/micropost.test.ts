@@ -21,11 +21,9 @@ describe("getMicropostFeed", () => {
       where: {
         OR: [
           {
-            // 自分自身のMicropost
             userId: "current-user-id",
           },
           {
-            // 自分がフォローしているUserのMicropost
             user: {
               passiveRelationships: {
                 some: {
@@ -35,6 +33,18 @@ describe("getMicropostFeed", () => {
             },
           },
         ],
+      },
+      select: {
+        id: true,
+        content: true,
+        imageKey: true,
+        createdAt: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",
