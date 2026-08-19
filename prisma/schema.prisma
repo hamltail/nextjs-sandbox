@@ -8,23 +8,26 @@ datasource db {
 }
 
 model User {
-  id               String    @id @default(cuid())
-  name             String
-  email            String    @unique
-  passwordDigest   String
-  admin            Boolean   @default(false)
+  id             String  @id @default(cuid())
+  name           String
+  email          String  @unique
+  passwordDigest String
+  admin          Boolean @default(false)
 
   activationDigest String?
   activated        Boolean   @default(false)
   activatedAt      DateTime?
 
-  resetDigest      String?
-  resetSentAt      DateTime?
+  resetDigest String?
+  resetSentAt DateTime?
 
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  sessions         Session[]
-  microposts       Micropost[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  sessions   Session[]
+  microposts Micropost[]
+
+  activeRelationships  Relationship[] @relation("FollowerRelationships")
+  passiveRelationships Relationship[] @relation("FollowedRelationships")
 }
 
 model Session {
@@ -50,4 +53,18 @@ model Micropost {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, createdAt])
+}
+
+model Relationship {
+  id         String   @id @default(cuid())
+  followerId String
+  followedId String
+  createdAt  DateTime @default(now())
+
+  follower User @relation("FollowerRelationships", fields: [followerId], references: [id], onDelete: Cascade)
+  followed User @relation("FollowedRelationships", fields: [followedId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followedId])
+  @@index([followerId])
+  @@index([followedId])
 }

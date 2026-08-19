@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type MicropostItemProps = {
   micropost: {
@@ -6,6 +7,10 @@ type MicropostItemProps = {
     content: string;
     imageKey: string | null;
     createdAt: Date;
+    user?: {
+      id: string;
+      name: string;
+    };
   };
   action?: React.ReactNode;
 };
@@ -17,6 +22,14 @@ export default function MicropostItem({
   return (
     <article className="flex items-start justify-between gap-4 py-6">
       <div className="min-w-0 flex-1">
+        {micropost.user && (
+          <Link
+            href={`/users/${micropost.user.id}`}
+            className="mb-2 block font-semibold transition hover:text-teal-600"
+          >
+            {micropost.user.name}
+          </Link>
+        )}
         <p className="whitespace-pre-wrap">{micropost.content}</p>
 
         {micropost.imageKey && (
