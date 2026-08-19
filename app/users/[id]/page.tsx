@@ -1,9 +1,11 @@
 import { notFound, redirect } from "next/navigation";
 
 import { currentUser } from "@/app/lib/auth";
+import { isFollowing } from "@/app/lib/relationship";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";
+import FollowButton from "@/components/FollowButton";
 import MicropostForm from "@/components/MicropostForm";
 import MicropostItem from "@/components/MicropostItem";
 
@@ -43,6 +45,9 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     notFound();
   }
 
+  const following =
+    current.id !== user.id ? await isFollowing(current.id, user.id) : false;
+
   return (
     <section className="relative overflow-hidden px-7 py-16 md:px-11 md:py-20 xl:px-0">
       <div
@@ -61,14 +66,20 @@ export default async function UserPage({ params, searchParams }: PageProps) {
             </div>
           )}
 
-          <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
-              PROFILE
-            </p>
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+                PROFILE
+              </p>
 
-            <h1 className="mt-2 text-4xl font-bold tracking-tight">
-              {user.name}
-            </h1>
+              <h1 className="mt-2 text-4xl font-bold tracking-tight">
+                {user.name}
+              </h1>
+            </div>
+
+            {current.id !== user.id && (
+              <FollowButton userId={user.id} initialIsFollowing={following} />
+            )}
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm md:p-8">
