@@ -1,0 +1,34 @@
+import { prisma } from "@/app/lib/prisma";
+
+export async function followUser(followerId: string, followedId: string) {
+  return prisma.relationship.create({
+    data: {
+      followerId,
+      followedId,
+    },
+  });
+}
+
+export async function unfollowUser(followerId: string, followedId: string) {
+  return prisma.relationship.delete({
+    where: {
+      followerId_followedId: {
+        followerId,
+        followedId,
+      },
+    },
+  });
+}
+
+export async function isFollowing(followerId: string, followedId: string) {
+  const relationship = await prisma.relationship.findUnique({
+    where: {
+      followerId_followedId: {
+        followerId,
+        followedId,
+      },
+    },
+  });
+
+  return relationship !== null;
+}
