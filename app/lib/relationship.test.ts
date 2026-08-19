@@ -93,7 +93,7 @@ describe("followUser", () => {
       where: {
         followerId: "user-id",
       },
-      include: {
+      select: {
         followed: true,
       },
     });
@@ -108,7 +108,7 @@ describe("followUser", () => {
       where: {
         followedId: "user-id",
       },
-      include: {
+      select: {
         follower: true,
       },
     });

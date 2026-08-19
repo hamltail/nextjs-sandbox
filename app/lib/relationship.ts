@@ -38,7 +38,7 @@ export async function getFollowing(userId: string) {
     where: {
       followerId: userId,
     },
-    include: {
+    select: {
       followed: true,
     },
   });
@@ -49,7 +49,7 @@ export async function getFollowers(userId: string) {
     where: {
       followedId: userId,
     },
-    include: {
+    select: {
       follower: true,
     },
   });
