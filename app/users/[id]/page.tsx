@@ -1,7 +1,12 @@
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { currentUser } from "@/app/lib/auth";
-import { isFollowing } from "@/app/lib/relationship";
+import {
+  getFollowersCount,
+  getFollowingCount,
+  isFollowing,
+} from "@/app/lib/relationship";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";
@@ -45,6 +50,11 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     notFound();
   }
 
+  const [followingCount, followersCount] = await Promise.all([
+    getFollowingCount(user.id),
+    getFollowersCount(user.id),
+  ]);
+
   const following =
     current.id !== user.id ? await isFollowing(current.id, user.id) : false;
 
@@ -75,6 +85,24 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               <h1 className="mt-2 text-4xl font-bold tracking-tight">
                 {user.name}
               </h1>
+
+              <div className="mt-4 flex gap-4 text-sm text-gray-600">
+                <Link
+                  href={`/users/${user.id}/following`}
+                  className="transition hover:text-teal-600"
+                >
+                  <strong className="text-gray-900">{followingCount}</strong>{" "}
+                  following
+                </Link>
+
+                <Link
+                  href={`/users/${user.id}/followers`}
+                  className="transition hover:text-teal-600"
+                >
+                  <strong className="text-gray-900">{followersCount}</strong>{" "}
+                  followers
+                </Link>
+              </div>
             </div>
 
             {current.id !== user.id && (

@@ -58,3 +58,19 @@ export async function getFollowers(userId: string) {
 
   return relationships.map((relationship) => relationship.follower);
 }
+
+export async function getFollowingCount(userId: string) {
+  return prisma.relationship.count({
+    where: {
+      followerId: userId,
+    },
+  });
+}
+
+export async function getFollowersCount(userId: string) {
+  return prisma.relationship.count({
+    where: {
+      followedId: userId,
+    },
+  });
+}

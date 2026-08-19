@@ -3,7 +3,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   followUser,
   getFollowers,
+  getFollowersCount,
   getFollowing,
+  getFollowingCount,
   isFollowing,
   unfollowUser,
 } from "@/app/lib/relationship";
@@ -16,6 +18,7 @@ vi.mock("@/app/lib/prisma", () => ({
       delete: vi.fn(),
       findUnique: vi.fn(),
       findMany: vi.fn(),
+      count: vi.fn(),
     },
   },
 }));
@@ -156,6 +159,34 @@ describe("relationship", () => {
       },
       select: {
         follower: true,
+      },
+    });
+  });
+
+  it("フォローしているユーザー数を取得できる", async () => {
+    vi.mocked(prisma.relationship.count).mockResolvedValue(3);
+
+    const result = await getFollowingCount("user-id");
+
+    expect(result).toBe(3);
+
+    expect(prisma.relationship.count).toHaveBeenCalledWith({
+      where: {
+        followerId: "user-id",
+      },
+    });
+  });
+
+  it("フォロワー数を取得できる", async () => {
+    vi.mocked(prisma.relationship.count).mockResolvedValue(5);
+
+    const result = await getFollowersCount("user-id");
+
+    expect(result).toBe(5);
+
+    expect(prisma.relationship.count).toHaveBeenCalledWith({
+      where: {
+        followedId: "user-id",
       },
     });
   });
