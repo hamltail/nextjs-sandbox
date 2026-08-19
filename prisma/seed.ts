@@ -5,22 +5,36 @@ import { prisma } from "../app/lib/prisma";
 async function main() {
   const passwordDigest = await bcrypt.hash("password", 10);
 
-  const users = Array.from({ length: 30 }, (_, index) => {
-    const number = index + 1;
+  for (let index = 1; index <= 30; index++) {
+    const user = await prisma.user.upsert({
+      where: {
+        email: `test-user-${index}@example.com`,
+      },
+      update: {},
+      create: {
+        name: `Test User ${index}`,
+        email: `test-user-${index}@example.com`,
+        passwordDigest,
+        activated: true,
+        activatedAt: new Date(),
+      },
+    });
 
-    return {
-      name: `Test User ${number}`,
-      email: `test-user-${number}@example.com`,
-      passwordDigest,
-      activated: true,
-      activatedAt: new Date(),
-    };
-  });
+    const micropostCount = await prisma.micropost.count({
+      where: {
+        userId: user.id,
+      },
+    });
 
-  await prisma.user.createMany({
-    data: users,
-    skipDuplicates: true,
-  });
+    if (micropostCount === 0) {
+      await prisma.micropost.createMany({
+        data: Array.from({ length: 30 }, (_, postIndex) => ({
+          userId: user.id,
+          content: `Test User ${index} の投稿 ${postIndex + 1}`,
+        })),
+      });
+    }
+  }
 
   console.log("Seed completed.");
 }
