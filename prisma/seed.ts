@@ -36,6 +36,65 @@ async function main() {
     }
   }
 
+  // Test User 1〜10  → Test User 11〜20
+  // Test User 11〜20 → Test User 21〜30
+  // Test User 21〜30 → Test User 1〜10
+  const relationshipGroups = [
+    { followerStart: 1, followerEnd: 10, followedStart: 11, followedEnd: 20 },
+    { followerStart: 11, followerEnd: 20, followedStart: 21, followedEnd: 30 },
+    { followerStart: 21, followerEnd: 30, followedStart: 1, followedEnd: 10 },
+  ];
+
+  for (const group of relationshipGroups) {
+    for (
+      let followerNumber = group.followerStart;
+      followerNumber <= group.followerEnd;
+      followerNumber++
+    ) {
+      const follower = await prisma.user.findUnique({
+        where: {
+          email: `test-user-${followerNumber}@example.com`,
+        },
+      });
+
+      if (!follower) {
+        continue;
+      }
+
+      for (
+        let followedNumber = group.followedStart;
+        followedNumber <= group.followedEnd;
+        followedNumber++
+      ) {
+        const followed = await prisma.user.findUnique({
+          where: {
+            email: `test-user-${followedNumber}@example.com`,
+          },
+        });
+
+        if (!followed) {
+          continue;
+        }
+
+        await prisma.relationship.upsert({
+          // followerId + followedId の組み合わせは @@unique なので、
+          // 複合ユニークキーを使って既存のRelationshipを特定する
+          where: {
+            followerId_followedId: {
+              followerId: follower.id,
+              followedId: followed.id,
+            },
+          },
+          update: {},
+          create: {
+            followerId: follower.id,
+            followedId: followed.id,
+          },
+        });
+      }
+    }
+  }
+
   console.log("Seed completed.");
 }
 
