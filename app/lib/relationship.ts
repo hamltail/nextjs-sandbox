@@ -34,7 +34,7 @@ export async function isFollowing(followerId: string, followedId: string) {
 }
 
 export async function getFollowing(userId: string) {
-  return prisma.relationship.findMany({
+  const relationships = await prisma.relationship.findMany({
     where: {
       followerId: userId,
     },
@@ -42,10 +42,12 @@ export async function getFollowing(userId: string) {
       followed: true,
     },
   });
+
+  return relationships.map((relationship) => relationship.followed);
 }
 
 export async function getFollowers(userId: string) {
-  return prisma.relationship.findMany({
+  const relationships = await prisma.relationship.findMany({
     where: {
       followedId: userId,
     },
@@ -53,4 +55,6 @@ export async function getFollowers(userId: string) {
       follower: true,
     },
   });
+
+  return relationships.map((relationship) => relationship.follower);
 }

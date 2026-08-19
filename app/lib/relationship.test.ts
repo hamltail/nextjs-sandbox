@@ -2,10 +2,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   followUser,
-  unfollowUser,
-  isFollowing,
-  getFollowing,
   getFollowers,
+  getFollowing,
+  isFollowing,
+  unfollowUser,
 } from "@/app/lib/relationship";
 import { prisma } from "@/app/lib/prisma";
 
@@ -20,7 +20,7 @@ vi.mock("@/app/lib/prisma", () => ({
   },
 }));
 
-describe("followUser", () => {
+describe("relationship", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -84,10 +84,33 @@ describe("followUser", () => {
     expect(result).toBe(false);
   });
 
-  it("フォローしているユーザーを取得できる", async () => {
-    vi.mocked(prisma.relationship.findMany).mockResolvedValue([]);
+  it("フォローしているUserのみ返す", async () => {
+    const followed = {
+      id: "followed-id",
+      name: "Followed",
+      email: "followed@example.com",
+      passwordDigest: "password",
+      admin: false,
+      activationDigest: null,
+      activated: true,
+      activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-    await getFollowing("user-id");
+    // Prismaのselectによる返り値の型をVitestのモックが推論できないため、
+    // テストデータの型チェックのみ回避する
+    vi.mocked(prisma.relationship.findMany).mockResolvedValue([
+      {
+        followed,
+      },
+    ] as never);
+
+    const result = await getFollowing("user-id");
+
+    expect(result).toEqual([followed]);
 
     expect(prisma.relationship.findMany).toHaveBeenCalledWith({
       where: {
@@ -99,10 +122,33 @@ describe("followUser", () => {
     });
   });
 
-  it("フォロワーを取得できる", async () => {
-    vi.mocked(prisma.relationship.findMany).mockResolvedValue([]);
+  it("フォロワーのUserのみ返す", async () => {
+    const follower = {
+      id: "follower-id",
+      name: "Follower",
+      email: "follower@example.com",
+      passwordDigest: "password",
+      admin: false,
+      activationDigest: null,
+      activated: true,
+      activatedAt: null,
+      resetDigest: null,
+      resetSentAt: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-    await getFollowers("user-id");
+    // Prismaのselectによる返り値の型をVitestのモックが推論できないため、
+    // テストデータの型チェックのみ回避する
+    vi.mocked(prisma.relationship.findMany).mockResolvedValue([
+      {
+        follower,
+      },
+    ] as never);
+
+    const result = await getFollowers("user-id");
+
+    expect(result).toEqual([follower]);
 
     expect(prisma.relationship.findMany).toHaveBeenCalledWith({
       where: {
