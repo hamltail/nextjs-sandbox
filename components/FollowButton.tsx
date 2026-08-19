@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type FollowButtonProps = {
@@ -11,6 +12,8 @@ export default function FollowButton({
   userId,
   initialIsFollowing,
 }: FollowButtonProps) {
+  const router = useRouter();
+
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,6 +39,8 @@ export default function FollowButton({
 
       // APIが成功した場合だけ、画面上のフォロー状態を反転する
       setIsFollowing((current) => !current);
+
+      router.refresh();
     } finally {
       setIsLoading(false);
     }
