@@ -1,6 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { followUser, unfollowUser, isFollowing } from "@/app/lib/relationship";
+import {
+  followUser,
+  unfollowUser,
+  isFollowing,
+  getFollowing,
+  getFollowers,
+} from "@/app/lib/relationship";
 import { prisma } from "@/app/lib/prisma";
 
 vi.mock("@/app/lib/prisma", () => ({
@@ -9,6 +15,7 @@ vi.mock("@/app/lib/prisma", () => ({
       create: vi.fn(),
       delete: vi.fn(),
       findUnique: vi.fn(),
+      findMany: vi.fn(),
     },
   },
 }));
@@ -75,5 +82,35 @@ describe("followUser", () => {
     const result = await isFollowing("follower-id", "followed-id");
 
     expect(result).toBe(false);
+  });
+
+  it("フォローしているユーザーを取得できる", async () => {
+    vi.mocked(prisma.relationship.findMany).mockResolvedValue([]);
+
+    await getFollowing("user-id");
+
+    expect(prisma.relationship.findMany).toHaveBeenCalledWith({
+      where: {
+        followerId: "user-id",
+      },
+      include: {
+        followed: true,
+      },
+    });
+  });
+
+  it("フォロワーを取得できる", async () => {
+    vi.mocked(prisma.relationship.findMany).mockResolvedValue([]);
+
+    await getFollowers("user-id");
+
+    expect(prisma.relationship.findMany).toHaveBeenCalledWith({
+      where: {
+        followedId: "user-id",
+      },
+      include: {
+        follower: true,
+      },
+    });
   });
 });

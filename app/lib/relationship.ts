@@ -32,3 +32,25 @@ export async function isFollowing(followerId: string, followedId: string) {
 
   return relationship !== null;
 }
+
+export async function getFollowing(userId: string) {
+  return prisma.relationship.findMany({
+    where: {
+      followerId: userId,
+    },
+    include: {
+      followed: true,
+    },
+  });
+}
+
+export async function getFollowers(userId: string) {
+  return prisma.relationship.findMany({
+    where: {
+      followedId: userId,
+    },
+    include: {
+      follower: true,
+    },
+  });
+}
