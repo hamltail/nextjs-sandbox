@@ -38,3 +38,8 @@ jobs:
         run: npm run build
         env:
           RESEND_API_KEY: re_dummy
+          R2_ACCOUNT_ID: dummy
+          R2_ACCESS_KEY_ID: dummy
+          R2_SECRET_ACCESS_KEY: dummy
+          R2_BUCKET_NAME: dummy
+          R2_PREFIX: ci
