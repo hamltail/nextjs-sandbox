@@ -1,4 +1,5 @@
 import { createClient } from "microcms-js-sdk";
+
 import type { News } from "@/app/types/news";
 
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
@@ -17,16 +18,7 @@ export const microcmsClient = createClient({
   apiKey,
 });
 
-export async function getNews() {
-  if (process.env.E2E_TEST === "true") {
-    return {
-      contents: [],
-      totalCount: 0,
-      offset: 0,
-      limit: 3,
-    };
-  }
-
+export async function getNewsFromMicroCMS() {
   return microcmsClient.getList<News>({
     endpoint: "news",
     queries: {
