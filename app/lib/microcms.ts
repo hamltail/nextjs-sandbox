@@ -18,6 +18,15 @@ export const microcmsClient = createClient({
 });
 
 export async function getNews() {
+  if (process.env.E2E_TEST === "true") {
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: 0,
+      limit: 3,
+    };
+  }
+
   return microcmsClient.getList<News>({
     endpoint: "news",
     queries: {
