@@ -20,7 +20,7 @@ Next.js や周辺技術を学習・検証し、
 | Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation, password reset) |
 | Email          | Resend, React Email                                                                            |
 | Testing        | Vitest, Playwright                                                                             |
-| Infrastructure | Docker, Vercel, Cloudflare R2                                                                  |
+| Infrastructure | Docker, Vercel, Cloudflare R2, GitHub Actions                                                  |
 
 ## Requirements
 
@@ -89,6 +89,16 @@ npm run dev
 ```bash
 npx prisma studio
 ```
+
+## CI
+
+`main` 向けの Pull Request 作成時に、GitHub Actions で以下のチェックを実行します。
+
+- Prettier
+- ESLint
+- TypeScript
+- Vitest
+- Next.js Build
 
 ## License
 
