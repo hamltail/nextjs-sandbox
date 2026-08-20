@@ -1,5 +1,5 @@
 import { currentUser } from "@/app/lib/auth";
-import { getNews } from "@/app/lib/microcms";
+import { getNews } from "@/app/lib/news";
 import Hero from "@/components/Hero";
 import MicropostFeed from "@/components/MicropostFeed";
 import NewsSection from "@/components/NewsSection";
