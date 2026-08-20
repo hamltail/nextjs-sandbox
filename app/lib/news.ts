@@ -1,13 +1,9 @@
-import { getNewsFromMicroCMS } from "@/app/lib/microcms";
+import type { MicroCMSListResponse } from "microcms-js-sdk";
 
-export async function getNewsStub() {
-  return {
-    contents: [],
-    totalCount: 0,
-    offset: 0,
-    limit: 3,
-  };
+import type { News } from "@/app/types/news";
+
+export type NewsFetcher = () => Promise<MicroCMSListResponse<News>>;
+
+export async function getNews(fetchNews: NewsFetcher) {
+  return fetchNews();
 }
-
-export const getNews =
-  process.env.E2E_TEST === "true" ? getNewsStub : getNewsFromMicroCMS;
