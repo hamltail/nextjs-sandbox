@@ -98,6 +98,7 @@ npx prisma studio
 - ESLint
 - TypeScript
 - Vitest
+- Playwright
 - Next.js Build
 
 ## License
