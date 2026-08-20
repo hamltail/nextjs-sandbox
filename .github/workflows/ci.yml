@@ -51,6 +51,9 @@ jobs:
       - name: Apply database migrations
         run: npx prisma migrate deploy
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Check formatting
         run: npm run format:check
 
@@ -62,6 +65,9 @@ jobs:
 
       - name: Unit test
         run: npm run test:unit
+
+      - name: E2E test
+        run: npm run test:e2e
 
       - name: Build
         run: npm run build
