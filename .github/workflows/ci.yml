@@ -43,3 +43,5 @@ jobs:
           R2_SECRET_ACCESS_KEY: dummy
           R2_BUCKET_NAME: dummy
           R2_PREFIX: ci
+          MICROCMS_SERVICE_DOMAIN: dummy
+          MICROCMS_API_KEY: dummy
