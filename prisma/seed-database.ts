@@ -27,15 +27,37 @@ export async function seedDatabase() {
     });
 
     if (micropostCount === 0) {
+      const microposts = [];
+
+      // 過去6日分の投稿を作成する
+      for (let daysAgo = 6; daysAgo >= 1; daysAgo--) {
+        for (let postIndex = 0; postIndex < 5; postIndex++) {
+          const createdAt = new Date();
+
+          // 過去の日付にずらす
+          createdAt.setDate(createdAt.getDate() - daysAgo);
+
+          // 同じ日の投稿時刻をずらす
+          // 09:00, 11:00, 13:00, 15:00, 17:00
+          createdAt.setHours(9 + postIndex * 2, 0, 0, 0);
+
+          microposts.push({
+            userId: user.id,
+            content: `Test User ${index} の${daysAgo}日前の投稿 ${postIndex + 1}`,
+            createdAt,
+          });
+        }
+      }
+
       await prisma.micropost.createMany({
-        data: Array.from({ length: 30 }, (_, postIndex) => ({
-          userId: user.id,
-          content: `Test User ${index} の投稿 ${postIndex + 1}`,
-        })),
+        data: microposts,
       });
     }
   }
 
+  // Test User 1〜10  → Test User 11〜20
+  // Test User 11〜20 → Test User 21〜30
+  // Test User 21〜30 → Test User 1〜10
   const relationshipGroups = [
     {
       followerStart: 1,
