@@ -11,7 +11,7 @@ jobs:
 
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/nextjs_sandbox
-      RESEND_API_KEY: re_dummy
+      RESEND_API_KEY: dummy
       R2_ACCOUNT_ID: dummy
       R2_ACCESS_KEY_ID: dummy
       R2_SECRET_ACCESS_KEY: dummy
@@ -51,8 +51,8 @@ jobs:
       - name: Apply database migrations
         run: npx prisma migrate deploy
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
 
       - name: Check formatting
         run: npm run format:check
