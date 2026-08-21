@@ -27,9 +27,15 @@ export default async function Home({ searchParams }: HomeProps) {
         <div className="mx-auto mt-6 max-w-5xl px-7 md:px-11 xl:px-0">
           <div
             role="status"
-            className="rounded-md border border-teal-300 bg-teal-50 px-4 py-3 text-sm text-teal-700"
+            className="flex items-center gap-3 rounded-md border border-teal-300 bg-teal-50 px-5 py-3 text-sm text-teal-700"
           >
-            確認メールを送信しました。メール内のリンクからアカウントを有効化してください。
+            <span aria-hidden="true" className="text-lg font-bold">
+              ✓
+            </span>
+
+            <p>
+              確認メールを送信しました。メール内のリンクからアカウントを有効化してください。
+            </p>
           </div>
         </div>
       )}
