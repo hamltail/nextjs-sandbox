@@ -1,5 +1,7 @@
 import {
   DeleteObjectCommand,
+  DeleteObjectsCommand,
+  ListObjectsV2Command,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
@@ -81,4 +83,43 @@ export async function deleteImage(key: string) {
       Key: key,
     }),
   );
+}
+
+export async function deleteObjectsByPrefix() {
+  const targetPrefix = `${prefix}/`;
+
+  let deletedCount = 0;
+
+  while (true) {
+    const response = await r2.send(
+      new ListObjectsV2Command({
+        Bucket: bucketName,
+        Prefix: targetPrefix,
+        MaxKeys: 1000,
+      }),
+    );
+
+    const objects = response.Contents ?? [];
+
+    if (objects.length === 0) {
+      break;
+    }
+
+    await r2.send(
+      new DeleteObjectsCommand({
+        Bucket: bucketName,
+        Delete: {
+          Objects: objects
+            .filter((object) => object.Key)
+            .map((object) => ({
+              Key: object.Key!,
+            })),
+        },
+      }),
+    );
+
+    deletedCount += objects.length;
+  }
+
+  console.log(`Deleted ${deletedCount} R2 objects from ${targetPrefix}`);
 }
