@@ -43,7 +43,9 @@ export default function MicropostItem({
         )}
 
         <p className="mt-3 text-sm text-gray-500">
-          {micropost.createdAt.toLocaleString("ja-JP")}
+          {micropost.createdAt.toLocaleString("ja-JP", {
+            timeZone: "Asia/Tokyo",
+          })}
         </p>
       </div>
 
