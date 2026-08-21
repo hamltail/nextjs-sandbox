@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { currentUser } from "@/app/lib/auth";
+import { getTodayRangeInJst } from "@/app/lib/date";
 import { prisma } from "@/app/lib/prisma";
 import { uploadImage } from "@/app/lib/r2";
 import { micropostSchema } from "@/app/lib/validations/micropost";
@@ -15,6 +16,30 @@ export async function POST(request: Request) {
       },
       {
         status: 401,
+      },
+    );
+  }
+
+  const { start, end } = getTodayRangeInJst();
+
+  const todayMicropostCount = await prisma.micropost.count({
+    where: {
+      userId: current.id,
+      createdAt: {
+        gte: start,
+        lt: end,
+      },
+    },
+  });
+
+  if (todayMicropostCount >= 5) {
+    return NextResponse.json(
+      {
+        message:
+          "1日の投稿上限（5件）に達しました。明日以降にもう一度お試しください。",
+      },
+      {
+        status: 429,
       },
     );
   }

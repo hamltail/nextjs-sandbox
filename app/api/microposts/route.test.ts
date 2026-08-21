@@ -12,6 +12,7 @@ vi.mock("@/app/lib/auth", () => ({
 vi.mock("@/app/lib/prisma", () => ({
   prisma: {
     micropost: {
+      count: vi.fn(),
       create: vi.fn(),
     },
   },
@@ -26,6 +27,8 @@ vi.mock("@/app/lib/r2", () => ({
 describe("POST /api/microposts", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+
+    vi.mocked(prisma.micropost.count).mockResolvedValue(0);
   });
 
   it("ログインしていなければ401を返す", async () => {
@@ -197,5 +200,74 @@ describe("POST /api/microposts", () => {
     });
 
     expect(response.status).toBe(201);
+  });
+
+  it("当日の投稿数が4件なら5件目を投稿できる", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-id",
+      name: "Hamru",
+      email: "hamru@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    vi.mocked(prisma.micropost.count).mockResolvedValue(4);
+
+    vi.mocked(prisma.micropost.create).mockResolvedValue({
+      id: "micropost-id",
+      content: "5件目の投稿",
+      userId: "user-id",
+      imageKey: null,
+      createdAt: new Date("2026-08-21T03:00:00.000Z"),
+      updatedAt: new Date("2026-08-21T03:00:00.000Z"),
+    });
+
+    const formData = new FormData();
+    formData.append("content", "5件目の投稿");
+
+    const request = new Request("http://localhost:3000/api/microposts", {
+      method: "POST",
+      body: formData,
+    });
+
+    const response = await POST(request);
+
+    expect(response.status).toBe(201);
+    expect(prisma.micropost.create).toHaveBeenCalledOnce();
+  });
+
+  it("当日の投稿数が5件なら429を返す", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-id",
+      name: "Hamru",
+      email: "hamru@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    vi.mocked(prisma.micropost.count).mockResolvedValue(5);
+
+    const formData = new FormData();
+    formData.append("content", "6件目の投稿");
+
+    const request = new Request("http://localhost:3000/api/microposts", {
+      method: "POST",
+      body: formData,
+    });
+
+    const response = await POST(request);
+    const body = await response.json();
+
+    expect(response.status).toBe(429);
+
+    expect(body).toEqual({
+      message:
+        "1日の投稿上限（5件）に達しました。明日以降にもう一度お試しください。",
+    });
+
+    expect(uploadImage).not.toHaveBeenCalled();
+    expect(prisma.micropost.create).not.toHaveBeenCalled();
   });
 });
