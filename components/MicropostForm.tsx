@@ -1,6 +1,6 @@
 "use client";
 
-import { SubmitEvent, useState } from "react";
+import { SubmitEvent, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function MicropostForm() {
@@ -9,6 +9,8 @@ export default function MicropostForm() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [error, setError] = useState("");
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -35,6 +37,10 @@ export default function MicropostForm() {
     setImage(null);
     setError("");
 
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+
     router.refresh();
   }
 
@@ -50,6 +56,7 @@ export default function MicropostForm() {
 
       <div className="mt-4">
         <input
+          ref={fileInputRef}
           type="file"
           accept="image/jpeg,image/png,image/webp"
           onChange={(event) => {
