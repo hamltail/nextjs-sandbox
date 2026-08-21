@@ -270,4 +270,101 @@ describe("POST /api/microposts", () => {
     expect(uploadImage).not.toHaveBeenCalled();
     expect(prisma.micropost.create).not.toHaveBeenCalled();
   });
+
+  it("画像が3000件未満なら画像を投稿できる", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-id",
+      name: "Hamru",
+      email: "hamru@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    vi.mocked(prisma.micropost.count)
+      // 1回目: 当日の投稿数
+      .mockResolvedValueOnce(0)
+      // 2回目: 画像付きマイクロポストの総数
+      .mockResolvedValueOnce(2999);
+
+    vi.mocked(uploadImage).mockResolvedValue("microposts/test-image.jpg");
+
+    vi.mocked(prisma.micropost.create).mockResolvedValue({
+      id: "micropost-id",
+      content: "画像付き投稿",
+      userId: "user-id",
+      imageKey: "microposts/test-image.jpg",
+      createdAt: new Date("2026-08-21T03:00:00.000Z"),
+      updatedAt: new Date("2026-08-21T03:00:00.000Z"),
+    });
+
+    const image = new File(["image-data"], "test.jpg", {
+      type: "image/jpeg",
+    });
+
+    const formData = new FormData();
+    formData.append("content", "画像付き投稿");
+    formData.append("image", image);
+
+    const request = new Request("http://localhost:3000/api/microposts", {
+      method: "POST",
+      body: formData,
+    });
+
+    const response = await POST(request);
+
+    expect(response.status).toBe(201);
+    expect(uploadImage).toHaveBeenCalledOnce();
+
+    expect(prisma.micropost.create).toHaveBeenCalledWith({
+      data: {
+        content: "画像付き投稿",
+        imageKey: "microposts/test-image.jpg",
+        userId: "user-id",
+      },
+    });
+  });
+
+  it("画像が3000件に達している場合は503を返す", async () => {
+    vi.mocked(currentUser).mockResolvedValue({
+      id: "user-id",
+      name: "Hamru",
+      email: "hamru@example.com",
+      admin: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    vi.mocked(prisma.micropost.count)
+      // 1回目: 当日の投稿数
+      .mockResolvedValueOnce(0)
+      // 2回目: 画像付きマイクロポストの総数
+      .mockResolvedValueOnce(3000);
+
+    const image = new File(["image-data"], "test.jpg", {
+      type: "image/jpeg",
+    });
+
+    const formData = new FormData();
+    formData.append("content", "画像付き投稿");
+    formData.append("image", image);
+
+    const request = new Request("http://localhost:3000/api/microposts", {
+      method: "POST",
+      body: formData,
+    });
+
+    const response = await POST(request);
+    const body = await response.json();
+
+    expect(response.status).toBe(503);
+
+    expect(body).toEqual({
+      message:
+        "画像アップロードの上限に達しているため、現在画像を投稿できません。",
+    });
+
+    expect(uploadImage).not.toHaveBeenCalled();
+    expect(prisma.micropost.create).not.toHaveBeenCalled();
+  });
 });
