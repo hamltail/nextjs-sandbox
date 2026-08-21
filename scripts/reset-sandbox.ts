@@ -2,20 +2,10 @@
 // 実行: npx tsx --env-file=.env.local scripts/reset-sandbox.ts
 
 import { prisma } from "../app/lib/prisma";
-import { deleteObjectsByPrefix } from "../app/lib/r2";
-import { resetDatabase } from "../app/lib/sandbox-reset";
-import { seedDatabase } from "../prisma/seed-database";
+import { resetSandbox } from "../app/lib/sandbox-reset";
 
 async function main() {
-  console.log("Starting R2 cleanup...");
-  await deleteObjectsByPrefix();
-  console.log("R2 cleanup completed.");
-
-  await resetDatabase();
-
-  console.log("Starting seed...");
-  await seedDatabase();
-  console.log("Seed completed.");
+  await resetSandbox();
 }
 
 main()
