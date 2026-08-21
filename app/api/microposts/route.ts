@@ -64,8 +64,31 @@ export async function POST(request: Request) {
     );
   }
 
-  const imageKey =
-    image instanceof File && image.size > 0 ? await uploadImage(image) : null;
+  const hasImage = image instanceof File && image.size > 0;
+
+  if (hasImage) {
+    const imageCount = await prisma.micropost.count({
+      where: {
+        imageKey: {
+          not: null,
+        },
+      },
+    });
+
+    if (imageCount >= 3000) {
+      return NextResponse.json(
+        {
+          message:
+            "画像アップロードの上限に達しているため、現在画像を投稿できません。",
+        },
+        {
+          status: 503,
+        },
+      );
+    }
+  }
+
+  const imageKey = hasImage ? await uploadImage(image) : null;
 
   const micropost = await prisma.micropost.create({
     data: {
