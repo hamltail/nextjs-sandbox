@@ -29,7 +29,9 @@ export default function MicropostForm() {
     });
 
     if (!response.ok) {
-      setError("投稿できませんでした");
+      const data = await response.json();
+
+      setError(data.message ?? "投稿できませんでした");
       return;
     }
 
