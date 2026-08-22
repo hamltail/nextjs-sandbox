@@ -52,46 +52,21 @@ export async function PATCH(request: Request, { params }: RouteContext) {
     );
   }
 
-  const { name, email } = result.data;
+  const { name } = result.data;
 
-  try {
-    const user = await prisma.user.update({
-      where: {
-        id,
-      },
-      data: {
-        name,
-        email,
-      },
-    });
+  const user = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      name,
+    },
+  });
 
-    return NextResponse.json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    });
-  } catch (error) {
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === "P2002"
-    ) {
-      return NextResponse.json(
-        {
-          errors: [
-            {
-              path: ["email"],
-              message: "このメールアドレスはすでに使用されています",
-            },
-          ],
-        },
-        {
-          status: 409,
-        },
-      );
-    }
-
-    throw error;
-  }
+  return NextResponse.json({
+    id: user.id,
+    name: user.name,
+  });
 }
 
 export async function DELETE(_request: Request, { params }: RouteContext) {
