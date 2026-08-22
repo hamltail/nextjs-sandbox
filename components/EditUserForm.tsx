@@ -30,7 +30,6 @@ export default function EditUserForm({ id, name, email }: EditUserFormProps) {
       },
       body: JSON.stringify({
         name: formData.get("name"),
-        email: formData.get("email"),
       }),
     });
 
@@ -93,7 +92,8 @@ export default function EditUserForm({ id, name, email }: EditUserFormProps) {
             type="email"
             autoComplete="email"
             defaultValue={email}
-            className="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+            disabled
+            className="mt-2 w-full cursor-not-allowed rounded-md border border-gray-200 bg-gray-100 px-4 py-2 text-gray-400"
           />
         </div>
 
