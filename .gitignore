@@ -49,6 +49,11 @@ next-env.d.ts
 /playwright/.cache/
 /playwright/.auth/
 
+# OWASP ZAP
+/reports/security/**/*.html
+/reports/security/**/*.json
+/reports/security/**/*.yaml
+
 # Local AI coding tools
 /.agents/
 /.claude/
