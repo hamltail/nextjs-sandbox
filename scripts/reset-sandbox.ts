@@ -1,8 +1,8 @@
 // Sandboxのデータを初期状態にリセットするスクリプト
 // 実行: npx tsx --env-file=.env.local scripts/reset-sandbox.ts
 
-import { prisma } from "../app/lib/prisma";
-import { resetSandbox } from "../app/lib/sandbox-reset";
+import { prisma } from "../lib/database/prisma";
+import { resetSandbox } from "../lib/sandbox/reset";
 
 async function main() {
   await resetSandbox();

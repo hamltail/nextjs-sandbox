@@ -1,11 +1,11 @@
 import { config } from "dotenv";
 
-import { hashSessionToken } from "@/app/lib/session";
+import { hashSessionToken } from "@/lib/auth/session";
 
 config({ path: ".env.local" });
 
 async function main() {
-  const { prisma } = await import("@/app/lib/prisma");
+  const { prisma } = await import("@/lib/database/prisma");
 
   const token = "c974dafe-d8a4-4fee-ae47-d310431e77b3";
   const tokenHash = hashSessionToken(token);
@@ -36,6 +36,6 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
-    const { prisma } = await import("@/app/lib/prisma");
+    const { prisma } = await import("@/lib/database/prisma");
     await prisma.$disconnect();
   });

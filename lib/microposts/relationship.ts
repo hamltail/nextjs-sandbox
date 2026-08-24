@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 
 export async function followUser(followerId: string, followedId: string) {
   return prisma.relationship.create({

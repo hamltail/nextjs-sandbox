@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import {
   createPasswordReset,
   findValidPasswordResetUser,
-} from "@/app/lib/password-reset";
-import { hashToken } from "@/app/lib/token";
+} from "@/lib/auth/password-reset";
+import { hashToken } from "@/lib/auth/token";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       update: vi.fn(),

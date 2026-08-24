@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { prisma } from "@/app/lib/prisma";
-import { hashToken } from "@/app/lib/token";
+import { prisma } from "@/lib/database/prisma";
+import { hashToken } from "@/lib/auth/token";
 
 type RouteContext = {
   params: Promise<{

@@ -1,5 +1,5 @@
 import PasswordResetEmail from "@/components/emails/PasswordResetEmail";
-import { resend } from "@/app/lib/resend";
+import { resend } from "@/lib/integrations/resend";
 
 type SendPasswordResetEmailParams = {
   email: string;

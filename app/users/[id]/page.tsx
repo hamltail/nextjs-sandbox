@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import {
   getFollowersCount,
   getFollowingCount,
   isFollowing,
-} from "@/app/lib/relationship";
-import { prisma } from "@/app/lib/prisma";
+} from "@/lib/microposts/relationship";
+import { prisma } from "@/lib/database/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";
 import FollowButton from "@/components/FollowButton";

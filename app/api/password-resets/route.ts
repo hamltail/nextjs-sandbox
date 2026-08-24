@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
-import { createPasswordReset } from "@/app/lib/password-reset";
-import { prisma } from "@/app/lib/prisma";
-import { passwordResetSchema } from "@/app/lib/validations/password-reset";
+import { sendPasswordResetEmail } from "@/lib/mailer/password-reset";
+import { createPasswordReset } from "@/lib/auth/password-reset";
+import { prisma } from "@/lib/database/prisma";
+import { passwordResetSchema } from "@/lib/auth/password-reset-validation";
 
 const passwordResetResponseMessage =
   "登録されているメールアドレスの場合、パスワード再設定メールを送信しました";

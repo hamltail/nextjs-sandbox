@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 
-import { prisma } from "@/app/lib/prisma";
-import { hashToken } from "@/app/lib/token";
+import { prisma } from "@/lib/database/prisma";
+import { hashToken } from "@/lib/auth/token";
 import { GET } from "@/app/account-activations/[token]/route";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       findUnique: vi.fn(),

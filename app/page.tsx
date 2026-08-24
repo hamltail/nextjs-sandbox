@@ -1,6 +1,6 @@
-import { currentUser } from "@/app/lib/auth";
-import { newsFetcher } from "@/app/lib/dependencies";
-import { getNews } from "@/app/lib/news";
+import { currentUser } from "@/lib/auth/auth";
+import { newsFetcher } from "@/lib/news/dependencies";
+import { getNews } from "@/lib/news/news";
 import Hero from "@/components/Hero";
 import MicropostFeed from "@/components/MicropostFeed";
 import NewsSection from "@/components/NewsSection";

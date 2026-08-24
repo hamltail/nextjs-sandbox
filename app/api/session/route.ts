@@ -5,9 +5,9 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { prisma } from "@/app/lib/prisma";
-import { hashSessionToken } from "@/app/lib/session";
-import { loginSchema } from "@/app/lib/validations/session";
+import { prisma } from "@/lib/database/prisma";
+import { hashSessionToken } from "@/lib/auth/session";
+import { loginSchema } from "@/lib/auth/session-validation";
 
 export async function POST(request: Request) {
   const json = await request.json();

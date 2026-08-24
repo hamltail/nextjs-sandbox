@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { loginSchema } from "./session";
+import { loginSchema } from "./session-validation";
 
 const validLogin = (overrides: Record<string, unknown> = {}) => ({
   email: "user@example.com",

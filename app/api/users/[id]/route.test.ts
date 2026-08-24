@@ -1,15 +1,15 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { currentUser } from "@/app/lib/auth";
-import { prisma } from "@/app/lib/prisma";
+import { currentUser } from "@/lib/auth/auth";
+import { prisma } from "@/lib/database/prisma";
 
 import { DELETE, PATCH } from "./route";
 
-vi.mock("@/app/lib/auth", () => ({
+vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
 }));
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       update: vi.fn(),

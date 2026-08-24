@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 
-import { prisma } from "../app/lib/prisma";
+import { prisma } from "../lib/database/prisma";
 
 export async function seedDatabase() {
   const passwordDigest = await bcrypt.hash("password", 10);

@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 
 export async function getMicropostFeed(userId: string) {
   return prisma.micropost.findMany({
