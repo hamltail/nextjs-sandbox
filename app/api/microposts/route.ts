@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { currentUser } from "@/lib/auth/auth";
 import { getTodayRangeInJst } from "@/app/lib/date";
 import { prisma } from "@/app/lib/prisma";
-import { uploadImage } from "@/lib/integrations/r2";
 import { micropostSchema } from "@/app/lib/validations/micropost";
+import { currentUser } from "@/lib/auth/auth";
+import { uploadImage } from "@/lib/integrations/r2";
 
 export async function POST(request: Request) {
   const current = await currentUser();
@@ -88,7 +88,29 @@ export async function POST(request: Request) {
     }
   }
 
-  const imageKey = hasImage ? await uploadImage(image) : null;
+  let imageKey = null;
+
+  if (hasImage) {
+    try {
+      imageKey = await uploadImage(image);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        error.message === "Image must be 1MB or smaller"
+      ) {
+        return NextResponse.json(
+          {
+            message: "画像サイズは1MB以下にしてください。",
+          },
+          {
+            status: 413,
+          },
+        );
+      }
+
+      throw error;
+    }
+  }
 
   const micropost = await prisma.micropost.create({
     data: {
