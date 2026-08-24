@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
-import { createPasswordReset } from "@/app/lib/password-reset";
+import { createPasswordReset } from "@/lib/auth/password-reset";
 import { prisma } from "@/app/lib/prisma";
 import { passwordResetSchema } from "@/app/lib/validations/password-reset";
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 
 import Container from "./Container";
 import LogoutButton from "./LogoutButton";

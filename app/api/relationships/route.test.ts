@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DELETE, POST } from "@/app/api/relationships/route";
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import { followUser, unfollowUser } from "@/app/lib/relationship";
 
-vi.mock("@/app/lib/auth", () => ({
+vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
 }));
 

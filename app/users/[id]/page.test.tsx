@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { prisma } from "@/app/lib/prisma";
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import UserPage from "@/app/users/[id]/page";
 
 vi.mock("@/app/lib/prisma", () => ({
@@ -12,7 +12,7 @@ vi.mock("@/app/lib/prisma", () => ({
   },
 }));
 
-vi.mock("@/app/lib/auth", () => ({
+vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
 }));
 

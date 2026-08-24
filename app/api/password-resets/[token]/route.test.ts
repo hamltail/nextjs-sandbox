@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PATCH } from "@/app/api/password-resets/[token]/route";
-import { findValidPasswordResetUser } from "@/app/lib/password-reset";
+import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import { prisma } from "@/app/lib/prisma";
 
 vi.mock("bcryptjs", () => ({
@@ -11,7 +11,7 @@ vi.mock("bcryptjs", () => ({
   },
 }));
 
-vi.mock("@/app/lib/password-reset", () => ({
+vi.mock("@/lib/auth/password-reset", () => ({
   findValidPasswordResetUser: vi.fn(),
 }));
 

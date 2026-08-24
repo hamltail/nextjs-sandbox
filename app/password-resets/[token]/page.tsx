@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { findValidPasswordResetUser } from "@/app/lib/password-reset";
+import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import Container from "@/components/Container";
 import PasswordResetForm from "@/components/password-reset/PasswordResetForm";
 

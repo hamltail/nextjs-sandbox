@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/app/lib/prisma";
 import { deleteImage } from "@/app/lib/r2";
 

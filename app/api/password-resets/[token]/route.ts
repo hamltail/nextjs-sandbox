@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { findValidPasswordResetUser } from "@/app/lib/password-reset";
-import { hashPassword } from "@/app/lib/password";
+import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
+import { hashPassword } from "@/lib/auth/password";
 import { prisma } from "@/app/lib/prisma";
 import { passwordResetUpdateSchema } from "@/app/lib/validations/password-reset";
 

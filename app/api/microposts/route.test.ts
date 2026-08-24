@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { POST } from "@/app/api/microposts/route";
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/app/lib/prisma";
 import { uploadImage } from "@/app/lib/r2";
 
-vi.mock("@/app/lib/auth", () => ({
+vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
 }));
 

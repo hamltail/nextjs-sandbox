@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import { followUser, unfollowUser } from "@/app/lib/relationship";
 
 export async function POST(request: Request) {

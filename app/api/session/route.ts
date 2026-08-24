@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { prisma } from "@/app/lib/prisma";
-import { hashSessionToken } from "@/app/lib/session";
+import { hashSessionToken } from "@/lib/auth/session";
 import { loginSchema } from "@/app/lib/validations/session";
 
 export async function POST(request: Request) {

@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 
-import { hashSessionToken } from "@/app/lib/session";
+import { hashSessionToken } from "@/lib/auth/session";
 
 config({ path: ".env.local" });
 

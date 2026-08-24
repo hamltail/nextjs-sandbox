@@ -4,8 +4,8 @@ import { prisma } from "@/app/lib/prisma";
 import {
   createPasswordReset,
   findValidPasswordResetUser,
-} from "@/app/lib/password-reset";
-import { hashToken } from "@/app/lib/token";
+} from "@/lib/auth/password-reset";
+import { hashToken } from "@/lib/auth/token";
 
 vi.mock("@/app/lib/prisma", () => ({
   prisma: {

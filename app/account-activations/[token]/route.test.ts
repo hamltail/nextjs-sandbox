@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 
 import { prisma } from "@/app/lib/prisma";
-import { hashToken } from "@/app/lib/token";
+import { hashToken } from "@/lib/auth/token";
 import { GET } from "@/app/account-activations/[token]/route";
 
 vi.mock("@/app/lib/prisma", () => ({

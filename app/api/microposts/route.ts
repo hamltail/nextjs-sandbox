@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { currentUser } from "@/app/lib/auth";
+import { currentUser } from "@/lib/auth/auth";
 import { getTodayRangeInJst } from "@/app/lib/date";
 import { prisma } from "@/app/lib/prisma";
 import { uploadImage } from "@/app/lib/r2";

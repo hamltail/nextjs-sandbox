@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
-import { createPasswordReset } from "@/app/lib/password-reset";
 import { prisma } from "@/app/lib/prisma";
+import { createPasswordReset } from "@/lib/auth/password-reset";
 import { POST } from "@/app/api/password-resets/route";
 
 vi.mock("@/app/lib/prisma", () => ({
@@ -13,7 +13,7 @@ vi.mock("@/app/lib/prisma", () => ({
   },
 }));
 
-vi.mock("@/app/lib/password-reset", () => ({
+vi.mock("@/lib/auth/password-reset", () => ({
   createPasswordReset: vi.fn(),
 }));
 

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { describe, expect, it, vi } from "vitest";
 
 import PasswordResetPage from "@/app/password-resets/[token]/page";
-import { findValidPasswordResetUser } from "@/app/lib/password-reset";
+import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 
 vi.mock("next/navigation", () => ({
   redirect: vi.fn(() => {
@@ -10,7 +10,7 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
-vi.mock("@/app/lib/password-reset", () => ({
+vi.mock("@/lib/auth/password-reset", () => ({
   findValidPasswordResetUser: vi.fn(),
 }));
 
