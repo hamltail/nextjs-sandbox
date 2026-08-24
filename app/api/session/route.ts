@@ -7,7 +7,7 @@ import { z } from "zod";
 
 import { prisma } from "@/lib/database/prisma";
 import { hashSessionToken } from "@/lib/auth/session";
-import { loginSchema } from "@/app/lib/validations/session";
+import { loginSchema } from "@/lib/auth/session-validation";
 
 export async function POST(request: Request) {
   const json = await request.json();
