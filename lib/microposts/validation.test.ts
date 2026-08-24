@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { micropostSchema } from "@/app/lib/validations/micropost";
+import { micropostSchema } from "@/lib/microposts/validation";
 
 describe("micropostSchema", () => {
   it("1文字なら成功する", () => {
