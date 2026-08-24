@@ -5,6 +5,11 @@ import { check } from "k6";
 
 import type { CreateUserInput } from "../../lib/users/validation";
 
+export const options = {
+  vus: 5,
+  iterations: 5,
+};
+
 export default function signupTest() {
   const uniqueId = `${__VU}-${__ITER}-${Date.now()}`;
 
@@ -24,9 +29,6 @@ export default function signupTest() {
       },
     },
   );
-
-  // console.log(`status: ${response.status}`);
-  // console.log(`body: ${response.body}`);
 
   check(response, {
     "status is 201": (response) => response.status === 201,
