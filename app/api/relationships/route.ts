@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { currentUser } from "@/lib/auth/auth";
-import { followUser, unfollowUser } from "@/app/lib/relationship";
+import { followUser, unfollowUser } from "@/lib/microposts/relationship";
 
 export async function POST(request: Request) {
   const current = await currentUser();

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getFollowing } from "@/app/lib/relationship";
+import { getFollowing } from "@/lib/microposts/relationship";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 

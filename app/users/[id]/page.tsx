@@ -6,7 +6,7 @@ import {
   getFollowersCount,
   getFollowingCount,
   isFollowing,
-} from "@/app/lib/relationship";
+} from "@/lib/microposts/relationship";
 import { prisma } from "@/app/lib/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";

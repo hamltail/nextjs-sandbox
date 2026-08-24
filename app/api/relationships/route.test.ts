@@ -2,13 +2,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DELETE, POST } from "@/app/api/relationships/route";
 import { currentUser } from "@/lib/auth/auth";
-import { followUser, unfollowUser } from "@/app/lib/relationship";
+import { followUser, unfollowUser } from "@/lib/microposts/relationship";
 
 vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
 }));
 
-vi.mock("@/app/lib/relationship", () => ({
+vi.mock("@/lib/microposts/relationship", () => ({
   followUser: vi.fn(),
   unfollowUser: vi.fn(),
 }));

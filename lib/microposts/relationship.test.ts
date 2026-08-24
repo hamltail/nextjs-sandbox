@@ -8,7 +8,7 @@ import {
   getFollowingCount,
   isFollowing,
   unfollowUser,
-} from "@/app/lib/relationship";
+} from "@/lib/microposts/relationship";
 import { prisma } from "@/app/lib/prisma";
 
 vi.mock("@/app/lib/prisma", () => ({
