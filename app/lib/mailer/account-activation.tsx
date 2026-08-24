@@ -1,5 +1,5 @@
 import AccountActivationEmail from "@/components/emails/AccountActivationEmail";
-import { resend } from "@/app/lib/resend";
+import { resend } from "@/lib/integrations/resend";
 
 type SendAccountActivationEmailParams = {
   name: string;

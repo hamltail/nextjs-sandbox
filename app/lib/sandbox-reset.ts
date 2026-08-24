@@ -1,5 +1,5 @@
 import { prisma } from "@/app/lib/prisma";
-import { deleteObjectsByPrefix } from "@/app/lib/r2";
+import { deleteObjectsByPrefix } from "@/lib/integrations/r2";
 import { seedDatabase } from "@/prisma/seed-database";
 
 async function getDatabaseStats() {

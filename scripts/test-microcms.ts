@@ -4,7 +4,7 @@ import type { News } from "../app/types/news";
 loadEnvConfig(process.cwd());
 
 async function main() {
-  const { microcmsClient } = await import("../app/lib/microcms");
+  const { microcmsClient } = await import("../lib/integrations/microcms");
 
   const response = await microcmsClient.getList<News>({
     endpoint: "news",

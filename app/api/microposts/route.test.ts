@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "@/app/api/microposts/route";
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/app/lib/prisma";
-import { uploadImage } from "@/app/lib/r2";
+import { uploadImage } from "@/lib/integrations/r2";
 
 vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
@@ -20,7 +20,7 @@ vi.mock("@/app/lib/prisma", () => ({
 
 // APIテストではCloudflare R2へ実通信しない。
 // uploadImage() が呼ばれたか、返されたimageKeyがDB保存に使われたかだけ確認する。
-vi.mock("@/app/lib/r2", () => ({
+vi.mock("@/lib/integrations/r2", () => ({
   uploadImage: vi.fn(),
 }));
 

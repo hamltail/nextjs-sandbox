@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { currentUser } from "@/lib/auth/auth";
 import { getTodayRangeInJst } from "@/app/lib/date";
 import { prisma } from "@/app/lib/prisma";
-import { uploadImage } from "@/app/lib/r2";
+import { uploadImage } from "@/lib/integrations/r2";
 import { micropostSchema } from "@/app/lib/validations/micropost";
 
 export async function POST(request: Request) {

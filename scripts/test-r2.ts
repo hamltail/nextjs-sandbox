@@ -3,7 +3,7 @@
 
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 
-import { r2 } from "../app/lib/r2";
+import { r2 } from "../lib/integrations/r2";
 
 async function main() {
   const bucketName = process.env.R2_BUCKET_NAME;

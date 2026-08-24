@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { DELETE } from "@/app/api/microposts/[id]/route";
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/app/lib/prisma";
-import { deleteImage } from "@/app/lib/r2";
+import { deleteImage } from "@/lib/integrations/r2";
 
 vi.mock("@/lib/auth/auth", () => ({
   currentUser: vi.fn(),
@@ -18,7 +18,7 @@ vi.mock("@/app/lib/prisma", () => ({
   },
 }));
 
-vi.mock("@/app/lib/r2", () => ({
+vi.mock("@/lib/integrations/r2", () => ({
   deleteImage: vi.fn(),
 }));
 

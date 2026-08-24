@@ -2,10 +2,10 @@ import { render } from "@react-email/render";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
-import { resend } from "@/app/lib/resend";
+import { resend } from "@/lib/integrations/resend";
 import PasswordResetEmail from "@/components/emails/PasswordResetEmail";
 
-vi.mock("@/app/lib/resend", () => ({
+vi.mock("@/lib/integrations/resend", () => ({
   resend: {
     emails: {
       send: vi.fn(),

@@ -1,4 +1,4 @@
-import { getNewsFromMicroCMS } from "@/app/lib/microcms";
+import { getNewsFromMicroCMS } from "@/lib/integrations/microcms";
 import { getNewsStub } from "@/app/lib/news-stub";
 
 export const newsFetcher =

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/app/lib/prisma";
-import { deleteImage } from "@/app/lib/r2";
+import { deleteImage } from "@/lib/integrations/r2";
 
 type RouteContext = {
   params: Promise<{
