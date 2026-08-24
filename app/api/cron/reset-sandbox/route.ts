@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { resetSandbox } from "@/app/lib/sandbox-reset";
+import { resetSandbox } from "@/lib/sandbox/reset";
 
 export async function GET(request: Request) {
   const authorization = request.headers.get("authorization");

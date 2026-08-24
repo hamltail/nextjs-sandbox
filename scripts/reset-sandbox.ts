@@ -2,7 +2,7 @@
 // 実行: npx tsx --env-file=.env.local scripts/reset-sandbox.ts
 
 import { prisma } from "../lib/database/prisma";
-import { resetSandbox } from "../app/lib/sandbox-reset";
+import { resetSandbox } from "../lib/sandbox/reset";
 
 async function main() {
   await resetSandbox();
