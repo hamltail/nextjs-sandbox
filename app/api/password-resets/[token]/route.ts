@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import { hashPassword } from "@/lib/auth/password";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { passwordResetUpdateSchema } from "@/app/lib/validations/password-reset";
 
 type RouteContext = {

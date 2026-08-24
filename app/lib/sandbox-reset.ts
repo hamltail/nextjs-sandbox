@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { deleteObjectsByPrefix } from "@/lib/integrations/r2";
 import { seedDatabase } from "@/prisma/seed-database";
 

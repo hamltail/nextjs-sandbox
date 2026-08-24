@@ -7,7 +7,7 @@ import {
   getFollowingCount,
   isFollowing,
 } from "@/lib/microposts/relationship";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import Container from "@/components/Container";
 import DeleteMicropostButton from "@/components/DeleteMicropostButton";
 import FollowButton from "@/components/FollowButton";

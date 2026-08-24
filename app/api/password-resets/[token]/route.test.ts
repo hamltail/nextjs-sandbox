@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PATCH } from "@/app/api/password-resets/[token]/route";
 import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 
 vi.mock("bcryptjs", () => ({
   default: {
@@ -15,7 +15,7 @@ vi.mock("@/lib/auth/password-reset", () => ({
   findValidPasswordResetUser: vi.fn(),
 }));
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       update: vi.fn(),

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { currentUser } from "@/lib/auth/auth";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import Container from "@/components/Container";
 import DeleteUserButton from "@/components/DeleteUserButton";
 

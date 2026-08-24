@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { hashSessionToken } from "@/lib/auth/session";
 import { loginSchema } from "@/app/lib/validations/session";
 

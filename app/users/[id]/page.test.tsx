@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { currentUser } from "@/lib/auth/auth";
 import UserPage from "@/app/users/[id]/page";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       findFirst: vi.fn(),

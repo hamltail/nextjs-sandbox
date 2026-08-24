@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { getMicropostFeed } from "@/lib/microposts/micropost";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     micropost: {
       findMany: vi.fn(),

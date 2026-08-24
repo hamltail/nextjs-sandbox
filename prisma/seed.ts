@@ -1,4 +1,4 @@
-import { prisma } from "../app/lib/prisma";
+import { prisma } from "../lib/database/prisma";
 import { seedDatabase } from "./seed-database";
 
 async function main() {

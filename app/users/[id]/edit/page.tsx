@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { currentUser } from "@/lib/auth/auth";
 import Container from "@/components/Container";
 import EditUserForm from "@/components/EditUserForm";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 
 type PageProps = {
   params: Promise<{

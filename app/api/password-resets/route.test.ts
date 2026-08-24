@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { createPasswordReset } from "@/lib/auth/password-reset";
 import { POST } from "@/app/api/password-resets/route";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       findUnique: vi.fn(),

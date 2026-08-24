@@ -2,10 +2,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import bcrypt from "bcryptjs";
 
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { POST } from "@/app/api/session/route";
 
-vi.mock("@/app/lib/prisma", () => ({
+vi.mock("@/lib/database/prisma", () => ({
   prisma: {
     user: {
       findUnique: vi.fn(),

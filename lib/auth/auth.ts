@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { hashSessionToken } from "@/lib/auth/session";
 
 export async function currentUser() {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getTodayRangeInJst } from "@/app/lib/date";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/lib/database/prisma";
 import { micropostSchema } from "@/app/lib/validations/micropost";
 import { currentUser } from "@/lib/auth/auth";
 import { uploadImage } from "@/lib/integrations/r2";
