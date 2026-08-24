@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { createUserSchema, updateUserSchema } from "@/app/lib/validations/user";
+import { createUserSchema, updateUserSchema } from "@/lib/users/validation";
 
 function validCreateUser() {
   return {

@@ -1,4 +1,4 @@
-import { createUserSchema } from "../app/lib/validations/user";
+import { createUserSchema } from "../lib/users/validation";
 
 const testCases = [
   {

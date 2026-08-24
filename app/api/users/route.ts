@@ -3,7 +3,7 @@ import { createToken, hashToken } from "@/lib/auth/token";
 import { Prisma } from "@/app/generated/prisma/client";
 import { hashPassword } from "@/lib/auth/password";
 import { prisma } from "@/app/lib/prisma";
-import { createUserSchema } from "@/app/lib/validations/user";
+import { createUserSchema } from "@/lib/users/validation";
 
 export async function POST(request: Request) {
   const body = await request.json();
