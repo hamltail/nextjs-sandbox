@@ -36,6 +36,7 @@
     "@playwright/test": "^1.62.0",
     "@react-email/ui": "^6.9.2",
     "@tailwindcss/postcss": "^4",
+    "@types/k6": "^2.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
