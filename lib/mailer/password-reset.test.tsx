@@ -1,7 +1,7 @@
 import { render } from "@react-email/render";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { sendPasswordResetEmail } from "@/app/lib/mailer/password-reset";
+import { sendPasswordResetEmail } from "@/lib/mailer/password-reset";
 import { resend } from "@/lib/integrations/resend";
 import PasswordResetEmail from "@/components/emails/PasswordResetEmail";
 

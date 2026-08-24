@@ -1,4 +1,4 @@
-import { sendAccountActivationEmail } from "@/app/lib/mailer/account-activation";
+import { sendAccountActivationEmail } from "@/lib/mailer/account-activation";
 import { createToken, hashToken } from "@/lib/auth/token";
 import { Prisma } from "@/app/generated/prisma/client";
 import { hashPassword } from "@/lib/auth/password";
