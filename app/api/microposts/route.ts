@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getTodayRangeInJst } from "@/app/lib/date";
+import { getTodayRangeInJst } from "@/lib/shared/date";
 import { prisma } from "@/lib/database/prisma";
 import { micropostSchema } from "@/app/lib/validations/micropost";
 import { currentUser } from "@/lib/auth/auth";
