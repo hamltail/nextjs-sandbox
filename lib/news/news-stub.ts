@@ -1,4 +1,4 @@
-import type { NewsFetcher } from "@/app/lib/news";
+import type { NewsFetcher } from "@/lib/news/news";
 
 export const getNewsStub: NewsFetcher = async () => {
   return {
