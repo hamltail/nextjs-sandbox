@@ -1,45 +1,33 @@
-import Link from "next/link";
 import Container from "@/components/Container";
+import HeroScene from "@/components/hero/HeroScene";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-7 py-20 md:px-11 md:py-28 xl:px-0">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(94,234,212,0.18),_transparent_42%)]"
-      />
-
+    <section className="relative overflow-hidden bg-slate-950 px-7 py-20 text-white md:px-11 md:py-28 xl:px-0">
       <Container>
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-          <p className="font-en mb-5 rounded-full border border-teal-200 bg-teal-50 px-4 py-1.5 text-sm font-semibold tracking-widest text-teal-700">
-            NEXT.JS LEARNING SANDBOX
-          </p>
+        <div className="relative min-h-[600px]">
+          <div className="relative z-10 flex min-h-[600px] items-center">
+            <div>
+              <p className="font-en text-sm tracking-[0.25em] uppercase">
+                hamltail Web Lab
+              </p>
 
-          <h1 className="font-en text-5xl leading-none font-bold tracking-tight md:text-7xl">
-            Build, test, and learn.
-          </h1>
+              <h1 className="font-en mt-6 text-6xl leading-[0.9] font-bold tracking-tight md:text-8xl">
+                Build.
+                <br />
+                Test.
+                <br />
+                Explore.
+              </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-gray-600 md:text-lg">
-            Next.jsの機能を実際に作りながら検証し、
-            モダンなWebアプリケーション開発を学ぶためのSandboxです。
-          </p>
+              <p className="mt-8 max-w-md leading-8 text-gray-400">
+                作って、試して、探索するWebのラボ。
+              </p>
+            </div>
+          </div>
 
-          <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row">
-            <Link
-              href="/signup"
-              className="font-en inline-flex min-h-12 items-center justify-center rounded-full bg-teal-500 px-8 text-lg font-semibold text-white shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-600"
-            >
-              Get Started
-            </Link>
-
-            <Link
-              href="https://nextjs.org/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-en inline-flex min-h-12 items-center justify-center rounded-full border border-gray-300 bg-white px-8 text-lg font-semibold transition hover:border-gray-400 hover:bg-gray-50"
-            >
-              Next.js Docs
-            </Link>
+          <div className="absolute inset-y-0 -right-12 w-full md:-right-20 md:w-4/5">
+            <HeroScene />
           </div>
         </div>
       </Container>
