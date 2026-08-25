@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Edges } from "@react-three/drei";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
 import type { Group } from "three";
 
@@ -67,6 +68,14 @@ export default function HeroScene() {
         <directionalLight position={[3, 3, 5]} intensity={2} />
 
         <CubeGroup />
+
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={0.2}
+            luminanceSmoothing={0.9}
+            intensity={1.2}
+          />
+        </EffectComposer>
       </Canvas>
     </div>
   );
