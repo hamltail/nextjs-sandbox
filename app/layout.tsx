@@ -20,8 +20,8 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Sandbox",
-  description: "Next.js learning sandbox",
+  title: "hamltail Web Lab",
+  description: "作って、試して、探索するWebのラボ。",
 };
 
 export default function RootLayout({
