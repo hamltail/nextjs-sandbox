@@ -1,13 +1,14 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
 import { Edges } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
 import type { Group } from "three";
 
 type CubeProps = {
   position: [number, number, number];
+  color: string;
 };
 
 const cubePositions: [number, number, number][] = [];
@@ -20,13 +21,20 @@ for (let x = -1; x <= 1; x++) {
   }
 }
 
-function Cube({ position }: CubeProps) {
+const neonColors = [
+  "#00e5ff", // cyan
+  "#3b82f6", // blue
+  "#8b5cf6", // violet
+  "#d946ef", // magenta
+];
+
+function Cube({ position, color }: CubeProps) {
   return (
     <mesh position={position}>
       <boxGeometry args={[0.9, 0.9, 0.9]} />
 
       <meshPhysicalMaterial
-        color="#dbeafe"
+        color={color}
         transparent
         opacity={0.35}
         roughness={0.1}
@@ -36,7 +44,7 @@ function Cube({ position }: CubeProps) {
         ior={1.5}
       />
 
-      <Edges color="#00e5ff" />
+      <Edges color={color} />
     </mesh>
   );
 }
@@ -53,9 +61,13 @@ function CubeGroup() {
 
   return (
     <group ref={groupRef}>
-      {cubePositions.map((position) => (
-        <Cube key={position.join(",")} position={position} />
-      ))}
+      {cubePositions.map((position, index) => {
+        const color = neonColors[index % neonColors.length];
+
+        return (
+          <Cube key={position.join(",")} position={position} color={color} />
+        );
+      })}
     </group>
   );
 }
@@ -73,7 +85,7 @@ export default function HeroScene() {
           <Bloom
             luminanceThreshold={0}
             luminanceSmoothing={0.9}
-            intensity={1.2}
+            intensity={1.8}
           />
         </EffectComposer>
       </Canvas>
