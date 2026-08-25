@@ -8,40 +8,15 @@ type CubeProps = {
   position: [number, number, number];
 };
 
-const cubePositions: [number, number, number][] = [
-  // z = -1
-  [-1, 1, -1],
-  [0, 1, -1],
-  [1, 1, -1],
-  [-1, 0, -1],
-  [0, 0, -1],
-  [1, 0, -1],
-  [-1, -1, -1],
-  [0, -1, -1],
-  [1, -1, -1],
+const cubePositions: [number, number, number][] = [];
 
-  // z = 0
-  [-1, 1, 0],
-  [0, 1, 0],
-  [1, 1, 0],
-  [-1, 0, 0],
-  [0, 0, 0],
-  [1, 0, 0],
-  [-1, -1, 0],
-  [0, -1, 0],
-  [1, -1, 0],
-
-  // z = 1
-  [-1, 1, 1],
-  [0, 1, 1],
-  [1, 1, 1],
-  [-1, 0, 1],
-  [0, 0, 1],
-  [1, 0, 1],
-  [-1, -1, 1],
-  [0, -1, 1],
-  [1, -1, 1],
-];
+for (let x = -1; x <= 1; x++) {
+  for (let y = -1; y <= 1; y++) {
+    for (let z = -1; z <= 1; z++) {
+      cubePositions.push([x, y, z]);
+    }
+  }
+}
 
 function Cube({ position }: CubeProps) {
   return (
