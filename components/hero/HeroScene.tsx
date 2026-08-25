@@ -103,7 +103,7 @@ function CubeGroup() {
 
 export default function HeroScene() {
   return (
-    <div className="h-[500px] w-full">
+    <div className="h-[600px] w-full">
       <Canvas camera={{ position: [0, 0, 6] }}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={2} />

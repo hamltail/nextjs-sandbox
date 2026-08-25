@@ -26,7 +26,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="absolute inset-y-0 right-0 w-full md:w-2/3">
+          <div className="absolute inset-y-0 -right-12 w-full md:-right-20 md:w-4/5">
             <HeroScene />
           </div>
         </div>
