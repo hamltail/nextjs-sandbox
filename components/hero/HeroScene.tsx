@@ -8,6 +8,41 @@ type CubeProps = {
   position: [number, number, number];
 };
 
+const cubePositions: [number, number, number][] = [
+  // z = -1
+  [-1, 1, -1],
+  [0, 1, -1],
+  [1, 1, -1],
+  [-1, 0, -1],
+  [0, 0, -1],
+  [1, 0, -1],
+  [-1, -1, -1],
+  [0, -1, -1],
+  [1, -1, -1],
+
+  // z = 0
+  [-1, 1, 0],
+  [0, 1, 0],
+  [1, 1, 0],
+  [-1, 0, 0],
+  [0, 0, 0],
+  [1, 0, 0],
+  [-1, -1, 0],
+  [0, -1, 0],
+  [1, -1, 0],
+
+  // z = 1
+  [-1, 1, 1],
+  [0, 1, 1],
+  [1, 1, 1],
+  [-1, 0, 1],
+  [0, 0, 1],
+  [1, 0, 1],
+  [-1, -1, 1],
+  [0, -1, 1],
+  [1, -1, 1],
+];
+
 function Cube({ position }: CubeProps) {
   return (
     <mesh position={position}>
@@ -36,20 +71,9 @@ function CubeGroup() {
 
   return (
     <group ref={groupRef}>
-      {/* center */}
-      <Cube position={[0, 0, 0]} />
-
-      {/* x */}
-      <Cube position={[1, 0, 0]} />
-      <Cube position={[-1, 0, 0]} />
-
-      {/* y */}
-      <Cube position={[0, 1, 0]} />
-      <Cube position={[0, -1, 0]} />
-
-      {/* z */}
-      <Cube position={[0, 0, 1]} />
-      <Cube position={[0, 0, -1]} />
+      {cubePositions.map((position) => (
+        <Cube key={position.join(",")} position={position} />
+      ))}
     </group>
   );
 }
@@ -57,7 +81,7 @@ function CubeGroup() {
 export default function HeroScene() {
   return (
     <div className="h-[500px] w-full">
-      <Canvas camera={{ position: [0, 0, 5] }}>
+      <Canvas camera={{ position: [0, 0, 6] }}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={2} />
 
