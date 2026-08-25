@@ -52,11 +52,14 @@ function Cube({ position, color }: CubeProps) {
 function CubeGroup() {
   const groupRef = useRef<Group>(null);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     if (!groupRef.current) return;
+
+    const elapsedTime = state.clock.getElapsedTime();
 
     groupRef.current.rotation.x += delta * 0.1;
     groupRef.current.rotation.y += delta * 0.2;
+    groupRef.current.position.y = Math.sin(elapsedTime) * 0.15;
   });
 
   return (
