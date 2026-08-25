@@ -1,16 +1,30 @@
-// 実行:
+// 実Resendモード:
 // K6_EMAIL_DOMAIN=<your-domain> k6 run performance/scenarios/signup.ts
+//
+// Mockモード:
+// PERFORMANCE_TEST=true \
+// K6_EMAIL_DOMAIN=example.com \
+// k6 run performance/scenarios/signup.ts
 
 import http from "k6/http";
 import { check } from "k6";
 
 import type { CreateUserInput } from "../../lib/users/validation";
 
-// ユーザー登録時にResend APIでアクティベーションメールを送信するため、
-// 外部サービスへの過剰な負荷やレート制限を避ける目的で負荷を抑えている。
+const isPerformanceTest = __ENV.PERFORMANCE_TEST === "true";
+
+const iterations = isPerformanceTest ? 100 : 5;
+const vus = isPerformanceTest ? 20 : 5;
+
+// 実Resendモードでは外部サービスへの過剰な負荷やレート制限を避けるため5件に制限する。
+// Mockモードでも誤操作による大量データ生成を防ぐため、最大100件に制限する。
+if (iterations > 100) {
+  throw new Error("Signup performance test is limited to 100 iterations");
+}
+
 export const options = {
-  vus: 5,
-  iterations: 5,
+  vus,
+  iterations,
 };
 
 const emailDomain = __ENV.K6_EMAIL_DOMAIN;
