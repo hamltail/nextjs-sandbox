@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import { Edges } from "@react-three/drei";
 import { useRef } from "react";
 import type { Group } from "three";
 
@@ -33,6 +34,8 @@ function Cube({ position }: CubeProps) {
         thickness={0.5}
         ior={1.5}
       />
+
+      <Edges color="#22d3ee" />
     </mesh>
   );
 }
