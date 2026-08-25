@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import type { News } from "@/app/types/news";
+import type { News } from "@/lib/news/news.types";
 import type { MicroCMSListContent } from "microcms-js-sdk";
 
 type NewsSectionProps = {

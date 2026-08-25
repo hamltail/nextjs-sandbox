@@ -1,5 +1,5 @@
 import { loadEnvConfig } from "@next/env";
-import type { News } from "../app/types/news";
+import type { News } from "../lib/news/news.types";
 
 loadEnvConfig(process.cwd());
 

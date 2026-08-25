@@ -1,6 +1,6 @@
 import { createClient } from "microcms-js-sdk";
 
-import type { News } from "@/app/types/news";
+import type { News } from "@/lib/news/news.types";
 
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
 const apiKey = process.env.MICROCMS_API_KEY;
