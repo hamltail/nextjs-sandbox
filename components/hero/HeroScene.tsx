@@ -2,21 +2,16 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import type { Mesh } from "three";
+import type { Group } from "three";
 
-function Cube() {
-  const meshRef = useRef<Mesh>(null);
+type CubeProps = {
+  position: [number, number, number];
+};
 
-  useFrame((_, delta) => {
-    if (!meshRef.current) return;
-
-    meshRef.current.rotation.x += delta * 0.2;
-    meshRef.current.rotation.y += delta * 0.3;
-  });
-
+function Cube({ position }: CubeProps) {
   return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[1.5, 1.5, 1.5]} />
+    <mesh position={position}>
+      <boxGeometry args={[0.9, 0.9, 0.9]} />
 
       <meshPhysicalMaterial
         color="#7dd3fc"
@@ -29,6 +24,36 @@ function Cube() {
   );
 }
 
+function CubeGroup() {
+  const groupRef = useRef<Group>(null);
+
+  useFrame((_, delta) => {
+    if (!groupRef.current) return;
+
+    groupRef.current.rotation.x += delta * 0.1;
+    groupRef.current.rotation.y += delta * 0.2;
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* center */}
+      <Cube position={[0, 0, 0]} />
+
+      {/* x */}
+      <Cube position={[1, 0, 0]} />
+      <Cube position={[-1, 0, 0]} />
+
+      {/* y */}
+      <Cube position={[0, 1, 0]} />
+      <Cube position={[0, -1, 0]} />
+
+      {/* z */}
+      <Cube position={[0, 0, 1]} />
+      <Cube position={[0, 0, -1]} />
+    </group>
+  );
+}
+
 export default function HeroScene() {
   return (
     <div className="h-[500px] w-full">
@@ -36,7 +61,7 @@ export default function HeroScene() {
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={2} />
 
-        <Cube />
+        <CubeGroup />
       </Canvas>
     </div>
   );
