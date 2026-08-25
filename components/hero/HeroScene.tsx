@@ -36,7 +36,7 @@ function Cube({ position }: CubeProps) {
         ior={1.5}
       />
 
-      <Edges color="#22d3ee" />
+      <Edges color="#00e5ff" />
     </mesh>
   );
 }
@@ -71,7 +71,7 @@ export default function HeroScene() {
 
         <EffectComposer>
           <Bloom
-            luminanceThreshold={0.2}
+            luminanceThreshold={0}
             luminanceSmoothing={0.9}
             intensity={1.2}
           />
