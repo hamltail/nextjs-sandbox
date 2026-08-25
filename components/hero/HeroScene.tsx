@@ -50,6 +50,9 @@ function Cube({ position, color }: CubeProps) {
       position[1] * spread,
       position[2] * spread,
     );
+
+    meshRef.current.rotation.x = wave * 0.08;
+    meshRef.current.rotation.z = wave * 0.08;
   });
 
   return (
