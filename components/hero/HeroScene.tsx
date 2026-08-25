@@ -89,7 +89,7 @@ function CubeGroup() {
   });
 
   return (
-    <group ref={groupRef}>
+    <group ref={groupRef} rotation={[0.35, -0.55, 0.15]}>
       {cubePositions.map((position, index) => {
         const color = neonColors[index % neonColors.length];
 
