@@ -5,53 +5,49 @@ import http from "k6/http";
 import { check } from "k6";
 
 const BASE_URL = "http://localhost:3000";
+const USERS_PER_VU = 5;
 
 export const options = {
-  noCookiesReset: true,
   scenarios: {
     microposts: {
       executor: "per-vu-iterations",
-      vus: 5,
+      vus: 20,
       iterations: 5,
-      maxDuration: "1m",
+      maxDuration: "2m",
     },
   },
 };
 
-let loggedIn = false;
-
 export default function micropostTest() {
-  const USER_NUMBER_OFFSET = 10;
-  // 既存の負荷試験データと重複しないユーザーをVUごとに割り当てる。
-  const userNumber = __VU + USER_NUMBER_OFFSET;
+  const userOffset = (__VU - 1) * USERS_PER_VU;
+  const userNumber = userOffset + __ITER + 1;
+
   const email = `performance-user-${userNumber}@example.com`;
 
-  if (!loggedIn) {
-    const loginResponse = http.post(
-      `${BASE_URL}/api/session`,
-      JSON.stringify({
-        email,
-        password: "password",
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
+  const loginResponse = http.post(
+    `${BASE_URL}/api/session`,
+    JSON.stringify({
+      email,
+      password: "password",
+    }),
+    {
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+    },
+  );
 
-    check(loginResponse, {
-      "login status is 200": (response) => response.status === 200,
+  check(loginResponse, {
+    "login status is 200": (response) => response.status === 200,
+  });
+
+  for (let postNumber = 1; postNumber <= 5; postNumber++) {
+    const micropostResponse = http.post(`${BASE_URL}/api/microposts`, {
+      content: `k6 micropost user-${userNumber} post-${postNumber}`,
     });
 
-    loggedIn = true;
+    check(micropostResponse, {
+      "micropost status is 201": (response) => response.status === 201,
+    });
   }
-
-  const micropostResponse = http.post(`${BASE_URL}/api/microposts`, {
-    content: `k6 micropost user-${userNumber} iteration-${__ITER}`,
-  });
-
-  check(micropostResponse, {
-    "micropost status is 201": (response) => response.status === 201,
-  });
 }

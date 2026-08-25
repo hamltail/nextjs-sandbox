@@ -5,6 +5,16 @@ const PERFORMANCE_USER_COUNT = 100;
 const PERFORMANCE_USER_PASSWORD = "password";
 
 async function seedPerformanceUsers() {
+  await prisma.micropost.deleteMany({
+    where: {
+      user: {
+        email: {
+          startsWith: "performance-user-",
+        },
+      },
+    },
+  });
+
   const passwordDigest = await hashPassword(PERFORMANCE_USER_PASSWORD);
 
   for (let index = 1; index <= PERFORMANCE_USER_COUNT; index++) {
