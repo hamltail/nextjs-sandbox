@@ -35,7 +35,10 @@ function Cube({ position, color }: CubeProps) {
     if (!meshRef.current) return;
 
     const elapsedTime = state.clock.getElapsedTime();
-    const scale = 1 + Math.sin(elapsedTime * 1.5) * 0.05;
+
+    const phase = position[0] * 0.5 + position[1] * 0.5 + position[2] * 0.5;
+
+    const scale = 1 + Math.sin(elapsedTime * 1.5 + phase) * 0.05;
 
     meshRef.current.scale.setScalar(scale);
   });
