@@ -4,7 +4,7 @@ import { Edges } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
-import type { Group } from "three";
+import type { Group, Mesh } from "three";
 
 type CubeProps = {
   position: [number, number, number];
@@ -29,8 +29,19 @@ const neonColors = [
 ];
 
 function Cube({ position, color }: CubeProps) {
+  const meshRef = useRef<Mesh>(null);
+
+  useFrame((state) => {
+    if (!meshRef.current) return;
+
+    const elapsedTime = state.clock.getElapsedTime();
+    const scale = 1 + Math.sin(elapsedTime * 1.5) * 0.05;
+
+    meshRef.current.scale.setScalar(scale);
+  });
+
   return (
-    <mesh position={position}>
+    <mesh ref={meshRef} position={position}>
       <boxGeometry args={[0.9, 0.9, 0.9]} />
 
       <meshPhysicalMaterial
