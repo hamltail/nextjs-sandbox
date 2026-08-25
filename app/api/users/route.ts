@@ -1,4 +1,4 @@
-import { sendAccountActivationEmail } from "@/lib/mailer/account-activation";
+import { accountActivationMailer } from "@/lib/mailer/account-activation-provider";
 import { createToken, hashToken } from "@/lib/auth/token";
 import { Prisma } from "@/app/generated/prisma/client";
 import { hashPassword } from "@/lib/auth/password";
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       },
     });
 
-    await sendAccountActivationEmail({
+    await accountActivationMailer({
       name: user.name,
       email: user.email,
       activationToken,
