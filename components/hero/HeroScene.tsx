@@ -38,9 +38,18 @@ function Cube({ position, color }: CubeProps) {
 
     const phase = position[0] * 0.5 + position[1] * 0.5 + position[2] * 0.5;
 
-    const scale = 1 + Math.sin(elapsedTime * 1.5 + phase) * 0.05;
+    const wave = Math.sin(elapsedTime * 1.2 + phase);
+
+    const scale = 1 + wave * 0.05;
+    const spread = 1 + wave * 0.12;
 
     meshRef.current.scale.setScalar(scale);
+
+    meshRef.current.position.set(
+      position[0] * spread,
+      position[1] * spread,
+      position[2] * spread,
+    );
   });
 
   return (
