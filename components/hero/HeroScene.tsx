@@ -105,6 +105,8 @@ export default function HeroScene() {
   return (
     <div className="h-[600px] w-full">
       <Canvas camera={{ position: [0, 0, 6] }}>
+        <color attach="background" args={["#020617"]} />
+
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={2} />
 

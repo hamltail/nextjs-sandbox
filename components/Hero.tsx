@@ -3,7 +3,7 @@ import HeroScene from "@/components/hero/HeroScene";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-7 py-20 md:px-11 md:py-28 xl:px-0">
+    <section className="relative overflow-hidden bg-slate-950 px-7 py-20 text-white md:px-11 md:py-28 xl:px-0">
       <Container>
         <div className="relative min-h-[600px]">
           <div className="relative z-10 flex min-h-[600px] items-center">
@@ -20,7 +20,7 @@ export default function Hero() {
                 Explore.
               </h1>
 
-              <p className="mt-8 max-w-md leading-8 text-gray-600">
+              <p className="mt-8 max-w-md leading-8 text-gray-400">
                 作って、試して、探索するWebのラボ。
               </p>
             </div>
