@@ -24,11 +24,14 @@ function Cube({ position }: CubeProps) {
       <boxGeometry args={[0.9, 0.9, 0.9]} />
 
       <meshPhysicalMaterial
-        color="#7dd3fc"
+        color="#dbeafe"
         transparent
-        opacity={0.55}
-        roughness={0.15}
-        metalness={0.1}
+        opacity={0.35}
+        roughness={0.1}
+        metalness={0}
+        transmission={0.6}
+        thickness={0.5}
+        ior={1.5}
       />
     </mesh>
   );
