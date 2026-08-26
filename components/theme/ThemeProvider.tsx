@@ -22,11 +22,9 @@ type ThemeProviderProps = {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return "system";
-    }
+  const [theme, setThemeState] = useState<Theme>("system");
 
+  useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
     if (
@@ -34,11 +32,11 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       savedTheme === "dark" ||
       savedTheme === "system"
     ) {
-      return savedTheme;
+      queueMicrotask(() => {
+        setThemeState(savedTheme);
+      });
     }
-
-    return "system";
-  });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;

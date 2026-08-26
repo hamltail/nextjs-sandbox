@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import LogoutButton from "./LogoutButton";
+import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 type MobileNavigationProps = {
   user: {
@@ -144,6 +145,10 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
             </>
           )}
         </ul>
+
+        <div className="mt-6 border-t border-gray-200 pt-6 dark:border-slate-800">
+          <ThemeSwitcher variant="list" />
+        </div>
       </nav>
     </div>
   );
