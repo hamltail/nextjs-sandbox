@@ -15,7 +15,7 @@ export default async function Header() {
   const user = await currentUser();
 
   return (
-    <header className="relative border-b border-gray-200 px-7 md:px-11 xl:px-0">
+    <header className="relative border-b border-gray-200 bg-white px-7 text-slate-950 transition-colors dark:border-slate-800 dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="flex min-h-16 items-center justify-between gap-6">
           <Link
@@ -85,7 +85,7 @@ export default async function Header() {
                   <li>
                     <Link
                       href="/signup"
-                      className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600"
+                      className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
                     >
                       Sign up
                     </Link>

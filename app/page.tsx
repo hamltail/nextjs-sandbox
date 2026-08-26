@@ -23,7 +23,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const signupSucceeded = params.signup === "success";
 
   return (
-    <>
+    <div className="min-h-screen bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
       {!current && (
         <>
           <div className="relative">
@@ -36,6 +36,6 @@ export default async function Home({ searchParams }: HomeProps) {
       )}
 
       {current && <MicropostFeed userId={current.id} />}
-    </>
+    </div>
   );
 }

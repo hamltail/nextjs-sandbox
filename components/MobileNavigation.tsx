@@ -57,7 +57,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
       <nav
         id="mobile-navigation"
         aria-label="モバイルナビゲーション"
-        className={`absolute inset-x-0 top-16 z-50 border-b border-gray-200 bg-white px-7 py-6 transition-all duration-300 ease-out ${
+        className={`absolute inset-x-0 top-16 z-50 border-b border-gray-200 bg-white px-7 py-6 text-slate-950 transition-all duration-300 ease-out dark:border-slate-800 dark:bg-slate-950 dark:text-gray-100 ${
           isOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-2 opacity-0"
@@ -136,7 +136,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
                 <Link
                   href="/signup"
                   onClick={closeMenu}
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 font-semibold text-white transition hover:bg-teal-600"
+                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
                 >
                   Sign up
                 </Link>
