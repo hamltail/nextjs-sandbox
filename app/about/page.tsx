@@ -18,7 +18,7 @@ export default function AboutPage() {
             実際に作りながら検証する個人の実験サイトです。
           </p>
 
-          <div className="mt-12 space-y-10">
+          <div className="mt-18 space-y-18">
             <section>
               <h2 className="text-2xl font-bold">実験環境について</h2>
 
