@@ -45,7 +45,7 @@ export default function NewsSection({
           <div className="rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
             <div
               key={currentPage}
-              className="news-content-reveal divide-y divide-gray-200 dark:divide-slate-800"
+              className="fade-in divide-y divide-gray-200 dark:divide-slate-800"
             >
               {newsList.map((news) => (
                 <article key={news.id} className="py-6">

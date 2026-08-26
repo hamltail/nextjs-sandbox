@@ -85,11 +85,11 @@ body {
 }
 */
 
-.news-content-reveal {
-  animation: news-content-reveal 1618ms ease forwards;
+.fade-in {
+  animation: fade-in 1618ms ease forwards;
 }
 
-@keyframes news-content-reveal {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
