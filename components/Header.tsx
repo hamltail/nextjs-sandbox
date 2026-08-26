@@ -5,6 +5,7 @@ import { currentUser } from "@/lib/auth/auth";
 import Container from "./Container";
 import LogoutButton from "./LogoutButton";
 import MobileNavigation from "./MobileNavigation";
+import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -25,75 +26,79 @@ export default async function Header() {
             hamltail Web Lab
           </Link>
 
-          <nav aria-label="メインナビゲーション" className="hidden md:block">
-            <ul className="font-en flex items-center gap-8 text-lg">
-              {navigationItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="transition-opacity hover:opacity-60"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-
-              {user ? (
-                <>
-                  <li>
+          <div className="hidden items-center gap-6 md:flex">
+            <nav aria-label="メインナビゲーション">
+              <ul className="font-en flex items-center gap-8 text-lg">
+                {navigationItems.map((item) => (
+                  <li key={item.href}>
                     <Link
-                      href="/users"
+                      href={item.href}
                       className="transition-opacity hover:opacity-60"
                     >
-                      Users
+                      {item.label}
                     </Link>
                   </li>
+                ))}
 
-                  <li>
-                    <Link
-                      href={`/users/${user.id}`}
-                      className="transition-opacity hover:opacity-60"
-                    >
-                      {user.name}
-                    </Link>
-                  </li>
+                {user ? (
+                  <>
+                    <li>
+                      <Link
+                        href="/users"
+                        className="transition-opacity hover:opacity-60"
+                      >
+                        Users
+                      </Link>
+                    </li>
 
-                  <li>
-                    <Link
-                      href={`/users/${user.id}/edit`}
-                      className="transition-opacity hover:opacity-60"
-                    >
-                      Settings
-                    </Link>
-                  </li>
+                    <li>
+                      <Link
+                        href={`/users/${user.id}`}
+                        className="transition-opacity hover:opacity-60"
+                      >
+                        {user.name}
+                      </Link>
+                    </li>
 
-                  <li>
-                    <LogoutButton />
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link
-                      href="/login"
-                      className="transition-opacity hover:opacity-60"
-                    >
-                      Log in
-                    </Link>
-                  </li>
+                    <li>
+                      <Link
+                        href={`/users/${user.id}/edit`}
+                        className="transition-opacity hover:opacity-60"
+                      >
+                        Settings
+                      </Link>
+                    </li>
 
-                  <li>
-                    <Link
-                      href="/signup"
-                      className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
-                    >
-                      Sign up
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </nav>
+                    <li>
+                      <LogoutButton />
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link
+                        href="/login"
+                        className="transition-opacity hover:opacity-60"
+                      >
+                        Log in
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        href="/signup"
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+                      >
+                        Sign up
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
+
+            <ThemeSwitcher />
+          </div>
 
           <MobileNavigation
             user={
