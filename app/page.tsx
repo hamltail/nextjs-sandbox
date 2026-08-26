@@ -24,12 +24,16 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <>
-      <div className="relative">
-        {signupSucceeded && <SignupSuccessMessage />}
-        {!current && <Hero />}
-      </div>
+      {!current && (
+        <>
+          <div className="relative">
+            {signupSucceeded && <SignupSuccessMessage />}
+            <Hero />
+          </div>
 
-      <NewsSection newsList={response.contents} />
+          <NewsSection newsList={response.contents} />
+        </>
+      )}
 
       {current && <MicropostFeed userId={current.id} />}
     </>
