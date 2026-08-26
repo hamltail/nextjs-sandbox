@@ -1,5 +1,6 @@
 import { createClient } from "microcms-js-sdk";
 
+import type { NewsFetcher } from "@/lib/news/news";
 import type { News } from "@/lib/news/news.types";
 
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
@@ -18,12 +19,13 @@ export const microcmsClient = createClient({
   apiKey,
 });
 
-export async function getNewsFromMicroCMS() {
+export const getNewsFromMicroCMS: NewsFetcher = async ({ limit, offset }) => {
   return microcmsClient.getList<News>({
     endpoint: "news",
     queries: {
-      limit: 3,
+      limit,
+      offset,
       orders: "-publishedAt",
     },
   });
-}
+};

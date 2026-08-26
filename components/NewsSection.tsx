@@ -1,9 +1,13 @@
+import Link from "next/link";
+
 import Container from "@/components/Container";
 import type { News } from "@/lib/news/news.types";
 import type { MicroCMSListContent } from "microcms-js-sdk";
 
 type NewsSectionProps = {
   newsList: (News & MicroCMSListContent)[];
+  currentPage: number;
+  totalPages: number;
 };
 
 function formatDate(date: string) {
@@ -16,7 +20,11 @@ function formatDate(date: string) {
     .replaceAll("/", ".");
 }
 
-export default function NewsSection({ newsList }: NewsSectionProps) {
+export default function NewsSection({
+  newsList,
+  currentPage,
+  totalPages,
+}: NewsSectionProps) {
   return (
     <section className="relative overflow-hidden border-t border-gray-100 bg-white px-7 py-16 text-slate-950 transition-colors dark:border-slate-900 dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
       <div
@@ -58,6 +66,35 @@ export default function NewsSection({ newsList }: NewsSectionProps) {
               </article>
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <nav
+              aria-label="お知らせのページネーション"
+              className="mt-8 flex items-center justify-center gap-2"
+            >
+              {Array.from({ length: totalPages }, (_, index) => {
+                const pageNumber = index + 1;
+
+                return (
+                  <Link
+                    key={pageNumber}
+                    href={`/?page=${pageNumber}`}
+                    scroll={false}
+                    aria-current={
+                      pageNumber === currentPage ? "page" : undefined
+                    }
+                    className={
+                      pageNumber === currentPage
+                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white dark:bg-teal-400 dark:text-slate-950"
+                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                    }
+                  >
+                    {pageNumber}
+                  </Link>
+                );
+              })}
+            </nav>
+          )}
         </div>
       </Container>
     </section>
