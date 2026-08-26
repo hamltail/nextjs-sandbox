@@ -31,7 +31,7 @@ export default function DeleteUserButton({ id }: DeleteUserButtonProps) {
     <button
       type="button"
       onClick={handleDelete}
-      className="font-en text-sm font-semibold text-red-600 transition hover:text-red-700"
+      className="font-en text-sm font-semibold text-red-600 transition hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
     >
       Delete
     </button>

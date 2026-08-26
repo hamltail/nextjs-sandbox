@@ -59,10 +59,10 @@ export default async function UserPage({ params, searchParams }: PageProps) {
     current.id !== user.id ? await isFollowing(current.id, user.id) : false;
 
   return (
-    <section className="relative overflow-hidden px-7 py-16 md:px-11 md:py-20 xl:px-0">
+    <section className="relative overflow-hidden bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/30 blur-3xl"
+        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/30 blur-3xl dark:bg-teal-400/10"
       />
 
       <Container>
@@ -70,7 +70,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
           {updated === "true" && (
             <div
               role="status"
-              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700"
+              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
             >
               Profile updated successfully.
             </div>
@@ -78,7 +78,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
 
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+              <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
                 PROFILE
               </p>
 
@@ -86,20 +86,24 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                 {user.name}
               </h1>
 
-              <div className="mt-4 flex gap-4 text-sm text-gray-600">
+              <div className="mt-4 flex gap-4 text-sm text-gray-600 dark:text-gray-300">
                 <Link
                   href={`/users/${user.id}/following`}
-                  className="transition hover:text-teal-600"
+                  className="transition hover:text-teal-600 dark:hover:text-teal-300"
                 >
-                  <strong className="text-gray-900">{followingCount}</strong>{" "}
+                  <strong className="text-gray-900 dark:text-gray-100">
+                    {followingCount}
+                  </strong>{" "}
                   following
                 </Link>
 
                 <Link
                   href={`/users/${user.id}/followers`}
-                  className="transition hover:text-teal-600"
+                  className="transition hover:text-teal-600 dark:hover:text-teal-300"
                 >
-                  <strong className="text-gray-900">{followersCount}</strong>{" "}
+                  <strong className="text-gray-900 dark:text-gray-100">
+                    {followersCount}
+                  </strong>{" "}
                   followers
                 </Link>
               </div>
@@ -110,9 +114,9 @@ export default async function UserPage({ params, searchParams }: PageProps) {
             )}
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm md:p-8">
+          <div className="rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:p-8">
             <div>
-              <p className="font-en text-sm font-semibold text-gray-500">
+              <p className="font-en text-sm font-semibold text-gray-500 dark:text-gray-400">
                 Email
               </p>
 
@@ -125,7 +129,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
           </div>
 
           {current.id === user.id && (
-            <div className="mt-10 rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm md:p-8">
+            <div className="mt-10 rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:p-8">
               <MicropostForm />
             </div>
           )}
@@ -133,7 +137,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
           <div className="mt-10">
             <div className="mb-6 flex items-end justify-between">
               <div>
-                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
                   MICROPOSTS
                 </p>
 
@@ -144,7 +148,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
             </div>
 
             {user.microposts.length > 0 ? (
-              <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
+              <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
                 {user.microposts.map((micropost) => (
                   <MicropostItem
                     key={micropost.id}
@@ -158,7 +162,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                 ))}
               </div>
             ) : (
-              <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm">
+              <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 dark:text-gray-400">
                 投稿はまだありません。
               </p>
             )}

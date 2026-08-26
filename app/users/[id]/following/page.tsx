@@ -28,11 +28,11 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
   const following = await getFollowing(user.id);
 
   return (
-    <section className="px-7 py-16 md:px-11 md:py-20 xl:px-0">
+    <section className="bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
               FOLLOWING
             </p>
 
@@ -40,18 +40,18 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
               {user.name} がフォロー中
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               {following.length} following
             </p>
           </div>
 
           {following.length > 0 ? (
-            <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm">
+            <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80">
               {following.map((followedUser) => (
                 <div key={followedUser.id} className="py-4">
                   <Link
                     href={`/users/${followedUser.id}`}
-                    className="font-semibold transition hover:text-teal-600"
+                    className="font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
                   >
                     {followedUser.name}
                   </Link>
@@ -59,7 +59,7 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
               ))}
             </div>
           ) : (
-            <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm">
+            <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 dark:text-gray-400">
               フォローしているユーザーはいません。
             </p>
           )}

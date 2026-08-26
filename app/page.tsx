@@ -23,15 +23,19 @@ export default async function Home({ searchParams }: HomeProps) {
   const signupSucceeded = params.signup === "success";
 
   return (
-    <>
-      <div className="relative">
-        {signupSucceeded && <SignupSuccessMessage />}
-        {!current && <Hero />}
-      </div>
+    <div className="min-h-screen bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
+      {!current && (
+        <>
+          <div className="relative">
+            {signupSucceeded && <SignupSuccessMessage />}
+            <Hero />
+          </div>
 
-      <NewsSection newsList={response.contents} />
+          <NewsSection newsList={response.contents} />
+        </>
+      )}
 
       {current && <MicropostFeed userId={current.id} />}
-    </>
+    </div>
   );
 }

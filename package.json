@@ -2,6 +2,8 @@
   "name": "nextjs-sandbox",
   "version": "0.1.0",
   "private": true,
+  "description": "Web development laboratory for experimenting with Next.js and related technologies",
+  "author": "h-waji (hamltail)",
   "scripts": {
     "dev": "next dev",
     "email": "email dev --dir components/emails",

@@ -21,7 +21,7 @@ export default function SignupSuccessMessage() {
     >
       <div
         role="status"
-        className="pointer-events-auto flex max-w-3xl items-center gap-3 rounded-md border border-teal-300 bg-teal-50/95 px-5 py-3 text-sm text-teal-700 shadow-sm backdrop-blur"
+        className="pointer-events-auto flex max-w-3xl items-center gap-3 rounded-md border border-teal-300 bg-teal-50/95 px-5 py-3 text-sm text-teal-700 shadow-sm backdrop-blur dark:border-teal-800 dark:bg-teal-950/90 dark:text-teal-200"
       >
         <span aria-hidden="true" className="text-lg font-bold">
           ✓

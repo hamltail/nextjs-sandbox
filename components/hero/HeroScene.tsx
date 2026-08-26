@@ -105,18 +105,16 @@ export default function HeroScene() {
   return (
     <div className="h-[600px] w-full">
       <Canvas camera={{ position: [0, 0, 6] }}>
-        <color attach="background" args={["#020617"]} />
-
         <ambientLight intensity={1.5} />
-        <directionalLight position={[3, 3, 5]} intensity={2} />
+        <directionalLight position={[3, 3, 5]} intensity={1.2} />
 
         <CubeGroup />
 
         <EffectComposer>
           <Bloom
-            luminanceThreshold={0}
-            luminanceSmoothing={0.9}
-            intensity={1.8}
+            luminanceThreshold={0.8}
+            luminanceSmoothing={0.8}
+            intensity={1.6}
           />
         </EffectComposer>
       </Canvas>
