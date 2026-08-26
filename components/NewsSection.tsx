@@ -42,29 +42,34 @@ export default function NewsSection({
             <h2 className="mt-2 text-3xl font-bold tracking-tight">お知らせ</h2>
           </div>
 
-          <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
-            {newsList.map((news) => (
-              <article key={news.id} className="py-6">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-                  {news.publishedAt && (
-                    <time
-                      dateTime={news.publishedAt}
-                      className="text-sm text-gray-500 dark:text-gray-300"
-                    >
-                      {formatDate(news.publishedAt)}
-                    </time>
-                  )}
+          <div className="rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
+            <div
+              key={currentPage}
+              className="news-content-reveal divide-y divide-gray-200 dark:divide-slate-800"
+            >
+              {newsList.map((news) => (
+                <article key={news.id} className="py-6">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                    {news.publishedAt && (
+                      <time
+                        dateTime={news.publishedAt}
+                        className="text-sm text-gray-500 dark:text-gray-300"
+                      >
+                        {formatDate(news.publishedAt)}
+                      </time>
+                    )}
 
-                  <span className="w-fit rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
-                    {news.category.name}
-                  </span>
-                </div>
+                    <span className="w-fit rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
+                      {news.category.name}
+                    </span>
+                  </div>
 
-                <h3 className="mt-3 text-lg leading-7 font-semibold">
-                  {news.title}
-                </h3>
-              </article>
-            ))}
+                  <h3 className="mt-3 text-lg leading-7 font-semibold">
+                    {news.title}
+                  </h3>
+                </article>
+              ))}
+            </div>
           </div>
 
           {totalPages > 1 && (

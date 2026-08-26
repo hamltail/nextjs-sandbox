@@ -84,3 +84,17 @@ body {
   }
 }
 */
+
+.news-content-reveal {
+  animation: news-content-reveal 1618ms ease forwards;
+}
+
+@keyframes news-content-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
