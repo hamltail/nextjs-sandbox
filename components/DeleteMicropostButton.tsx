@@ -33,7 +33,7 @@ export default function DeleteMicropostButton({
     <button
       type="button"
       onClick={handleDelete}
-      className="text-sm font-semibold text-red-600 transition hover:text-red-700"
+      className="text-sm font-semibold text-red-600 transition hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
     >
       Delete
     </button>

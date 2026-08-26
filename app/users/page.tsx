@@ -43,10 +43,10 @@ export default async function UsersPage({ searchParams }: PageProps) {
   const totalPages = Math.ceil(totalUsers / USERS_PER_PAGE);
 
   return (
-    <section className="relative overflow-hidden px-7 py-16 md:px-11 md:py-20 xl:px-0">
+    <section className="relative overflow-hidden bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/30 blur-3xl"
+        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/30 blur-3xl dark:bg-teal-400/10"
       />
 
       <Container>
@@ -54,21 +54,21 @@ export default async function UsersPage({ searchParams }: PageProps) {
           {deleted === "true" && (
             <div
               role="status"
-              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700"
+              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
             >
               User deleted successfully.
             </div>
           )}
 
           <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600">
+            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
               USERS
             </p>
 
             <h1 className="mt-2 text-4xl font-bold tracking-tight">Users</h1>
           </div>
 
-          <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm md:px-8">
+          <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
             {users.map((user) => (
               <div
                 key={user.id}
@@ -77,13 +77,15 @@ export default async function UsersPage({ searchParams }: PageProps) {
                 <div>
                   <Link
                     href={`/users/${user.id}`}
-                    className="text-lg font-semibold transition hover:text-teal-600"
+                    className="text-lg font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
                   >
                     {user.name}
                   </Link>
 
                   {current.admin && (
-                    <p className="mt-1 text-sm text-gray-500">{user.email}</p>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      {user.email}
+                    </p>
                   )}
                 </div>
 
@@ -102,7 +104,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
               {currentPage > 1 && (
                 <Link
                   href={`/users?page=${currentPage - 1}`}
-                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
                 >
                   Previous
                 </Link>
@@ -117,8 +119,8 @@ export default async function UsersPage({ searchParams }: PageProps) {
                     href={`/users?page=${pageNumber}`}
                     className={
                       pageNumber === currentPage
-                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white"
-                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white dark:bg-teal-400 dark:text-slate-950"
+                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
                     }
                   >
                     {pageNumber}
@@ -129,7 +131,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
               {currentPage < totalPages && (
                 <Link
                   href={`/users?page=${currentPage + 1}`}
-                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600"
+                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
                 >
                   Next
                 </Link>

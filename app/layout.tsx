@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${barlowCondensed.variable} dark`}
+      className={`${notoSansJp.variable} ${barlowCondensed.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
         <Header />

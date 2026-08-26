@@ -31,12 +31,14 @@ export default async function PasswordResetPage({
   }
 
   return (
-    <section className="px-7 py-12 md:px-11 xl:px-0">
+    <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
           <h1 className="font-en text-4xl font-bold">Reset password</h1>
 
-          <p className="mt-3 text-gray-600">Enter your new password.</p>
+          <p className="mt-3 text-gray-600 dark:text-gray-300">
+            Enter your new password.
+          </p>
 
           <PasswordResetForm email={email} token={token} />
         </div>

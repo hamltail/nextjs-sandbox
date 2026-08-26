@@ -25,11 +25,12 @@ export default function MicropostItem({
         {micropost.user && (
           <Link
             href={`/users/${micropost.user.id}`}
-            className="mb-2 block font-semibold transition hover:text-teal-600"
+            className="mb-2 block font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
           >
             {micropost.user.name}
           </Link>
         )}
+
         <p className="whitespace-pre-wrap">{micropost.content}</p>
 
         {micropost.imageKey && (
@@ -42,7 +43,7 @@ export default function MicropostItem({
           />
         )}
 
-        <p className="mt-3 text-sm text-gray-500">
+        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
           {micropost.createdAt.toLocaleString("ja-JP", {
             timeZone: "Asia/Tokyo",
           })}
