@@ -70,23 +70,22 @@ export default function NewsSection({
           {totalPages > 1 && (
             <nav
               aria-label="お知らせのページネーション"
-              className="mt-8 flex items-center justify-center gap-2"
+              className="mt-8 flex items-center justify-center gap-6"
             >
               {Array.from({ length: totalPages }, (_, index) => {
                 const pageNumber = index + 1;
+                const isCurrentPage = pageNumber === currentPage;
 
                 return (
                   <Link
                     key={pageNumber}
                     href={`/?page=${pageNumber}`}
                     scroll={false}
-                    aria-current={
-                      pageNumber === currentPage ? "page" : undefined
-                    }
+                    aria-current={isCurrentPage ? "page" : undefined}
                     className={
-                      pageNumber === currentPage
-                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white dark:bg-teal-400 dark:text-slate-950"
-                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                      isCurrentPage
+                        ? "font-en relative px-1 py-2 text-base font-semibold text-teal-600 after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px after:bg-teal-500 dark:text-teal-300 dark:after:bg-teal-300"
+                        : "font-en nav-link px-1 py-2 text-base text-gray-500 transition-colors hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-300"
                     }
                   >
                     {pageNumber}
