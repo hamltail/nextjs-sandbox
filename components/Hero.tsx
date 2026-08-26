@@ -13,14 +13,14 @@ export default function Hero() {
               </p>
 
               <h1 className="font-en mt-6 text-6xl leading-[0.9] font-bold tracking-tight md:text-8xl">
-                Build.
-                <br />
-                Test.
-                <br />
-                Explore.
+                <span className="hero-copy hero-copy-build block">Build.</span>
+                <span className="hero-copy hero-copy-test block">Test.</span>
+                <span className="hero-copy hero-copy-explore block">
+                  Explore.
+                </span>
               </h1>
 
-              <p className="mt-8 max-w-md leading-8 text-gray-600 dark:text-gray-300">
+              <p className="hero-copy hero-copy-description mt-8 max-w-md leading-8 text-gray-600 dark:text-gray-300">
                 作って、試して、探索するWebのラボ。
               </p>
             </div>

@@ -39,3 +39,48 @@ body {
 .nav-link:focus-visible::after {
   transform: scaleX(1);
 }
+
+.hero-copy {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-copy-reveal 1618ms ease forwards;
+}
+
+.hero-copy-build {
+  animation-delay: 600ms;
+}
+
+.hero-copy-test {
+  animation-delay: 1200ms;
+}
+
+.hero-copy-explore {
+  animation-delay: 1800ms;
+}
+
+.hero-copy-description {
+  animation-delay: 2400ms;
+}
+
+@keyframes hero-copy-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TODO: prefers-reduced-motion によるアニメーション制御を追加する */
+/* 
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+*/
