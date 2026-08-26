@@ -7,7 +7,7 @@ import LogoutButton from "./LogoutButton";
 
 const navigationItems = [
   { label: "Home", href: "/" },
-  { label: "Help", href: "/help" },
+  { label: "About", href: "/about" },
 ];
 
 export default async function Header() {
