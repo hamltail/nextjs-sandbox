@@ -4,6 +4,7 @@ import { Barlow_Condensed, Noto_Sans_JP } from "next/font/google";
 // Components
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ThemeProvider from "@/components/theme/ThemeProvider";
 // Global Styles
 import "./globals.css";
 
@@ -35,11 +36,13 @@ export default function RootLayout({
       className={`${notoSansJp.variable} ${barlowCondensed.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
-        <Header />
+        <ThemeProvider>
+          <Header />
 
-        <main className="flex-1">{children}</main>
+          <main className="flex-1">{children}</main>
 
-        <Footer />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
