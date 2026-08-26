@@ -21,7 +21,7 @@ test("Aboutページへ遷移できる", async ({ page }) => {
 
   await expect(
     page.getByRole("heading", {
-      name: "About",
+      name: "hamltail Web Lab",
     }),
   ).toBeVisible();
 });
