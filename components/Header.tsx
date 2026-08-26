@@ -4,6 +4,7 @@ import { currentUser } from "@/lib/auth/auth";
 
 import Container from "./Container";
 import LogoutButton from "./LogoutButton";
+import MobileNavigation from "./MobileNavigation";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -14,7 +15,7 @@ export default async function Header() {
   const user = await currentUser();
 
   return (
-    <header className="border-b border-gray-200 px-7 md:px-11 xl:px-0">
+    <header className="relative border-b border-gray-200 px-7 md:px-11 xl:px-0">
       <Container>
         <div className="flex min-h-16 items-center justify-between gap-6">
           <Link
@@ -24,8 +25,8 @@ export default async function Header() {
             hamltail Web Lab
           </Link>
 
-          <nav aria-label="メインナビゲーション">
-            <ul className="font-en flex items-center gap-4 text-lg md:gap-8">
+          <nav aria-label="メインナビゲーション" className="hidden md:block">
+            <ul className="font-en flex items-center gap-8 text-lg">
               {navigationItems.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -93,6 +94,17 @@ export default async function Header() {
               )}
             </ul>
           </nav>
+
+          <MobileNavigation
+            user={
+              user
+                ? {
+                    id: user.id,
+                    name: user.name,
+                  }
+                : null
+            }
+          />
         </div>
       </Container>
     </header>
