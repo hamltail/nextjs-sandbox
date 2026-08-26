@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <section className="bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
-        <div className="mx-auto max-w-3xl">
+        <div className="fade-in mx-auto max-w-3xl">
           <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase dark:text-teal-300">
             About
           </p>
@@ -18,7 +18,7 @@ export default function AboutPage() {
             実際に作りながら検証する個人の実験サイトです。
           </p>
 
-          <div className="mt-12 space-y-10">
+          <div className="mt-18 space-y-18">
             <section>
               <h2 className="text-2xl font-bold">実験環境について</h2>
 

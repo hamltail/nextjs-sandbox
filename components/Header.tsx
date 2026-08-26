@@ -33,7 +33,7 @@ export default async function Header() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="transition-opacity hover:opacity-60"
+                      className="nav-link transition-opacity hover:opacity-60"
                     >
                       {item.label}
                     </Link>
@@ -45,7 +45,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href="/users"
-                        className="transition-opacity hover:opacity-60"
+                        className="nav-link transition-opacity hover:opacity-60"
                       >
                         Users
                       </Link>
@@ -54,7 +54,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href={`/users/${user.id}`}
-                        className="transition-opacity hover:opacity-60"
+                        className="nav-link transition-opacity hover:opacity-60"
                       >
                         {user.name}
                       </Link>
@@ -63,7 +63,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href={`/users/${user.id}/edit`}
-                        className="transition-opacity hover:opacity-60"
+                        className="nav-link transition-opacity hover:opacity-60"
                       >
                         Settings
                       </Link>
@@ -78,7 +78,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href="/login"
-                        className="transition-opacity hover:opacity-60"
+                        className="nav-link transition-opacity hover:opacity-60"
                       >
                         Log in
                       </Link>
