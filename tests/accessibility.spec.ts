@@ -46,3 +46,9 @@ test("ログインページにアクセシビリティ違反がない", async ({
 
   await expectNoAccessibilityViolations(page);
 });
+
+test("ユーザー登録ページにアクセシビリティ違反がない", async ({ page }) => {
+  await page.goto("/signup");
+
+  await expectNoAccessibilityViolations(page);
+});
