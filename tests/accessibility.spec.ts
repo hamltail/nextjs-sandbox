@@ -6,6 +6,12 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
 
+type E2EUser = {
+  id: string;
+  email: string;
+  password: string;
+};
+
 async function expectNoAccessibilityViolations(page: Page) {
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
@@ -25,8 +31,12 @@ async function expectNoAccessibilityViolations(page: Page) {
   expect(violationMessages, violationMessages.join("\n\n")).toEqual([]);
 }
 
-async function loginAsE2EUser(page: Page) {
-  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
+async function readE2EUser(): Promise<E2EUser> {
+  return JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
+}
+
+async function loginAsE2EUser(page: Page): Promise<E2EUser> {
+  const e2eUser = await readE2EUser();
 
   await page.goto("/login");
 
@@ -36,6 +46,8 @@ async function loginAsE2EUser(page: Page) {
   await page.getByRole("button", { name: "Log in" }).click();
 
   await expect(page).toHaveURL("/");
+
+  return e2eUser;
 }
 
 test("トップページにアクセシビリティ違反がない", async ({ page }) => {
@@ -97,11 +109,17 @@ test("ユーザー一覧ページにアクセシビリティ違反がない", as
 });
 
 test("ユーザー詳細ページにアクセシビリティ違反がない", async ({ page }) => {
-  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
-
-  await loginAsE2EUser(page);
+  const e2eUser = await loginAsE2EUser(page);
 
   await page.goto(`/users/${e2eUser.id}`);
+
+  await expectNoAccessibilityViolations(page);
+});
+
+test("ユーザー設定ページにアクセシビリティ違反がない", async ({ page }) => {
+  const e2eUser = await loginAsE2EUser(page);
+
+  await page.goto(`/users/${e2eUser.id}/edit`);
 
   await expectNoAccessibilityViolations(page);
 });
