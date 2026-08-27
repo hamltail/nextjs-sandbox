@@ -5,7 +5,7 @@ export default function AboutPage() {
     <section className="bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="fade-in mx-auto max-w-3xl">
-          <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase dark:text-teal-300">
+          <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 uppercase dark:text-teal-300">
             About
           </p>
 
