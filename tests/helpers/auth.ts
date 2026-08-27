@@ -21,9 +21,18 @@ export async function loginAsE2EUser(page: Page): Promise<E2EUser> {
   await page.getByLabel("Email").fill(e2eUser.email);
   await page.getByLabel("Password").fill(e2eUser.password);
 
-  await page.getByRole("button", { name: "Log in" }).click();
+  await Promise.all([
+    page.waitForURL("/", {
+      waitUntil: "load",
+    }),
+    page.getByRole("button", { name: "Log in" }).click(),
+  ]);
 
-  await expect(page).toHaveURL("/");
+  await expect(
+    page.getByRole("heading", {
+      name: "Micropost Feed",
+    }),
+  ).toBeVisible();
 
   return e2eUser;
 }
