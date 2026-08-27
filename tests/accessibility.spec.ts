@@ -95,3 +95,13 @@ test("ユーザー一覧ページにアクセシビリティ違反がない", as
 
   await expectNoAccessibilityViolations(page);
 });
+
+test("ユーザー詳細ページにアクセシビリティ違反がない", async ({ page }) => {
+  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
+
+  await loginAsE2EUser(page);
+
+  await page.goto(`/users/${e2eUser.id}`);
+
+  await expectNoAccessibilityViolations(page);
+});
