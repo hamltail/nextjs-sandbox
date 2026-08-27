@@ -87,7 +87,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href="/signup"
-                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-500 px-5 text-base font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-teal-700 px-5 text-base font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
                       >
                         Sign up
                       </Link>

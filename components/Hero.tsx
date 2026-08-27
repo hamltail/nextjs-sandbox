@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="relative min-h-[600px]">
           <div className="relative z-10 flex min-h-[600px] items-center">
             <div>
-              <p className="font-en text-sm tracking-[0.25em] text-teal-600 uppercase dark:text-teal-300">
+              <p className="font-en text-sm tracking-[0.25em] text-teal-700 uppercase dark:text-teal-300">
                 hamltail Web Lab
               </p>
 
