@@ -1,5 +1,7 @@
 // 実行: npx playwright test tests/accessibility.spec.ts --project=chromium
 
+import { readFile } from "node:fs/promises";
+
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import type { Page } from "@playwright/test";
@@ -53,10 +55,31 @@ test("ユーザー登録ページにアクセシビリティ違反がない", as
   await expectNoAccessibilityViolations(page);
 });
 
-test("パスワードリセット申請ページにアクセシビリティ違反がない", async ({
+test("パスワード再設定申請ページにアクセシビリティ違反がない", async ({
   page,
 }) => {
   await page.goto("/password-resets");
+
+  await expectNoAccessibilityViolations(page);
+});
+
+test("ログイン後トップページにアクセシビリティ違反がない", async ({ page }) => {
+  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
+
+  await page.goto("/login");
+
+  await page.getByLabel("Email").fill(e2eUser.email);
+  await page.getByLabel("Password").fill(e2eUser.password);
+
+  await page.getByRole("button", { name: "Log in" }).click();
+
+  await expect(page).toHaveURL("/");
+
+  await expect(
+    page.getByRole("heading", {
+      name: "Micropost Feed",
+    }),
+  ).toBeVisible();
 
   await expectNoAccessibilityViolations(page);
 });
