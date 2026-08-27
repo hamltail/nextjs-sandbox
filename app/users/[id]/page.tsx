@@ -78,7 +78,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
 
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
+              <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
                 PROFILE
               </p>
 
@@ -137,7 +137,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
           <div className="mt-10">
             <div className="mb-6 flex items-end justify-between">
               <div>
-                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
+                <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
                   MICROPOSTS
                 </p>
 

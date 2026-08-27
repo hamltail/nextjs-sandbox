@@ -61,7 +61,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
           )}
 
           <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
+            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
               USERS
             </p>
 

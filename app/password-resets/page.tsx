@@ -91,7 +91,7 @@ export default function PasswordResetsPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
             >
               {isSubmitting ? "Sending..." : "Submit"}
             </button>
@@ -101,7 +101,7 @@ export default function PasswordResetsPage() {
             Remember your password?{" "}
             <Link
               href="/login"
-              className="font-medium text-teal-600 transition hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-200"
+              className="font-medium text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
             >
               Log in
             </Link>

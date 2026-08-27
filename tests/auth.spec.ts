@@ -1,4 +1,8 @@
+// 実行: npx playwright test tests/auth.spec.ts --project=chromium
+
 import { expect, test } from "@playwright/test";
+
+import { loginAsE2EUser } from "./helpers/auth";
 
 test.describe("認証機能", () => {
   test("ログインページへ遷移できる", async ({ page }) => {
@@ -11,6 +15,16 @@ test.describe("認証機能", () => {
     await expect(
       page.getByRole("heading", {
         name: "Log in",
+      }),
+    ).toBeVisible();
+  });
+
+  test("ログインできる", async ({ page }) => {
+    await loginAsE2EUser(page);
+
+    await expect(
+      page.getByRole("heading", {
+        name: "Micropost Feed",
       }),
     ).toBeVisible();
   });

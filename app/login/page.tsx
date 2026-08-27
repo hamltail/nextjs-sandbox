@@ -81,7 +81,7 @@ export default function LoginPage() {
 
                 <Link
                   href="/password-resets"
-                  className="text-sm text-teal-600 transition hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-200"
+                  className="text-sm text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
                 >
                   Forgot password?
                 </Link>
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-500 px-6 text-lg font-semibold text-white transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
             >
               {isSubmitting ? "Logging in..." : "Log in"}
             </button>
@@ -109,7 +109,7 @@ export default function LoginPage() {
             New user?{" "}
             <Link
               href="/signup"
-              className="font-medium text-teal-600 transition hover:text-teal-700 dark:text-teal-300 dark:hover:text-teal-200"
+              className="font-medium text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
             >
               Sign up now!
             </Link>

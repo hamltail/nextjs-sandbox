@@ -39,7 +39,7 @@ export default function AccountActivationEmail({
             <Button
               href={activationUrl}
               style={{
-                backgroundColor: "#14b8a6",
+                backgroundColor: "#0f766e",
                 borderRadius: "9999px",
                 color: "#ffffff",
                 padding: "12px 24px",

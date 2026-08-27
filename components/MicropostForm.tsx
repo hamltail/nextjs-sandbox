@@ -57,7 +57,12 @@ export default function MicropostForm() {
       />
 
       <div className="mt-4">
+        <label htmlFor="micropost-image" className="sr-only">
+          Image
+        </label>
+
         <input
+          id="micropost-image"
           ref={fileInputRef}
           type="file"
           accept="image/jpeg,image/png,image/webp"
@@ -79,7 +84,7 @@ export default function MicropostForm() {
 
         <button
           type="submit"
-          className="rounded-full bg-teal-500 px-5 py-2 font-semibold text-white transition hover:bg-teal-600 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+          className="rounded-full bg-teal-700 px-5 py-2 font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
         >
           Post
         </button>

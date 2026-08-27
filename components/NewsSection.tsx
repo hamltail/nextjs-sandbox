@@ -35,7 +35,7 @@ export default function NewsSection({
       <Container>
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-10">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-600 dark:text-teal-300">
+            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
               NEWS
             </p>
 
@@ -53,7 +53,7 @@ export default function NewsSection({
                     {news.publishedAt && (
                       <time
                         dateTime={news.publishedAt}
-                        className="text-sm text-gray-500 dark:text-gray-300"
+                        className="text-sm text-gray-600 dark:text-gray-300"
                       >
                         {formatDate(news.publishedAt)}
                       </time>
