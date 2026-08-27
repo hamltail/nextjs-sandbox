@@ -52,3 +52,11 @@ test("ユーザー登録ページにアクセシビリティ違反がない", as
 
   await expectNoAccessibilityViolations(page);
 });
+
+test("パスワードリセット申請ページにアクセシビリティ違反がない", async ({
+  page,
+}) => {
+  await page.goto("/password-resets");
+
+  await expectNoAccessibilityViolations(page);
+});
