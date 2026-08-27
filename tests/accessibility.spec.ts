@@ -25,6 +25,19 @@ async function expectNoAccessibilityViolations(page: Page) {
   expect(violationMessages, violationMessages.join("\n\n")).toEqual([]);
 }
 
+async function loginAsE2EUser(page: Page) {
+  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
+
+  await page.goto("/login");
+
+  await page.getByLabel("Email").fill(e2eUser.email);
+  await page.getByLabel("Password").fill(e2eUser.password);
+
+  await page.getByRole("button", { name: "Log in" }).click();
+
+  await expect(page).toHaveURL("/");
+}
+
 test("トップページにアクセシビリティ違反がない", async ({ page }) => {
   await page.goto("/");
 
@@ -64,22 +77,21 @@ test("パスワード再設定申請ページにアクセシビリティ違反�
 });
 
 test("ログイン後トップページにアクセシビリティ違反がない", async ({ page }) => {
-  const e2eUser = JSON.parse(await readFile(".tmp/e2e-user.json", "utf-8"));
-
-  await page.goto("/login");
-
-  await page.getByLabel("Email").fill(e2eUser.email);
-  await page.getByLabel("Password").fill(e2eUser.password);
-
-  await page.getByRole("button", { name: "Log in" }).click();
-
-  await expect(page).toHaveURL("/");
+  await loginAsE2EUser(page);
 
   await expect(
     page.getByRole("heading", {
       name: "Micropost Feed",
     }),
   ).toBeVisible();
+
+  await expectNoAccessibilityViolations(page);
+});
+
+test("ユーザー一覧ページにアクセシビリティ違反がない", async ({ page }) => {
+  await loginAsE2EUser(page);
+
+  await page.goto("/users");
 
   await expectNoAccessibilityViolations(page);
 });
