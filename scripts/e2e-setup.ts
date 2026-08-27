@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 
 import { hashPassword } from "../lib/auth/password";
 import { prisma } from "../lib/database/prisma";
@@ -12,6 +12,9 @@ const e2eUser = {
 };
 
 async function main() {
+  await mkdir(".tmp", { recursive: true });
+  await rm(".tmp/e2e-user.json", { force: true });
+
   const passwordDigest = await hashPassword(e2eUser.password);
 
   const user = await prisma.user.create({
@@ -23,8 +26,6 @@ async function main() {
       activatedAt: new Date(),
     },
   });
-
-  await mkdir(".tmp", { recursive: true });
 
   await writeFile(
     ".tmp/e2e-user.json",
