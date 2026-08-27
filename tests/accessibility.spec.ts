@@ -123,3 +123,13 @@ test("ユーザー設定ページにアクセシビリティ違反がない", as
 
   await expectNoAccessibilityViolations(page);
 });
+
+test("フォロー中ユーザー一覧ページにアクセシビリティ違反がない", async ({
+  page,
+}) => {
+  const e2eUser = await loginAsE2EUser(page);
+
+  await page.goto(`/users/${e2eUser.id}/following`);
+
+  await expectNoAccessibilityViolations(page);
+});
