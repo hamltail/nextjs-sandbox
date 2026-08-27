@@ -67,3 +67,6 @@ next-env.d.ts
 # Prisma SQLite database
 /prisma/*.db
 /prisma/*.db-journal
+
+*storybook.log
+storybook-static
