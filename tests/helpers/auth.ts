@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-import { expect } from "@playwright/test";
-import type { Page } from "@playwright/test";
+import { expect, type Page } from "@playwright/test";
 
 export type E2EUser = {
   id: string;

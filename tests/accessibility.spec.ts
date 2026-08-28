@@ -1,8 +1,7 @@
 // 実行: npx playwright test tests/accessibility.spec.ts --project=chromium
 
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
-import type { Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 import { loginAsE2EUser } from "./helpers/auth";
 
