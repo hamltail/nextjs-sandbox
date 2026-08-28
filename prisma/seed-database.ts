@@ -1,9 +1,8 @@
-import bcrypt from "bcryptjs";
-
+import { hashPassword } from "../lib/auth/password";
 import { prisma } from "../lib/database/prisma";
 
 export async function seedDatabase() {
-  const passwordDigest = await bcrypt.hash("password", 10);
+  const passwordDigest = await hashPassword("password");
 
   for (let index = 1; index <= 30; index++) {
     const user = await prisma.user.upsert({

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { currentUser } from "@/lib/auth/auth";
 import { Prisma } from "@/app/generated/prisma/client";
+
+import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
 import { updateUserSchema } from "@/lib/users/validation";
 

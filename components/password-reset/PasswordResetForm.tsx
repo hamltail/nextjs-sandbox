@@ -1,7 +1,7 @@
 "use client";
 
-import { SubmitEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SubmitEvent, useState } from "react";
 
 type PasswordResetFormProps = {
   email: string;
@@ -13,7 +13,6 @@ export default function PasswordResetForm({
   token,
 }: PasswordResetFormProps) {
   const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -1,8 +1,8 @@
 import Link from "next/link";
+import type { MicroCMSListContent } from "microcms-js-sdk";
 
 import Container from "@/components/Container";
 import type { News } from "@/lib/news/news.types";
-import type { MicroCMSListContent } from "microcms-js-sdk";
 
 type NewsSectionProps = {
   newsList: (News & MicroCMSListContent)[];

@@ -13,7 +13,6 @@ export default function FollowButton({
   initialIsFollowing,
 }: FollowButtonProps) {
   const router = useRouter();
-
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [isLoading, setIsLoading] = useState(false);
 

@@ -1,8 +1,9 @@
-import { accountActivationMailer } from "@/lib/mailer/account-activation-provider";
-import { createToken, hashToken } from "@/lib/auth/token";
 import { Prisma } from "@/app/generated/prisma/client";
+
 import { hashPassword } from "@/lib/auth/password";
+import { createToken, hashToken } from "@/lib/auth/token";
 import { prisma } from "@/lib/database/prisma";
+import { accountActivationMailer } from "@/lib/mailer/account-activation-provider";
 import { createUserSchema } from "@/lib/users/validation";
 
 export async function POST(request: Request) {

@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DELETE, POST } from "@/app/api/relationships/route";
+
 import { currentUser } from "@/lib/auth/auth";
 import { followUser, unfollowUser } from "@/lib/microposts/relationship";
 

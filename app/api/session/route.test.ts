@@ -1,9 +1,9 @@
+import bcrypt from "bcryptjs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import bcrypt from "bcryptjs";
+import { POST } from "@/app/api/session/route";
 
 import { prisma } from "@/lib/database/prisma";
-import { POST } from "@/app/api/session/route";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {

@@ -1,9 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { sendPasswordResetEmail } from "@/lib/mailer/password-reset";
-import { prisma } from "@/lib/database/prisma";
-import { createPasswordReset } from "@/lib/auth/password-reset";
 import { POST } from "@/app/api/password-resets/route";
+
+import { createPasswordReset } from "@/lib/auth/password-reset";
+import { prisma } from "@/lib/database/prisma";
+import { sendPasswordResetEmail } from "@/lib/mailer/password-reset";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {

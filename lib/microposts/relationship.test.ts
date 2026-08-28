@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { prisma } from "@/lib/database/prisma";
 import {
   followUser,
   getFollowers,
@@ -9,7 +10,6 @@ import {
   isFollowing,
   unfollowUser,
 } from "@/lib/microposts/relationship";
-import { prisma } from "@/lib/database/prisma";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {

@@ -1,11 +1,10 @@
-// Next.js
 import type { Metadata } from "next";
 import { Barlow_Condensed, Noto_Sans_JP } from "next/font/google";
-// Components
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ThemeProvider from "@/components/theme/ThemeProvider";
-// Global Styles
+
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({

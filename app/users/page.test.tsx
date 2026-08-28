@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { prisma } from "@/lib/database/prisma";
-import { currentUser } from "@/lib/auth/auth";
 import UsersPage from "@/app/users/page";
+
+import { currentUser } from "@/lib/auth/auth";
+import { prisma } from "@/lib/database/prisma";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {

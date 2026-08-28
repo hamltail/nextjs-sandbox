@@ -1,9 +1,10 @@
 import { notFound, redirect } from "next/navigation";
 
 import { currentUser } from "@/lib/auth/auth";
+import { prisma } from "@/lib/database/prisma";
+
 import Container from "@/components/Container";
 import EditUserForm from "@/components/EditUserForm";
-import { prisma } from "@/lib/database/prisma";
 
 type PageProps = {
   params: Promise<{

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { getMicropostFeed } from "@/lib/microposts/micropost";
 import { prisma } from "@/lib/database/prisma";
+import { getMicropostFeed } from "@/lib/microposts/micropost";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {

@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
-import { prisma } from "@/lib/database/prisma";
 import { hashSessionToken } from "@/lib/auth/session";
+import { prisma } from "@/lib/database/prisma";
 
 export async function currentUser() {
   const cookieStore = await cookies();

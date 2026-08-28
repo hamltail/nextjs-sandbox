@@ -1,8 +1,8 @@
 // 実行:
 // k6 run performance/scenarios/micropost.ts
 
-import http from "k6/http";
 import { check } from "k6";
+import http from "k6/http";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_PER_VU = 5;
