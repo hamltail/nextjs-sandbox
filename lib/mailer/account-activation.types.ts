@@ -1,4 +1,4 @@
-export type SendAccountActivationEmailParams = {
+type SendAccountActivationEmailParams = {
   name: string;
   email: string;
   activationToken: string;

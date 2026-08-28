@@ -1,16 +1,13 @@
 import AccountActivationEmail from "@/components/emails/AccountActivationEmail";
 import { resend } from "@/lib/integrations/resend";
 
-import type {
-  SendAccountActivationEmail,
-  SendAccountActivationEmailParams,
-} from "./account-activation.types";
+import type { SendAccountActivationEmail } from "./account-activation.types";
 
 export const sendAccountActivationEmail: SendAccountActivationEmail = async ({
   name,
   email,
   activationToken,
-}: SendAccountActivationEmailParams) => {
+}) => {
   const activationUrl = new URL(
     `/account-activations/${activationToken}`,
     process.env.APP_URL,
