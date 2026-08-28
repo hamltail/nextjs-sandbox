@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 
 import ConfirmModal from "./ConfirmModal";
@@ -14,7 +13,6 @@ export default function DeleteMicropostButton({
   id,
 }: DeleteMicropostButtonProps) {
   const router = useRouter();
-
   const [isOpen, setIsOpen] = useState(false);
 
   async function handleDelete() {
@@ -27,7 +25,6 @@ export default function DeleteMicropostButton({
     }
 
     setIsOpen(false);
-
     router.refresh();
   }
 
