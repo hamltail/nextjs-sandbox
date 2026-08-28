@@ -1,4 +1,5 @@
 import { getMicropostFeed } from "@/lib/microposts/micropost";
+
 import MicropostItem from "@/components/MicropostItem";
 
 type MicropostFeedProps = {

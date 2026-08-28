@@ -1,11 +1,10 @@
 "use client";
 
-import { SubmitEvent, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SubmitEvent, useRef, useState } from "react";
 
 export default function MicropostForm() {
   const router = useRouter();
-
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [error, setError] = useState("");
@@ -16,7 +15,6 @@ export default function MicropostForm() {
     event.preventDefault();
 
     const formData = new FormData();
-
     formData.append("content", content);
 
     if (image) {

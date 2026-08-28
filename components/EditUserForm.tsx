@@ -1,7 +1,7 @@
 "use client";
 
-import { SubmitEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SubmitEvent, useState } from "react";
 
 type EditUserFormProps = {
   id: string;
@@ -11,7 +11,6 @@ type EditUserFormProps = {
 
 export default function EditUserForm({ id, name, email }: EditUserFormProps) {
   const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

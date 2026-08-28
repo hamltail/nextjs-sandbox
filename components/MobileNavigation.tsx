@@ -48,7 +48,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
           />
 
           <span
-            className={`absolute left-0 top-[18px] h-0.5 w-6 bg-current transition duration-300 ${
+            className={`absolute left-0 top-4.5 h-0.5 w-6 bg-current transition duration-300 ${
               isOpen ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
