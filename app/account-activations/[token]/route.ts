@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 import { hashToken } from "@/lib/auth/token";
 import { prisma } from "@/lib/database/prisma";
