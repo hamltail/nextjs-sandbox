@@ -1,6 +1,6 @@
+import { render } from "@react-email/render";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { render } from "@react-email/render";
 import { resend } from "@/lib/integrations/resend";
 import { sendAccountActivationEmail } from "@/lib/mailer/account-activation";
 

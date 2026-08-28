@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { prisma } from "@/lib/database/prisma";
 import {
   createPasswordReset,
   findValidPasswordResetUser,
 } from "@/lib/auth/password-reset";
 import { hashToken } from "@/lib/auth/token";
+import { prisma } from "@/lib/database/prisma";
 
 vi.mock("@/lib/database/prisma", () => ({
   prisma: {
@@ -121,10 +121,8 @@ describe("findValidPasswordResetUser", () => {
       activated: true,
       activatedAt: new Date(),
       resetDigest: hashToken(resetToken),
-
       // 2時間より前にリセットを要求した状態
       resetSentAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
-
       createdAt: new Date(),
       updatedAt: new Date(),
     };

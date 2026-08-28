@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/database/prisma";
 import { createToken, hashToken } from "@/lib/auth/token";
+import { prisma } from "@/lib/database/prisma";
 
 export async function createPasswordReset(userId: string) {
   const resetToken = createToken();
