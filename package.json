@@ -18,7 +18,9 @@
     "e2e:setup": "tsx --env-file-if-exists=.env.local scripts/e2e-setup.ts",
     "pretest:e2e": "npm run e2e:setup",
     "test:e2e": "playwright test",
-    "test": "npm run format:check && npm run lint && npm run typecheck && npm run test:unit && npm run test:e2e"
+    "test": "npm run format:check && npm run lint && npm run typecheck && npm run test:unit && npm run test:e2e",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1112.0",
@@ -42,8 +44,13 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@chromatic-com/storybook": "latest",
     "@playwright/test": "^1.62.0",
     "@react-email/ui": "^6.9.2",
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-onboarding": "^10.5.10",
+    "@storybook/nextjs-vite": "^10.5.10",
     "@tailwindcss/postcss": "^4",
     "@types/k6": "^2.2.0",
     "@types/node": "^20",
@@ -51,10 +58,13 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
+    "eslint-plugin-storybook": "^10.5.10",
     "react-email": "^6.9.2",
+    "storybook": "^10.5.10",
     "tailwindcss": "^4",
     "tsx": "^4.23.12",
     "typescript": "^5",
+    "vite": "latest",
     "vitest": "^4.1.10"
   }
 }
