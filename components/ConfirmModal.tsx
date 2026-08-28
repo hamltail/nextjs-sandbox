@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 type ConfirmModalProps = {
   isOpen: boolean;
@@ -17,14 +17,38 @@ export default function ConfirmModal({
   onCancel,
   onConfirm,
 }: ConfirmModalProps) {
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
+  const deleteButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!isOpen) {
       return;
     }
 
+    cancelButtonRef.current?.focus();
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         onCancel();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      if (event.shiftKey) {
+        if (document.activeElement === cancelButtonRef.current) {
+          event.preventDefault();
+          deleteButtonRef.current?.focus();
+        }
+
+        return;
+      }
+
+      if (document.activeElement === deleteButtonRef.current) {
+        event.preventDefault();
+        cancelButtonRef.current?.focus();
       }
     }
 
@@ -57,6 +81,7 @@ export default function ConfirmModal({
 
         <div className="mt-6 flex justify-end gap-3">
           <button
+            ref={cancelButtonRef}
             type="button"
             onClick={onCancel}
             className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold dark:border-slate-600"
@@ -65,6 +90,7 @@ export default function ConfirmModal({
           </button>
 
           <button
+            ref={deleteButtonRef}
             type="button"
             onClick={onConfirm}
             className="rounded-full bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
