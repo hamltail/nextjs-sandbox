@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import { hashPassword } from "@/lib/auth/password";
-import { prisma } from "@/lib/database/prisma";
+import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import { passwordResetUpdateSchema } from "@/lib/auth/password-reset-validation";
+import { prisma } from "@/lib/database/prisma";
 
 type RouteContext = {
   params: Promise<{

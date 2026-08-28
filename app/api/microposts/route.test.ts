@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { POST } from "@/app/api/microposts/route";
+
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
 import { uploadImage } from "@/lib/integrations/r2";

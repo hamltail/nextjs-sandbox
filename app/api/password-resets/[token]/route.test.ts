@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PATCH } from "@/app/api/password-resets/[token]/route";
+
 import { findValidPasswordResetUser } from "@/lib/auth/password-reset";
 import { prisma } from "@/lib/database/prisma";
 

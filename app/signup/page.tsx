@@ -1,13 +1,12 @@
 "use client";
 
-import { SubmitEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 
 export default function SignupPage() {
   const router = useRouter();
-
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

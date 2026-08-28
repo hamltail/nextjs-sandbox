@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getFollowers } from "@/lib/microposts/relationship";
 import { prisma } from "@/lib/database/prisma";
+import { getFollowers } from "@/lib/microposts/relationship";
+
 import Container from "@/components/Container";
 
 type FollowersPageProps = {
