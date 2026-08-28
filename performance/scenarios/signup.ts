@@ -6,8 +6,8 @@
 // K6_EMAIL_DOMAIN=example.com \
 // k6 run performance/scenarios/signup.ts
 
-import http from "k6/http";
 import { check } from "k6";
+import http from "k6/http";
 
 import type { CreateUserInput } from "../../lib/users/validation";
 
