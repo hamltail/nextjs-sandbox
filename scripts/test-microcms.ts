@@ -1,4 +1,5 @@
 import { loadEnvConfig } from "@next/env";
+
 import type { News } from "../lib/news/news.types";
 
 loadEnvConfig(process.cwd());
@@ -10,7 +11,6 @@ async function main() {
     endpoint: "news",
   });
 
-  // console.log(response);
   console.log(response.contents[0].title);
   console.log(response.contents[0].category.name);
   console.dir(response, { depth: null });
