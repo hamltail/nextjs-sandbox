@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,37 +8,27 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Production
 /build
 
-# misc
-.DS_Store
-*.pem
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
+# Environment
 .env
 .env.local
 .env.production
 
-# vercel
+# Vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Testing
+/coverage
 
 # Playwright
 /test-results/
@@ -50,10 +38,25 @@ next-env.d.ts
 /playwright/.auth/
 /.tmp/
 
+# Storybook
+*storybook.log
+storybook-static
+
 # OWASP ZAP
 /reports/security/**/*.html
 /reports/security/**/*.json
 /reports/security/**/*.yaml
+
+# Prisma
+/app/generated/prisma/
+/prisma/*.db
+/prisma/*.db-journal
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
 # Local AI coding tools
 /.agents/
@@ -61,12 +64,6 @@ next-env.d.ts
 /.windsurf/
 /skills-lock.json
 
-# Prisma generated client
-/app/generated/prisma/
-
-# Prisma SQLite database
-/prisma/*.db
-/prisma/*.db-journal
-
-*storybook.log
-storybook-static
+# Misc
+.DS_Store
+*.pem
