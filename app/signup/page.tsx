@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { SubmitEvent, useState } from "react";
+import { type SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 

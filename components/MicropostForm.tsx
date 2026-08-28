@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { SubmitEvent, useRef, useState } from "react";
+import { type SubmitEvent, useRef, useState } from "react";
 
 export default function MicropostForm() {
   const router = useRouter();
