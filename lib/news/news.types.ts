@@ -1,4 +1,4 @@
-export type NewsCategory = {
+type NewsCategory = {
   name: string;
 };
 

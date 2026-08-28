@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { useTheme } from "./ThemeProvider";
+import { type Theme, useTheme } from "./ThemeProvider";
 
 const themes = [
   { value: "light", label: "Light" },
@@ -20,7 +20,7 @@ export default function ThemeSwitcher({
   const { theme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
-  function selectTheme(value: (typeof themes)[number]["value"]) {
+  function selectTheme(value: Theme) {
     setTheme(value);
     setIsOpen(false);
   }
