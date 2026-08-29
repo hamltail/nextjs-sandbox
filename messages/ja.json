@@ -48,5 +48,15 @@
     "submit": "アカウントを作成",
     "submitting": "作成中...",
     "error": "ユーザー登録に失敗しました。"
+  },
+  "PasswordResetRequest": {
+    "title": "パスワード再設定",
+    "description": "メールアドレスを入力してください。パスワード再設定用のリンクをお送りします。",
+    "email": "メールアドレス",
+    "submit": "再設定メールを送信",
+    "submitting": "送信中...",
+    "error": "パスワード再設定メールの送信に失敗しました。",
+    "rememberPassword": "パスワードを覚えている方は",
+    "login": "ログイン"
   }
 }
