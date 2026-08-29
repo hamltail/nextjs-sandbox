@@ -58,5 +58,14 @@
     "error": "パスワード再設定メールの送信に失敗しました。",
     "rememberPassword": "パスワードを覚えている方は",
     "login": "ログイン"
+  },
+  "PasswordReset": {
+    "title": "パスワード再設定",
+    "description": "新しいパスワードを入力してください。",
+    "password": "新しいパスワード",
+    "passwordConfirmation": "新しいパスワード（確認）",
+    "submit": "パスワードを更新",
+    "submitting": "更新中...",
+    "error": "パスワードの更新に失敗しました。"
   }
 }
