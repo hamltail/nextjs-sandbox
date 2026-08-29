@@ -41,6 +41,16 @@ export default function AboutPage() {
                 <p>{t("privacy.disclaimer")}</p>
               </div>
             </section>
+
+            <section>
+              <h2 className="text-2xl font-bold">
+                {t("prohibitedActs.title")}
+              </h2>
+
+              <p className="text-muted mt-4 leading-8">
+                {t("prohibitedActs.description")}
+              </p>
+            </section>
           </div>
         </div>
       </Container>

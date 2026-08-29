@@ -24,6 +24,12 @@ test("Aboutページへ遷移できる", async ({ page }) => {
       name: "hamltail Web Lab",
     }),
   ).toBeVisible();
+
+  await expect(
+    page.getByRole("heading", {
+      name: "Prohibited conduct",
+    }),
+  ).toBeVisible();
 });
 
 test("Sign upページへ遷移できる", async ({ page }) => {
