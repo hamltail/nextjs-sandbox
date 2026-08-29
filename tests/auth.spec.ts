@@ -24,7 +24,7 @@ test.describe("認証機能", () => {
 
     await expect(
       page.getByRole("heading", {
-        name: "Micropost Feed",
+        name: "Post feed",
       }),
     ).toBeVisible();
   });

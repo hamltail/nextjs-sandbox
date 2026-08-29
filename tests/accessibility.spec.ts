@@ -67,7 +67,7 @@ test("ログイン後トップページにアクセシビリティ違反がな�
 
   await expect(
     page.getByRole("heading", {
-      name: "Micropost Feed",
+      name: "Post Feed",
     }),
   ).toBeVisible();
 
