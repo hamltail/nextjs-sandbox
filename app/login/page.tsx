@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { type SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 
 export default function LoginPage() {
+  const t = useTranslations("Login");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,7 +33,7 @@ export default function LoginPage() {
     const data = await response.json();
 
     if (!response.ok) {
-      setErrorMessage(data.message ?? "ログインに失敗しました。");
+      setErrorMessage(data.message ?? t("error"));
       setIsSubmitting(false);
       return;
     }
@@ -43,10 +45,10 @@ export default function LoginPage() {
     <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
-          <h1 className="font-en text-4xl font-bold">Log in</h1>
+          <h1 className="text-4xl font-bold">{t("title")}</h1>
 
           <p className="mt-3 text-gray-600 dark:text-gray-300">
-            Log in to your account.
+            {t("description")}
           </p>
 
           {errorMessage && (
@@ -61,7 +63,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
-                Email
+                {t("email")}
               </label>
 
               <input
@@ -76,14 +78,14 @@ export default function LoginPage() {
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="block text-sm font-medium">
-                  Password
+                  {t("password")}
                 </label>
 
                 <Link
                   href="/password-resets"
                   className="text-sm text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
                 >
-                  Forgot password?
+                  {t("forgotPassword")}
                 </Link>
               </div>
 
@@ -99,19 +101,19 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
             >
-              {isSubmitting ? "Logging in..." : "Log in"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </button>
           </form>
 
           <p className="mt-6 text-sm text-gray-600 dark:text-gray-300">
-            New user?{" "}
+            {t("newUser")}{" "}
             <Link
               href="/signup"
               className="font-medium text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
             >
-              Sign up now!
+              {t("signUp")}
             </Link>
           </p>
         </div>

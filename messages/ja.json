@@ -25,5 +25,17 @@
       "sensitiveInformation": "パスワードや個人情報など、重要な情報や機密情報は登録しないでください。",
       "disclaimer": "本サイトの利用によって生じた損害やトラブルについて、運営者は責任を負いかねます。"
     }
+  },
+  "Login": {
+    "title": "ログイン",
+    "description": "アカウントにログインします。",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "submit": "ログイン",
+    "submitting": "ログイン中...",
+    "error": "ログインに失敗しました。",
+    "newUser": "初めての方は",
+    "signUp": "新規登録"
   }
 }
