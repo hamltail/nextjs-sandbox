@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
@@ -17,6 +18,7 @@ type PageProps = {
 };
 
 export default async function UsersPage({ searchParams }: PageProps) {
+  const t = await getTranslations("Users");
   const { page, deleted } = await searchParams;
 
   const currentPage = Math.max(Number(page) || 1, 1);
@@ -57,7 +59,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
               role="status"
               className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
             >
-              User deleted successfully.
+              {t("deleted")}
             </div>
           )}
 
@@ -66,7 +68,9 @@ export default async function UsersPage({ searchParams }: PageProps) {
               USERS
             </p>
 
-            <h1 className="mt-2 text-4xl font-bold tracking-tight">Users</h1>
+            <h1 className="mt-2 text-4xl font-bold tracking-tight">
+              {t("title")}
+            </h1>
           </div>
 
           <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
@@ -99,7 +103,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
 
           {totalPages > 1 && (
             <nav
-              aria-label="ユーザー一覧のページネーション"
+              aria-label={t("paginationLabel")}
               className="mt-8 flex items-center justify-center gap-2"
             >
               {currentPage > 1 && (
@@ -107,7 +111,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
                   href={`/users?page=${currentPage - 1}`}
                   className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
                 >
-                  Previous
+                  {t("previous")}
                 </Link>
               )}
 
@@ -134,7 +138,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
                   href={`/users?page=${currentPage + 1}`}
                   className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
                 >
-                  Next
+                  {t("next")}
                 </Link>
               )}
             </nav>

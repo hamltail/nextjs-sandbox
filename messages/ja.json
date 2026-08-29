@@ -74,5 +74,12 @@
   "MicropostFeed": {
     "title": "投稿フィード",
     "empty": "投稿はまだありません。"
+  },
+  "Users": {
+    "title": "ユーザー一覧",
+    "deleted": "ユーザーを削除しました。",
+    "paginationLabel": "ユーザー一覧のページネーション",
+    "previous": "前へ",
+    "next": "次へ"
   }
 }
