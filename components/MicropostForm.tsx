@@ -69,7 +69,7 @@ export default function MicropostForm() {
 
         <label
           htmlFor="micropost-image"
-          className="text-primary inline-flex cursor-pointer items-center gap-2 rounded-full bg-violet-100 px-4 py-2 text-sm font-semibold transition hover:bg-violet-200 dark:bg-violet-950 dark:hover:bg-violet-900"
+          className="text-primary inline-flex cursor-pointer items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold transition hover:bg-orange-200 dark:bg-orange-950 dark:hover:bg-orange-900"
         >
           <svg
             aria-hidden="true"

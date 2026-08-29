@@ -33,7 +33,7 @@ export default function NewsSection({
     <section className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="bg-glow/30 dark:bg-glow/10 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        className="bg-glow/30 dark:bg-glow/30 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
       />
 
       <Container>

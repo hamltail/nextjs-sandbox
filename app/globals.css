@@ -3,14 +3,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: var(--color-orange-50);
+  --background: var(--color-white);
   --foreground: var(--color-slate-950);
   --surface: var(--color-white);
   --border: var(--color-gray-300);
   --muted: var(--color-gray-600);
-  --primary: var(--color-violet-600);
-  --primary-hover: var(--color-violet-700);
+
+  --primary: var(--color-orange-600);
+  --primary-hover: var(--color-orange-700);
   --primary-foreground: var(--color-white);
+
+  --accent: var(--color-violet-600);
+  --accent-hover: var(--color-violet-700);
+
   --glow: var(--color-orange-500);
 }
 
@@ -20,9 +25,14 @@
   --surface: var(--color-slate-900);
   --border: var(--color-slate-700);
   --muted: var(--color-gray-300);
-  --primary: var(--color-violet-300);
-  --primary-hover: var(--color-violet-200);
+
+  --primary: var(--color-orange-400);
+  --primary-hover: var(--color-orange-300);
   --primary-foreground: var(--color-slate-950);
+
+  --accent: var(--color-violet-300);
+  --accent-hover: var(--color-violet-200);
+
   --glow: var(--color-orange-400);
 }
 
@@ -37,9 +47,14 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-muted: var(--muted);
+
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
   --color-glow: var(--glow);
 }
 
