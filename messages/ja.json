@@ -81,5 +81,19 @@
     "paginationLabel": "ユーザー一覧のページネーション",
     "previous": "前へ",
     "next": "次へ"
+  },
+  "DeleteUser": {
+    "button": "削除",
+    "title": "ユーザーを削除しますか？",
+    "message": "削除したユーザーは元に戻せません。"
+  },
+  "DeleteMicropost": {
+    "button": "削除",
+    "title": "投稿を削除しますか？",
+    "message": "削除した投稿は元に戻せません。"
+  },
+  "ConfirmModal": {
+    "cancel": "キャンセル",
+    "delete": "削除"
   }
 }
