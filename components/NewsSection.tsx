@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { MicroCMSListContent } from "microcms-js-sdk";
+import { useLocale, useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
 import type { News } from "@/lib/news/news.types";
@@ -10,8 +11,8 @@ type NewsSectionProps = {
   totalPages: number;
 };
 
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("ja-JP", {
+function formatDate(date: string, locale: string) {
+  return new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -25,6 +26,9 @@ export default function NewsSection({
   currentPage,
   totalPages,
 }: NewsSectionProps) {
+  const t = useTranslations("News");
+  const locale = useLocale();
+
   return (
     <section className="relative overflow-hidden border-t border-gray-100 bg-white px-7 py-16 text-slate-950 transition-colors dark:border-slate-900 dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
       <div
@@ -36,10 +40,12 @@ export default function NewsSection({
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-10">
             <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
-              NEWS
+              {t("label")}
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight">お知らせ</h2>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight">
+              {t("title")}
+            </h2>
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
@@ -55,7 +61,7 @@ export default function NewsSection({
                         dateTime={news.publishedAt}
                         className="text-sm text-gray-600 dark:text-gray-300"
                       >
-                        {formatDate(news.publishedAt)}
+                        {formatDate(news.publishedAt, locale)}
                       </time>
                     )}
 
@@ -74,7 +80,7 @@ export default function NewsSection({
 
           {totalPages > 1 && (
             <nav
-              aria-label="お知らせのページネーション"
+              aria-label={t("paginationLabel")}
               className="mt-8 flex items-center justify-center gap-6"
             >
               {Array.from({ length: totalPages }, (_, index) => {

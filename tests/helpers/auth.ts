@@ -29,7 +29,7 @@ export async function loginAsE2EUser(page: Page): Promise<E2EUser> {
 
   await expect(
     page.getByRole("heading", {
-      name: "Micropost Feed",
+      name: "Post feed",
     }),
   ).toBeVisible();
 

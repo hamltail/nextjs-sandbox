@@ -18,9 +18,9 @@ export async function sendPasswordResetEmail({
   resetUrl.searchParams.set("email", email);
 
   const { data, error } = await resend.emails.send({
-    from: "Next.js Sandbox <noreply@mail.hamltail.dev>",
+    from: "hamltail Web Lab <noreply@mail.hamltail.dev>",
     to: email,
-    subject: "Password reset",
+    subject: "パスワード再設定のご案内",
     react: PasswordResetEmail({
       resetUrl: resetUrl.toString(),
     }),

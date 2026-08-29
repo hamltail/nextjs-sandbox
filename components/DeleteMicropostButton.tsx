@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import ConfirmModal from "./ConfirmModal";
@@ -13,6 +14,7 @@ export default function DeleteMicropostButton({
   id,
 }: DeleteMicropostButtonProps) {
   const router = useRouter();
+  const t = useTranslations("DeleteMicropost");
   const [isOpen, setIsOpen] = useState(false);
 
   async function handleDelete() {
@@ -35,13 +37,13 @@ export default function DeleteMicropostButton({
         onClick={() => setIsOpen(true)}
         className="text-sm font-semibold text-red-600 transition hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
       >
-        Delete
+        {t("button")}
       </button>
 
       <ConfirmModal
         isOpen={isOpen}
-        title="Micropostを削除しますか？"
-        message="削除したMicropostは元に戻せません。"
+        title={t("title")}
+        message={t("message")}
         onCancel={() => setIsOpen(false)}
         onConfirm={handleDelete}
       />

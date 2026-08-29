@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 
 type ConfirmModalProps = {
@@ -17,6 +18,7 @@ export default function ConfirmModal({
   onCancel,
   onConfirm,
 }: ConfirmModalProps) {
+  const t = useTranslations("ConfirmModal");
   const cancelButtonRef = useRef<HTMLButtonElement>(null);
   const deleteButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -86,7 +88,7 @@ export default function ConfirmModal({
             onClick={onCancel}
             className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold dark:border-slate-600"
           >
-            Cancel
+            {t("cancel")}
           </button>
 
           <button
@@ -95,7 +97,7 @@ export default function ConfirmModal({
             onClick={onConfirm}
             className="rounded-full bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
           >
-            Delete
+            {t("delete")}
           </button>
         </div>
       </div>

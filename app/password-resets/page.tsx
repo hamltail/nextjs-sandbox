@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { type SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 
 export default function PasswordResetsPage() {
+  const t = useTranslations("PasswordResetRequest");
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,9 +34,7 @@ export default function PasswordResetsPage() {
     const data = await response.json();
 
     if (!response.ok) {
-      setErrorMessage(
-        data.message ?? "パスワード再設定メールの送信に失敗しました。",
-      );
+      setErrorMessage(data.message ?? t("error"));
       setIsSubmitting(false);
       return;
     }
@@ -47,11 +47,10 @@ export default function PasswordResetsPage() {
     <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
-          <h1 className="font-en text-4xl font-bold">Forgot password</h1>
+          <h1 className="text-4xl font-bold">{t("title")}</h1>
 
           <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
-            Enter your email address and we&apos;ll send you a password reset
-            link.
+            {t("description")}
           </p>
 
           {message && (
@@ -75,7 +74,7 @@ export default function PasswordResetsPage() {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
-                Email
+                {t("email")}
               </label>
 
               <input
@@ -91,19 +90,19 @@ export default function PasswordResetsPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
             >
-              {isSubmitting ? "Sending..." : "Submit"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </button>
           </form>
 
           <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-300">
-            Remember your password?{" "}
+            {t("rememberPassword")}{" "}
             <Link
               href="/login"
               className="font-medium text-teal-700 transition hover:text-teal-800 dark:text-teal-300 dark:hover:text-teal-200"
             >
-              Log in
+              {t("login")}
             </Link>
           </p>
         </div>

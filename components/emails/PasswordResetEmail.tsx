@@ -18,15 +18,17 @@ export default function PasswordResetEmail({
   resetUrl,
 }: PasswordResetEmailProps) {
   return (
-    <Html>
+    <Html lang="ja">
       <Head />
-      <Preview>Password reset</Preview>
+      <Preview>パスワード再設定のご案内</Preview>
 
       <Body>
         <Container>
-          <Heading>Password reset</Heading>
+          <Heading>hamltail Web Lab</Heading>
 
-          <Text>To reset your password, click the button below.</Text>
+          <Text>
+            パスワードを再設定するには、以下のボタンをクリックしてください。
+          </Text>
 
           <Section>
             <Button
@@ -39,14 +41,14 @@ export default function PasswordResetEmail({
                 textDecoration: "none",
               }}
             >
-              Reset password
+              パスワードを再設定
             </Button>
           </Section>
 
-          <Text>This link will expire in two hours.</Text>
+          <Text>このリンクの有効期限は2時間です。</Text>
 
           <Text>
-            If you did not request a password reset, please ignore this email.
+            パスワード再設定を申請していない場合は、このメールを破棄してください。
           </Text>
         </Container>
       </Body>

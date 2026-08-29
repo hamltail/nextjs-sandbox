@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { type SubmitEvent, useState } from "react";
 
 type PasswordResetFormProps = {
@@ -13,6 +14,7 @@ export default function PasswordResetForm({
   token,
 }: PasswordResetFormProps) {
   const router = useRouter();
+  const t = useTranslations("PasswordReset");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -39,7 +41,7 @@ export default function PasswordResetForm({
     const data = await response.json();
 
     if (!response.ok) {
-      setErrorMessage(data.message ?? "パスワードの更新に失敗しました。");
+      setErrorMessage(data.message ?? t("error"));
       setIsSubmitting(false);
       return;
     }
@@ -61,7 +63,7 @@ export default function PasswordResetForm({
       <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="password" className="block text-sm font-medium">
-            Password
+            {t("password")}
           </label>
 
           <input
@@ -78,7 +80,7 @@ export default function PasswordResetForm({
             htmlFor="passwordConfirmation"
             className="block text-sm font-medium"
           >
-            Confirm password
+            {t("passwordConfirmation")}
           </label>
 
           <input
@@ -93,9 +95,9 @@ export default function PasswordResetForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
         >
-          {isSubmitting ? "Updating..." : "Update password"}
+          {isSubmitting ? t("submitting") : t("submit")}
         </button>
       </form>
     </>

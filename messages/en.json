@@ -1,0 +1,137 @@
+{
+  "Hero": {
+    "brand": "hamltail Web Lab",
+    "build": "Build.",
+    "test": "Test.",
+    "explore": "Explore.",
+    "description": "A web lab for building, testing, and exploring."
+  },
+  "News": {
+    "label": "NEWS",
+    "title": "News",
+    "paginationLabel": "News pagination"
+  },
+  "About": {
+    "label": "About",
+    "title": "hamltail Web Lab",
+    "description": "A personal experimental site for exploring web development, UI, testing, quality improvement, and related technologies, mainly with Next.js.",
+    "environment": {
+      "title": "About the experimental environment",
+      "description": "This site is used to experiment with technologies related to web application development, including authentication, databases, external service integrations, UI, and test automation. Test data such as registered users and posts is automatically deleted every day at 03:00 JST."
+    },
+    "privacy": {
+      "title": "Privacy and disclaimer",
+      "data": "Registered information and post data are not guaranteed to be stored permanently and may be deleted or changed without notice.",
+      "sensitiveInformation": "Do not enter important or sensitive information, such as passwords or personal information.",
+      "disclaimer": "The operator is not responsible for any damage or trouble arising from the use of this site."
+    }
+  },
+  "Login": {
+    "title": "Log in",
+    "description": "Log in to your account.",
+    "email": "Email address",
+    "password": "Password",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Log in",
+    "submitting": "Logging in...",
+    "error": "Failed to log in.",
+    "newUser": "New here?",
+    "signUp": "Sign up"
+  },
+  "Signup": {
+    "title": "Sign up",
+    "description": "Create an account.",
+    "name": "Name",
+    "email": "Email address",
+    "password": "Password",
+    "passwordConfirmation": "Confirm password",
+    "submit": "Create account",
+    "submitting": "Creating...",
+    "error": "Failed to create your account."
+  },
+  "SignupSuccess": {
+    "message": "A confirmation email has been sent. Please activate your account using the link in the email."
+  },
+  "PasswordResetRequest": {
+    "title": "Reset password",
+    "description": "Enter your email address and we will send you a password reset link.",
+    "email": "Email address",
+    "submit": "Send reset email",
+    "submitting": "Sending...",
+    "error": "Failed to send the password reset email.",
+    "rememberPassword": "Remember your password?",
+    "login": "Log in"
+  },
+  "PasswordReset": {
+    "title": "Reset password",
+    "description": "Enter your new password.",
+    "password": "New password",
+    "passwordConfirmation": "Confirm new password",
+    "submit": "Update password",
+    "submitting": "Updating...",
+    "error": "Failed to update your password."
+  },
+  "MicropostFeed": {
+    "title": "Post feed",
+    "empty": "There are no posts yet."
+  },
+  "Users": {
+    "title": "Users",
+    "deleted": "The user has been deleted.",
+    "paginationLabel": "Users pagination",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "DeleteUser": {
+    "button": "Delete",
+    "title": "Delete this user?",
+    "message": "This user cannot be restored after deletion."
+  },
+  "DeleteMicropost": {
+    "button": "Delete",
+    "title": "Delete this post?",
+    "message": "This post cannot be restored after deletion."
+  },
+  "ConfirmModal": {
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "Profile": {
+    "updated": "Your profile has been updated.",
+    "following": "following",
+    "followers": "followers",
+    "email": "Email address",
+    "microposts": "Posts ({count})",
+    "empty": "There are no posts yet."
+  },
+  "FollowButton": {
+    "loading": "Processing...",
+    "follow": "Follow",
+    "unfollow": "Unfollow"
+  },
+  "MicropostForm": {
+    "placeholder": "Write a post",
+    "image": "Image",
+    "error": "Failed to create the post.",
+    "submit": "Post"
+  },
+  "EditProfile": {
+    "title": "Edit profile",
+    "description": "Update your account information.",
+    "name": "Name",
+    "email": "Email address",
+    "error": "Failed to update your account information.",
+    "submit": "Save changes",
+    "submitting": "Saving..."
+  },
+  "Following": {
+    "title": "People {name} follows",
+    "count": "Following {count}",
+    "empty": "This user is not following anyone."
+  },
+  "Followers": {
+    "title": "Followers of {name}",
+    "count": "{count} followers",
+    "empty": "This user has no followers."
+  }
+}

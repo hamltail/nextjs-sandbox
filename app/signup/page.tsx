@@ -1,12 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { type SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 
 export default function SignupPage() {
   const router = useRouter();
+  const t = useTranslations("Signup");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -34,7 +36,7 @@ export default function SignupPage() {
     const data = await response.json();
 
     if (!response.ok) {
-      let message = data.message ?? "ユーザー登録に失敗しました。";
+      let message = data.message ?? t("error");
 
       if (Array.isArray(data.errors) && data.errors.length > 0) {
         const messages = data.errors.map(
@@ -55,10 +57,10 @@ export default function SignupPage() {
     <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
-          <h1 className="font-en text-4xl font-bold">Sign up</h1>
+          <h1 className="text-4xl font-bold">{t("title")}</h1>
 
           <p className="mt-3 text-gray-600 dark:text-gray-300">
-            Create your account.
+            {t("description")}
           </p>
 
           {errorMessage && (
@@ -73,7 +75,7 @@ export default function SignupPage() {
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium">
-                Name
+                {t("name")}
               </label>
 
               <input
@@ -87,7 +89,7 @@ export default function SignupPage() {
 
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
-                Email
+                {t("email")}
               </label>
 
               <input
@@ -101,7 +103,7 @@ export default function SignupPage() {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium">
-                Password
+                {t("password")}
               </label>
 
               <input
@@ -118,7 +120,7 @@ export default function SignupPage() {
                 htmlFor="passwordConfirmation"
                 className="block text-sm font-medium"
               >
-                Confirm password
+                {t("passwordConfirmation")}
               </label>
 
               <input
@@ -133,9 +135,9 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-en inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
             >
-              {isSubmitting ? "Creating..." : "Create account"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </button>
           </form>
         </div>

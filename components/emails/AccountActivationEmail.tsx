@@ -20,19 +20,19 @@ export default function AccountActivationEmail({
   activationUrl,
 }: AccountActivationEmailProps) {
   return (
-    <Html>
+    <Html lang="ja">
       <Head />
-      <Preview>Activate your account</Preview>
+      <Preview>アカウントを有効化してください</Preview>
 
       <Body>
         <Container>
-          <Heading>Next.js Sandbox</Heading>
+          <Heading>hamltail Web Lab</Heading>
 
-          <Text>Hi {name},</Text>
+          <Text>{name} さん</Text>
 
           <Text>
-            Welcome to Next.js Sandbox! Click the button below to activate your
-            account:
+            hamltail Web Lab
+            へのご登録ありがとうございます。以下のボタンからアカウントを有効化してください。
           </Text>
 
           <Section>
@@ -46,7 +46,7 @@ export default function AccountActivationEmail({
                 textDecoration: "none",
               }}
             >
-              Activate
+              アカウントを有効化
             </Button>
           </Section>
         </Container>

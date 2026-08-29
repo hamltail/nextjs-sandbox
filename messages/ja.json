@@ -1,0 +1,137 @@
+{
+  "Hero": {
+    "brand": "hamltail Web Lab",
+    "build": "Build.",
+    "test": "Test.",
+    "explore": "Explore.",
+    "description": "作って、試して、探索するWebのラボ。"
+  },
+  "News": {
+    "label": "NEWS",
+    "title": "お知らせ",
+    "paginationLabel": "お知らせのページネーション"
+  },
+  "About": {
+    "label": "About",
+    "title": "hamltail Web Lab",
+    "description": "Next.jsを中心に、Web開発・UI・テスト・品質改善などを実際に作りながら検証する個人の実験サイトです。",
+    "environment": {
+      "title": "実験環境について",
+      "description": "認証、データベース、外部サービス連携、UI、テスト自動化など、Webアプリケーション開発に関わる技術を検証しています。登録されたユーザーや投稿などのテストデータは、毎日03:00（JST）に自動削除されます。"
+    },
+    "privacy": {
+      "title": "プライバシーと免責事項",
+      "data": "登録情報や投稿データは継続的な保存を保証しておらず、予告なく削除・変更される場合があります。",
+      "sensitiveInformation": "パスワードや個人情報など、重要な情報や機密情報は登録しないでください。",
+      "disclaimer": "本サイトの利用によって生じた損害やトラブルについて、運営者は責任を負いかねます。"
+    }
+  },
+  "Login": {
+    "title": "ログイン",
+    "description": "アカウントにログインします。",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "submit": "ログイン",
+    "submitting": "ログイン中...",
+    "error": "ログインに失敗しました。",
+    "newUser": "初めての方は",
+    "signUp": "新規登録"
+  },
+  "Signup": {
+    "title": "新規登録",
+    "description": "アカウントを作成します。",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "passwordConfirmation": "パスワード（確認）",
+    "submit": "アカウントを作成",
+    "submitting": "作成中...",
+    "error": "ユーザー登録に失敗しました。"
+  },
+  "SignupSuccess": {
+    "message": "確認メールを送信しました。メール内のリンクからアカウントを有効化してください。"
+  },
+  "PasswordResetRequest": {
+    "title": "パスワード再設定",
+    "description": "メールアドレスを入力してください。パスワード再設定用のリンクをお送りします。",
+    "email": "メールアドレス",
+    "submit": "再設定メールを送信",
+    "submitting": "送信中...",
+    "error": "パスワード再設定メールの送信に失敗しました。",
+    "rememberPassword": "パスワードを覚えている方は",
+    "login": "ログイン"
+  },
+  "PasswordReset": {
+    "title": "パスワード再設定",
+    "description": "新しいパスワードを入力してください。",
+    "password": "新しいパスワード",
+    "passwordConfirmation": "新しいパスワード（確認）",
+    "submit": "パスワードを更新",
+    "submitting": "更新中...",
+    "error": "パスワードの更新に失敗しました。"
+  },
+  "MicropostFeed": {
+    "title": "投稿フィード",
+    "empty": "投稿はまだありません。"
+  },
+  "Users": {
+    "title": "ユーザー一覧",
+    "deleted": "ユーザーを削除しました。",
+    "paginationLabel": "ユーザー一覧のページネーション",
+    "previous": "前へ",
+    "next": "次へ"
+  },
+  "DeleteUser": {
+    "button": "削除",
+    "title": "ユーザーを削除しますか？",
+    "message": "削除したユーザーは元に戻せません。"
+  },
+  "DeleteMicropost": {
+    "button": "削除",
+    "title": "投稿を削除しますか？",
+    "message": "削除した投稿は元に戻せません。"
+  },
+  "ConfirmModal": {
+    "cancel": "キャンセル",
+    "delete": "削除"
+  },
+  "Profile": {
+    "updated": "プロフィールを更新しました。",
+    "following": "フォロー中",
+    "followers": "フォロワー",
+    "email": "メールアドレス",
+    "microposts": "投稿（{count}）",
+    "empty": "投稿はまだありません。"
+  },
+  "FollowButton": {
+    "loading": "処理中...",
+    "follow": "フォロー",
+    "unfollow": "フォロー解除"
+  },
+  "MicropostForm": {
+    "placeholder": "投稿を入力",
+    "image": "画像",
+    "error": "投稿できませんでした。",
+    "submit": "投稿"
+  },
+  "EditProfile": {
+    "title": "プロフィール編集",
+    "description": "アカウント情報を更新します。",
+    "name": "名前",
+    "email": "メールアドレス",
+    "error": "ユーザー情報の更新に失敗しました。",
+    "submit": "変更を保存",
+    "submitting": "保存中..."
+  },
+  "Following": {
+    "title": "{name} がフォロー中",
+    "count": "{count}人をフォロー中",
+    "empty": "フォローしているユーザーはいません。"
+  },
+  "Followers": {
+    "title": "{name} のフォロワー",
+    "count": "{count}人のフォロワー",
+    "empty": "フォロワーはいません。"
+  }
+}

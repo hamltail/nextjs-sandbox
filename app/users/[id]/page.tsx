@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
@@ -25,6 +26,7 @@ type PageProps = {
 };
 
 export default async function UserPage({ params, searchParams }: PageProps) {
+  const t = await getTranslations("Profile");
   const { id } = await params;
   const { updated } = await searchParams;
   const current = await currentUser();
@@ -73,7 +75,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               role="status"
               className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
             >
-              Profile updated successfully.
+              {t("updated")}
             </div>
           )}
 
@@ -95,7 +97,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                   <strong className="text-gray-900 dark:text-gray-100">
                     {followingCount}
                   </strong>{" "}
-                  following
+                  {t("following")}
                 </Link>
 
                 <Link
@@ -105,7 +107,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                   <strong className="text-gray-900 dark:text-gray-100">
                     {followersCount}
                   </strong>{" "}
-                  followers
+                  {t("followers")}
                 </Link>
               </div>
             </div>
@@ -117,8 +119,8 @@ export default async function UserPage({ params, searchParams }: PageProps) {
 
           <div className="rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:p-8">
             <div>
-              <p className="font-en text-sm font-semibold text-gray-500 dark:text-gray-400">
-                Email
+              <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                {t("email")}
               </p>
 
               <p className="mt-2 text-lg">
@@ -143,7 +145,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
                 </p>
 
                 <h2 className="mt-2 text-2xl font-bold">
-                  Microposts ({user.microposts.length})
+                  {t("microposts", { count: user.microposts.length })}
                 </h2>
               </div>
             </div>
@@ -164,7 +166,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               </div>
             ) : (
               <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 dark:text-gray-400">
-                投稿はまだありません。
+                {t("empty")}
               </p>
             )}
           </div>
