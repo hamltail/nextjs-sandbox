@@ -38,14 +38,12 @@ export default async function EditUserPage({ params }: PageProps) {
   }
 
   return (
-    <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
+    <section className="bg-background text-foreground px-7 py-12 transition-colors md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
           <h1 className="text-4xl font-bold">{t("title")}</h1>
 
-          <p className="mt-3 text-gray-600 dark:text-gray-300">
-            {t("description")}
-          </p>
+          <p className="text-muted mt-3">{t("description")}</p>
 
           <EditUserForm id={user.id} name={user.name} email={user.email} />
         </div>

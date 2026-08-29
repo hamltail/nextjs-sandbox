@@ -42,10 +42,10 @@ export default function ThemeSwitcher({
               key={item.value}
               type="button"
               onClick={() => selectTheme(item.value)}
-              className={`flex items-center justify-between rounded-md px-3 py-2 text-left transition ${
+              className={`flex items-center justify-between rounded-md px-3 py-2 text-left transition-colors ${
                 theme === item.value
-                  ? "bg-teal-50 text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
-                  : "hover:bg-gray-100 dark:hover:bg-slate-800"
+                  ? "bg-accent/10 text-accent"
+                  : "hover:bg-accent/10 hover:text-accent focus-visible:bg-accent/10 focus-visible:text-accent"
               }`}
             >
               <span>{item.label}</span>
@@ -69,14 +69,14 @@ export default function ThemeSwitcher({
         aria-expanded={isOpen}
         aria-controls="theme-menu"
         onClick={() => setIsOpen((current) => !current)}
-        className="font-en rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold transition hover:bg-gray-100 dark:border-slate-700 dark:hover:bg-slate-800"
+        className="font-en border-border hover:border-accent hover:text-accent focus-visible:border-accent focus-visible:text-accent rounded-full border px-4 py-2 text-sm font-semibold transition-colors"
       >
         Theme
       </button>
 
       <div
         id="theme-menu"
-        className={`absolute right-0 top-full z-50 mt-2 w-36 rounded-xl border border-gray-200 bg-white p-2 shadow-lg transition-all duration-200 dark:border-slate-700 dark:bg-slate-900 ${
+        className={`border-border bg-surface absolute top-full right-0 z-50 mt-2 w-36 rounded-xl border p-2 shadow-lg transition-all duration-200 ${
           isOpen
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-1 opacity-0"
@@ -88,10 +88,10 @@ export default function ThemeSwitcher({
               key={item.value}
               type="button"
               onClick={() => selectTheme(item.value)}
-              className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition ${
+              className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                 theme === item.value
-                  ? "bg-teal-50 font-semibold text-teal-700 dark:bg-teal-400/10 dark:text-teal-300"
-                  : "hover:bg-gray-100 dark:hover:bg-slate-800"
+                  ? "bg-accent/10 text-accent font-semibold"
+                  : "hover:bg-accent/10 hover:text-accent focus-visible:bg-accent/10 focus-visible:text-accent"
               }`}
             >
               <span>{item.label}</span>

@@ -31,11 +31,11 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
   const following = await getFollowing(user.id);
 
   return (
-    <section className="bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
+    <section className="bg-background text-foreground px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
+            <p className="font-en text-primary text-sm font-semibold tracking-[0.2em]">
               FOLLOWING
             </p>
 
@@ -43,18 +43,18 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
               {t("title", { name: user.name })}
             </h1>
 
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-muted mt-2 text-sm">
               {t("count", { count: following.length })}
             </p>
           </div>
 
           {following.length > 0 ? (
-            <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80">
+            <div className="divide-border border-border bg-surface/90 divide-y rounded-2xl border px-6 shadow-sm transition-colors">
               {following.map((followedUser) => (
                 <div key={followedUser.id} className="py-4">
                   <Link
                     href={`/users/${followedUser.id}`}
-                    className="font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
+                    className="hover:text-primary focus-visible:text-accent font-semibold transition"
                   >
                     {followedUser.name}
                   </Link>
@@ -62,7 +62,7 @@ export default async function FollowingPage({ params }: FollowingPageProps) {
               ))}
             </div>
           ) : (
-            <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 dark:text-gray-400">
+            <p className="border-border bg-surface/90 text-muted rounded-2xl border p-6 shadow-sm transition-colors">
               {t("empty")}
             </p>
           )}

@@ -54,14 +54,12 @@ export default function SignupPage() {
   }
 
   return (
-    <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
+    <section className="bg-background text-foreground px-7 py-12 transition-colors md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
           <h1 className="text-4xl font-bold">{t("title")}</h1>
 
-          <p className="mt-3 text-gray-600 dark:text-gray-300">
-            {t("description")}
-          </p>
+          <p className="text-muted mt-3">{t("description")}</p>
 
           {errorMessage && (
             <div
@@ -83,7 +81,7 @@ export default function SignupPage() {
                 name="name"
                 type="text"
                 autoComplete="name"
-                className="mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-100 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -97,7 +95,7 @@ export default function SignupPage() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-100 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -111,7 +109,7 @@ export default function SignupPage() {
                 name="password"
                 type="password"
                 autoComplete="new-password"
-                className="mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-100 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -128,14 +126,14 @@ export default function SignupPage() {
                 name="passwordConfirmation"
                 type="password"
                 autoComplete="new-password"
-                className="mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-100 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-teal-700 px-6 text-lg font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+              className="bg-primary text-primary-foreground hover:bg-primary-hover inline-flex min-h-12 w-full items-center justify-center rounded-full px-6 text-lg font-semibold transition disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? t("submitting") : t("submit")}
             </button>

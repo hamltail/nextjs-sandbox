@@ -25,7 +25,7 @@ export default function MicropostItem({
         {micropost.user && (
           <Link
             href={`/users/${micropost.user.id}`}
-            className="mb-2 block font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
+            className="hover:text-accent focus-visible:text-accent mb-2 block font-semibold transition"
           >
             {micropost.user.name}
           </Link>
@@ -43,7 +43,7 @@ export default function MicropostItem({
           />
         )}
 
-        <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-muted mt-3 text-sm">
           {micropost.createdAt.toLocaleString("ja-JP", {
             timeZone: "Asia/Tokyo",
           })}

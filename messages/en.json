@@ -24,6 +24,10 @@
       "data": "Registered information and post data are not guaranteed to be stored permanently and may be deleted or changed without notice.",
       "sensitiveInformation": "Do not enter important or sensitive information, such as passwords or personal information.",
       "disclaimer": "The operator is not responsible for any damage or trouble arising from the use of this site."
+    },
+    "prohibitedActs": {
+      "title": "Prohibited conduct",
+      "description": "This site prohibits defamation, harassment, conduct that damages the reputation or credibility of others, invasion of privacy, and other conduct that infringes the rights of third parties. If such conduct is identified, requests for disclosure of sender information or other legal action may be taken as necessary."
     }
   },
   "Login": {
@@ -112,6 +116,8 @@
   "MicropostForm": {
     "placeholder": "Write a post",
     "image": "Image",
+    "selectImage": "Choose image",
+    "noImageSelected": "No image selected",
     "error": "Failed to create the post.",
     "submit": "Post"
   },

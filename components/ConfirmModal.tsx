@@ -71,22 +71,20 @@ export default function ConfirmModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="confirm-modal-title"
-        className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900"
+        className="bg-surface text-foreground w-full max-w-md rounded-2xl p-6 shadow-xl"
       >
         <h2 id="confirm-modal-title" className="text-xl font-semibold">
           {title}
         </h2>
 
-        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-          {message}
-        </p>
+        <p className="text-muted mt-3 text-sm">{message}</p>
 
         <div className="mt-6 flex justify-end gap-3">
           <button
             ref={cancelButtonRef}
             type="button"
             onClick={onCancel}
-            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold dark:border-slate-600"
+            className="border-border hover:border-primary rounded-full border px-4 py-2 text-sm font-semibold transition"
           >
             {t("cancel")}
           </button>

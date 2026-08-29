@@ -52,14 +52,10 @@ export default function MicropostForm() {
         onChange={(event) => setContent(event.target.value)}
         maxLength={140}
         placeholder={t("placeholder")}
-        className="min-h-32 w-full rounded-xl border border-gray-300 bg-white p-4 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-950 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+        className="border-border text-foreground focus:border-accent focus:ring-accent/20 min-h-32 w-full rounded-xl border bg-white p-4 outline-none transition focus:ring-2 dark:bg-slate-950"
       />
 
-      <div className="mt-4">
-        <label htmlFor="micropost-image" className="sr-only">
-          {t("image")}
-        </label>
-
+      <div className="mt-4 flex items-center gap-4">
         <input
           id="micropost-image"
           ref={fileInputRef}
@@ -68,8 +64,32 @@ export default function MicropostForm() {
           onChange={(event) => {
             setImage(event.target.files?.[0] ?? null);
           }}
-          className="text-sm text-gray-600 file:mr-4 file:rounded-full file:border-0 file:bg-gray-100 file:px-4 file:py-2 file:font-semibold file:text-slate-700 hover:file:bg-gray-200 dark:text-gray-300 dark:file:bg-slate-800 dark:file:text-gray-200 dark:hover:file:bg-slate-700"
+          className="peer sr-only"
         />
+
+        <label
+          htmlFor="micropost-image"
+          className="text-primary peer-focus-visible:ring-accent inline-flex cursor-pointer items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold transition hover:bg-orange-200 peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 dark:bg-orange-950 dark:hover:bg-orange-900"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-5"
+          >
+            <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+          </svg>
+
+          {t("selectImage")}
+        </label>
+
+        <span className="text-muted min-w-0 truncate text-sm">
+          {image ? image.name : t("noImageSelected")}
+        </span>
       </div>
 
       {error && (
@@ -77,13 +97,11 @@ export default function MicropostForm() {
       )}
 
       <div className="mt-4 flex items-center justify-between">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {content.length} / 140
-        </p>
+        <p className="text-muted text-sm">{content.length} / 140</p>
 
         <button
           type="submit"
-          className="rounded-full bg-teal-700 px-5 py-2 font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+          className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-5 py-2 font-semibold transition"
         >
           {t("submit")}
         </button>

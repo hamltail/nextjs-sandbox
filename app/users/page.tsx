@@ -46,10 +46,10 @@ export default async function UsersPage({ searchParams }: PageProps) {
   const totalPages = Math.ceil(totalUsers / USERS_PER_PAGE);
 
   return (
-    <section className="relative overflow-hidden bg-white px-7 py-16 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
+    <section className="bg-background text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/30 blur-3xl dark:bg-teal-400/10"
+        className="bg-glow/30 dark:bg-glow/10 pointer-events-none absolute top-0 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full blur-3xl"
       />
 
       <Container>
@@ -57,14 +57,14 @@ export default async function UsersPage({ searchParams }: PageProps) {
           {deleted === "true" && (
             <div
               role="status"
-              className="mb-8 rounded-md border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-medium text-teal-700 dark:border-teal-900 dark:bg-teal-950/40 dark:text-teal-300"
+              className="border-primary/20 bg-primary/10 text-primary mb-8 rounded-md border px-4 py-3 text-sm font-medium"
             >
               {t("deleted")}
             </div>
           )}
 
           <div className="mb-8">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
+            <p className="font-en text-primary text-sm font-semibold tracking-[0.2em]">
               USERS
             </p>
 
@@ -73,7 +73,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
             </h1>
           </div>
 
-          <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
+          <div className="divide-border border-border bg-surface/90 divide-y rounded-2xl border px-6 shadow-sm backdrop-blur-sm transition-colors md:px-8">
             {users.map((user) => (
               <div
                 key={user.id}
@@ -82,15 +82,13 @@ export default async function UsersPage({ searchParams }: PageProps) {
                 <div>
                   <Link
                     href={`/users/${user.id}`}
-                    className="text-lg font-semibold transition hover:text-teal-600 dark:hover:text-teal-300"
+                    className="hover:text-accent focus-visible:text-accent text-lg font-semibold transition-colors"
                   >
                     {user.name}
                   </Link>
 
                   {current.admin && (
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      {user.email}
-                    </p>
+                    <p className="text-muted mt-1 text-sm">{user.email}</p>
                   )}
                 </div>
 
@@ -104,43 +102,27 @@ export default async function UsersPage({ searchParams }: PageProps) {
           {totalPages > 1 && (
             <nav
               aria-label={t("paginationLabel")}
-              className="mt-8 flex items-center justify-center gap-2"
+              className="mt-8 flex items-center justify-center gap-6"
             >
-              {currentPage > 1 && (
-                <Link
-                  href={`/users?page=${currentPage - 1}`}
-                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
-                >
-                  {t("previous")}
-                </Link>
-              )}
-
               {Array.from({ length: totalPages }, (_, index) => {
                 const pageNumber = index + 1;
+                const isCurrentPage = pageNumber === currentPage;
 
                 return (
                   <Link
                     key={pageNumber}
                     href={`/users?page=${pageNumber}`}
+                    aria-current={isCurrentPage ? "page" : undefined}
                     className={
-                      pageNumber === currentPage
-                        ? "inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-sm font-semibold text-white dark:bg-teal-400 dark:text-slate-950"
-                        : "inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                      isCurrentPage
+                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
+                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
                     }
                   >
                     {pageNumber}
                   </Link>
                 );
               })}
-
-              {currentPage < totalPages && (
-                <Link
-                  href={`/users?page=${currentPage + 1}`}
-                  className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium transition hover:border-teal-400 hover:text-teal-600 dark:border-slate-700 dark:hover:border-teal-400 dark:hover:text-teal-300"
-                >
-                  {t("next")}
-                </Link>
-              )}
             </nav>
           )}
         </div>

@@ -52,7 +52,7 @@ export default function FollowButton({
       type="button"
       onClick={handleClick}
       disabled={isLoading}
-      className="font-en rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+      className="font-en bg-primary text-primary-foreground hover:bg-primary-hover rounded-md px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50"
     >
       {isLoading ? t("loading") : isFollowing ? t("unfollow") : t("follow")}
     </button>

@@ -30,16 +30,16 @@ export default function NewsSection({
   const locale = useLocale();
 
   return (
-    <section className="relative overflow-hidden border-t border-gray-100 bg-white px-7 py-16 text-slate-950 transition-colors dark:border-slate-900 dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
+    <section className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300/30 blur-3xl dark:bg-teal-400/10"
+        className="bg-accent/30 dark:bg-accent/70 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
       />
 
       <Container>
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-10">
-            <p className="font-en text-sm font-semibold tracking-[0.2em] text-teal-700 dark:text-teal-300">
+            <p className="font-en text-primary text-sm font-semibold tracking-[0.2em]">
               {t("label")}
             </p>
 
@@ -48,24 +48,21 @@ export default function NewsSection({
             </h2>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm backdrop-blur-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 md:px-8">
-            <div
-              key={currentPage}
-              className="fade-in divide-y divide-gray-200 dark:divide-slate-800"
-            >
+          <div className="border-border bg-surface/90 rounded-2xl border px-6 shadow-sm backdrop-blur-sm transition-colors md:px-8">
+            <div key={currentPage} className="fade-in divide-border divide-y">
               {newsList.map((news) => (
                 <article key={news.id} className="py-6">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                     {news.publishedAt && (
                       <time
                         dateTime={news.publishedAt}
-                        className="text-sm text-gray-600 dark:text-gray-300"
+                        className="text-muted text-sm"
                       >
                         {formatDate(news.publishedAt, locale)}
                       </time>
                     )}
 
-                    <span className="w-fit rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 dark:bg-teal-400/10 dark:text-teal-300">
+                    <span className="bg-primary/5 text-primary w-fit rounded-full px-3 py-1 text-xs font-semibold">
                       {news.category.name}
                     </span>
                   </div>
@@ -95,8 +92,8 @@ export default function NewsSection({
                     aria-current={isCurrentPage ? "page" : undefined}
                     className={
                       isCurrentPage
-                        ? "font-en relative px-1 py-2 text-base font-semibold text-teal-600 after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px after:bg-teal-500 dark:text-teal-300 dark:after:bg-teal-300"
-                        : "font-en nav-link px-1 py-2 text-base text-gray-500 transition-colors hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-300"
+                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
+                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
                     }
                   >
                     {pageNumber}

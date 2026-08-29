@@ -21,12 +21,7 @@ for (let x = -1; x <= 1; x++) {
   }
 }
 
-const neonColors = [
-  "#00e5ff", // cyan
-  "#3b82f6", // blue
-  "#8b5cf6", // violet
-  "#d946ef", // magenta
-];
+const neonColors = ["#8b5cf6", "#c084fc", "#ff7a00", "#ffc857"];
 
 function Cube({ position, color }: CubeProps) {
   const meshRef = useRef<Mesh>(null);

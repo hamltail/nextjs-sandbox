@@ -34,7 +34,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const totalPages = Math.ceil(response.totalCount / NEWS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
+    <div className="bg-background text-foreground min-h-screen transition-colors">
       {!current && (
         <>
           <div className="relative">
