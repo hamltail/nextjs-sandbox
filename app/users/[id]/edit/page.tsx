@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
@@ -13,6 +14,7 @@ type PageProps = {
 };
 
 export default async function EditUserPage({ params }: PageProps) {
+  const t = await getTranslations("EditProfile");
   const { id } = await params;
 
   const current = await currentUser();
@@ -39,10 +41,10 @@ export default async function EditUserPage({ params }: PageProps) {
     <section className="bg-white px-7 py-12 text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100 md:px-11 xl:px-0">
       <Container>
         <div className="mx-auto max-w-md">
-          <h1 className="font-en text-4xl font-bold">Edit profile</h1>
+          <h1 className="text-4xl font-bold">{t("title")}</h1>
 
           <p className="mt-3 text-gray-600 dark:text-gray-300">
-            Update your account information.
+            {t("description")}
           </p>
 
           <EditUserForm id={user.id} name={user.name} email={user.email} />

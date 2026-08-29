@@ -114,5 +114,14 @@
     "image": "画像",
     "error": "投稿できませんでした。",
     "submit": "投稿"
+  },
+  "EditProfile": {
+    "title": "プロフィール編集",
+    "description": "アカウント情報を更新します。",
+    "name": "名前",
+    "email": "メールアドレス",
+    "error": "ユーザー情報の更新に失敗しました。",
+    "submit": "変更を保存",
+    "submitting": "保存中..."
   }
 }
