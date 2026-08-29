@@ -13,10 +13,10 @@ const externalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-gray-200 px-7 py-8 transition-colors dark:border-slate-800 md:px-11 xl:px-0">
+    <footer className="bg-background border-border border-t px-7 py-8 transition-colors md:px-11 xl:px-0">
       <Container>
         <div className="flex flex-col items-center gap-5 md:grid md:grid-cols-3 md:gap-0">
-          <small className="text-sm text-gray-600 dark:text-gray-300 md:col-start-2 md:text-center">
+          <small className="text-muted text-sm md:col-start-2 md:text-center">
             © {new Date().getFullYear()} h-waji (hamltail)
           </small>
 
@@ -31,7 +31,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="nav-link transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-500 dark:focus-visible:outline-teal-300"
+                    className="nav-link focus-visible:outline-primary transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     {link.label}
                   </a>

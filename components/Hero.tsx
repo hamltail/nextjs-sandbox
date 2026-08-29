@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="relative min-h-150">
           <div className="relative z-10 flex min-h-150 items-center">
             <div>
-              <p className="font-en text-sm tracking-[0.25em] text-teal-700 uppercase dark:text-teal-300">
+              <p className="font-en text-primary text-sm tracking-[0.25em] uppercase">
                 {t("brand")}
               </p>
 
@@ -30,7 +30,7 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="hero-copy hero-copy-description mt-8 max-w-md leading-8 text-gray-600 dark:text-gray-300">
+              <p className="hero-copy hero-copy-description text-muted mt-8 max-w-md leading-8">
                 {t("description")}
               </p>
             </div>
