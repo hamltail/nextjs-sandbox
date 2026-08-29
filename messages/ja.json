@@ -49,6 +49,9 @@
     "submitting": "作成中...",
     "error": "ユーザー登録に失敗しました。"
   },
+  "SignupSuccess": {
+    "message": "確認メールを送信しました。メール内のリンクからアカウントを有効化してください。"
+  },
   "PasswordResetRequest": {
     "title": "パスワード再設定",
     "description": "メールアドレスを入力してください。パスワード再設定用のリンクをお送りします。",

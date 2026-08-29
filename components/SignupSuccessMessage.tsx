@@ -1,8 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export default function SignupSuccessMessage() {
+  const t = useTranslations("SignupSuccess");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,9 +29,7 @@ export default function SignupSuccessMessage() {
           ✓
         </span>
 
-        <p>
-          確認メールを送信しました。メール内のリンクからアカウントを有効化してください。
-        </p>
+        <p>{t("message")}</p>
       </div>
     </div>
   );
