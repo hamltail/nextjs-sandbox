@@ -52,7 +52,7 @@ export default function MicropostForm() {
         onChange={(event) => setContent(event.target.value)}
         maxLength={140}
         placeholder={t("placeholder")}
-        className="min-h-32 w-full rounded-xl border border-gray-300 bg-white p-4 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200 dark:border-slate-700 dark:bg-slate-950 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/20"
+        className="border-border text-foreground focus:border-primary focus:ring-primary/20 min-h-32 w-full rounded-xl border bg-white p-4 outline-none transition focus:ring-2 dark:bg-slate-950"
       />
 
       <div className="mt-4">
@@ -68,7 +68,7 @@ export default function MicropostForm() {
           onChange={(event) => {
             setImage(event.target.files?.[0] ?? null);
           }}
-          className="text-sm text-gray-600 file:mr-4 file:rounded-full file:border-0 file:bg-gray-100 file:px-4 file:py-2 file:font-semibold file:text-slate-700 hover:file:bg-gray-200 dark:text-gray-300 dark:file:bg-slate-800 dark:file:text-gray-200 dark:hover:file:bg-slate-700"
+          className="text-muted file:bg-primary file:text-primary-foreground hover:file:bg-primary-hover text-sm file:mr-4 file:cursor-pointer file:rounded-full file:border-0 file:px-4 file:py-2 file:font-semibold file:transition"
         />
       </div>
 
@@ -77,13 +77,11 @@ export default function MicropostForm() {
       )}
 
       <div className="mt-4 flex items-center justify-between">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {content.length} / 140
-        </p>
+        <p className="text-muted text-sm">{content.length} / 140</p>
 
         <button
           type="submit"
-          className="rounded-full bg-teal-700 px-5 py-2 font-semibold text-white transition hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
+          className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-5 py-2 font-semibold transition"
         >
           {t("submit")}
         </button>
