@@ -9,8 +9,8 @@
   --border: var(--color-gray-300);
   --muted: var(--color-gray-600);
 
-  --primary: var(--color-orange-600);
-  --primary-hover: var(--color-orange-700);
+  --primary: var(--color-orange-700);
+  --primary-hover: var(--color-orange-800);
   --primary-foreground: var(--color-white);
 
   --accent: var(--color-violet-600);

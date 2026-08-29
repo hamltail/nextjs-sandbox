@@ -62,7 +62,7 @@ export default function NewsSection({
                       </time>
                     )}
 
-                    <span className="bg-primary/10 text-primary w-fit rounded-full px-3 py-1 text-xs font-semibold">
+                    <span className="bg-primary/5 text-primary w-fit rounded-full px-3 py-1 text-xs font-semibold">
                       {news.category.name}
                     </span>
                   </div>
