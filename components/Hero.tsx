@@ -1,7 +1,11 @@
+import { useTranslations } from "next-intl";
+
 import Container from "@/components/Container";
 import HeroScene from "@/components/hero/HeroScene";
 
 export default function Hero() {
+  const t = useTranslations("Hero");
+
   return (
     <section className="relative overflow-hidden bg-white px-7 py-20 text-slate-950 transition-colors dark:bg-slate-950 dark:text-white md:px-11 md:py-28 xl:px-0">
       <Container>
@@ -9,19 +13,25 @@ export default function Hero() {
           <div className="relative z-10 flex min-h-150 items-center">
             <div>
               <p className="font-en text-sm tracking-[0.25em] text-teal-700 uppercase dark:text-teal-300">
-                hamltail Web Lab
+                {t("brand")}
               </p>
 
               <h1 className="font-en mt-6 text-6xl leading-[0.9] font-bold tracking-tight md:text-8xl">
-                <span className="hero-copy hero-copy-build block">Build.</span>
-                <span className="hero-copy hero-copy-test block">Test.</span>
+                <span className="hero-copy hero-copy-build block">
+                  {t("build")}
+                </span>
+
+                <span className="hero-copy hero-copy-test block">
+                  {t("test")}
+                </span>
+
                 <span className="hero-copy hero-copy-explore block">
-                  Explore.
+                  {t("explore")}
                 </span>
               </h1>
 
               <p className="hero-copy hero-copy-description mt-8 max-w-md leading-8 text-gray-600 dark:text-gray-300">
-                作って、試して、探索するWebのラボ。
+                {t("description")}
               </p>
             </div>
           </div>

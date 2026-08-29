@@ -1,0 +1,9 @@
+{
+  "Hero": {
+    "brand": "hamltail Web Lab",
+    "build": "Build.",
+    "test": "Test.",
+    "explore": "Explore.",
+    "description": "作って、試して、探索するWebのラボ。"
+  }
+}
