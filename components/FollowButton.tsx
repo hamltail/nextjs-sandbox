@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 type FollowButtonProps = {
@@ -13,6 +14,7 @@ export default function FollowButton({
   initialIsFollowing,
 }: FollowButtonProps) {
   const router = useRouter();
+  const t = useTranslations("FollowButton");
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,7 +54,7 @@ export default function FollowButton({
       disabled={isLoading}
       className="font-en rounded-md bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300"
     >
-      {isLoading ? "Loading..." : isFollowing ? "Unfollow" : "Follow"}
+      {isLoading ? t("loading") : isFollowing ? t("unfollow") : t("follow")}
     </button>
   );
 }

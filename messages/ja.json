@@ -95,5 +95,24 @@
   "ConfirmModal": {
     "cancel": "キャンセル",
     "delete": "削除"
+  },
+  "Profile": {
+    "updated": "プロフィールを更新しました。",
+    "following": "フォロー中",
+    "followers": "フォロワー",
+    "email": "メールアドレス",
+    "microposts": "投稿（{count}）",
+    "empty": "投稿はまだありません。"
+  },
+  "FollowButton": {
+    "loading": "処理中...",
+    "follow": "フォロー",
+    "unfollow": "フォロー解除"
+  },
+  "MicropostForm": {
+    "placeholder": "投稿を入力",
+    "image": "画像",
+    "error": "投稿できませんでした。",
+    "submit": "投稿"
   }
 }
