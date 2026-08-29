@@ -16,9 +16,9 @@ export const sendAccountActivationEmail: SendAccountActivationEmail = async ({
   activationUrl.searchParams.set("email", email);
 
   const { error } = await resend.emails.send({
-    from: "Next.js Sandbox <noreply@mail.hamltail.dev>",
+    from: "hamltail Web Lab <noreply@mail.hamltail.dev>",
     to: email,
-    subject: "Account activation",
+    subject: "アカウントを有効化してください",
     react: AccountActivationEmail({
       name,
       activationUrl: activationUrl.toString(),
