@@ -31,7 +31,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="nav-link focus-visible:outline-primary transition-opacity hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-4"
+                    className="nav-link hover:text-accent focus-visible:text-accent focus-visible:outline-accent transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     {link.label}
                   </a>

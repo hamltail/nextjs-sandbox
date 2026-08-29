@@ -33,7 +33,7 @@ export default async function Header() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="nav-link transition-opacity hover:opacity-60"
+                      className="nav-link hover:text-accent focus-visible:text-accent transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -45,7 +45,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href="/users"
-                        className="nav-link transition-opacity hover:opacity-60"
+                        className="nav-link hover:text-accent focus-visible:text-accent transition-colors"
                       >
                         Users
                       </Link>
@@ -54,7 +54,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href={`/users/${user.id}`}
-                        className="nav-link transition-opacity hover:opacity-60"
+                        className="nav-link hover:text-accent focus-visible:text-accent transition-colors"
                       >
                         {user.name}
                       </Link>
@@ -63,7 +63,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href={`/users/${user.id}/edit`}
-                        className="nav-link transition-opacity hover:opacity-60"
+                        className="nav-link hover:text-accent focus-visible:text-accent transition-colors"
                       >
                         Settings
                       </Link>
@@ -78,7 +78,7 @@ export default async function Header() {
                     <li>
                       <Link
                         href="/login"
-                        className="nav-link transition-opacity hover:opacity-60"
+                        className="nav-link hover:text-accent focus-visible:text-accent transition-colors"
                       >
                         Log in
                       </Link>
