@@ -37,5 +37,16 @@
     "error": "ログインに失敗しました。",
     "newUser": "初めての方は",
     "signUp": "新規登録"
+  },
+  "Signup": {
+    "title": "新規登録",
+    "description": "アカウントを作成します。",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "passwordConfirmation": "パスワード（確認）",
+    "submit": "アカウントを作成",
+    "submitting": "作成中...",
+    "error": "ユーザー登録に失敗しました。"
   }
 }
