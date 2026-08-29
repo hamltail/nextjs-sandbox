@@ -100,7 +100,7 @@ export default function PasswordResetsPage() {
             {t("rememberPassword")}{" "}
             <Link
               href="/login"
-              className="text-primary hover:text-primary-hover focus-visible:text-accent font-medium transition"
+              className="text-accent hover:text-accent-hover focus-visible:text-accent font-medium transition-colors"
             >
               {t("login")}
             </Link>
