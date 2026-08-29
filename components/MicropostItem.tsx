@@ -25,7 +25,7 @@ export default function MicropostItem({
         {micropost.user && (
           <Link
             href={`/users/${micropost.user.id}`}
-            className="hover:text-primary mb-2 block font-semibold transition"
+            className="hover:text-primary focus-visible:text-accent mb-2 block font-semibold transition"
           >
             {micropost.user.name}
           </Link>

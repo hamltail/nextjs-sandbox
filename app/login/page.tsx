@@ -81,7 +81,7 @@ export default function LoginPage() {
 
                 <Link
                   href="/password-resets"
-                  className="text-primary hover:text-primary-hover text-sm transition"
+                  className="text-primary hover:text-primary-hover focus-visible:text-accent text-sm transition"
                 >
                   {t("forgotPassword")}
                 </Link>
@@ -109,7 +109,7 @@ export default function LoginPage() {
             {t("newUser")}{" "}
             <Link
               href="/signup"
-              className="text-primary hover:text-primary-hover font-medium transition"
+              className="text-primary hover:text-primary-hover focus-visible:text-accent font-medium transition"
             >
               {t("signUp")}
             </Link>

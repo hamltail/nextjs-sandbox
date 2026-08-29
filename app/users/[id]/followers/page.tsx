@@ -54,7 +54,7 @@ export default async function FollowersPage({ params }: FollowersPageProps) {
                 <div key={follower.id} className="py-4">
                   <Link
                     href={`/users/${follower.id}`}
-                    className="hover:text-primary font-semibold transition"
+                    className="hover:text-primary focus-visible:text-accent font-semibold transition"
                   >
                     {follower.name}
                   </Link>

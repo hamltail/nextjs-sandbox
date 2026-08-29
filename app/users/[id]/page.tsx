@@ -92,7 +92,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
               <div className="text-muted mt-4 flex gap-4 text-sm">
                 <Link
                   href={`/users/${user.id}/following`}
-                  className="hover:text-primary transition"
+                  className="hover:text-primary focus-visible:text-accent transition"
                 >
                   <strong className="text-foreground">{followingCount}</strong>{" "}
                   {t("following")}
@@ -100,7 +100,7 @@ export default async function UserPage({ params, searchParams }: PageProps) {
 
                 <Link
                   href={`/users/${user.id}/followers`}
-                  className="hover:text-primary transition"
+                  className="hover:text-primary focus-visible:text-accent transition"
                 >
                   <strong className="text-foreground">{followersCount}</strong>{" "}
                   {t("followers")}

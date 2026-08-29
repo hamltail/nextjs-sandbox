@@ -64,12 +64,12 @@ export default function MicropostForm() {
           onChange={(event) => {
             setImage(event.target.files?.[0] ?? null);
           }}
-          className="sr-only"
+          className="peer sr-only"
         />
 
         <label
           htmlFor="micropost-image"
-          className="text-primary inline-flex cursor-pointer items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold transition hover:bg-orange-200 dark:bg-orange-950 dark:hover:bg-orange-900"
+          className="text-primary peer-focus-visible:ring-accent inline-flex cursor-pointer items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold transition hover:bg-orange-200 peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 dark:bg-orange-950 dark:hover:bg-orange-900"
         >
           <svg
             aria-hidden="true"

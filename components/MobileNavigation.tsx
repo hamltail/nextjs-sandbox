@@ -69,7 +69,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
             <Link
               href="/"
               onClick={closeMenu}
-              className="transition-opacity hover:opacity-60"
+              className="hover:text-accent focus-visible:text-accent transition-colors"
             >
               Home
             </Link>
@@ -79,7 +79,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
             <Link
               href="/about"
               onClick={closeMenu}
-              className="transition-opacity hover:opacity-60"
+              className="hover:text-accent focus-visible:text-accent transition-colors"
             >
               About
             </Link>
@@ -91,7 +91,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
                 <Link
                   href="/users"
                   onClick={closeMenu}
-                  className="transition-opacity hover:opacity-60"
+                  className="hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   Users
                 </Link>
@@ -101,7 +101,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
                 <Link
                   href={`/users/${user.id}`}
                   onClick={closeMenu}
-                  className="transition-opacity hover:opacity-60"
+                  className="hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   {user.name}
                 </Link>
@@ -111,7 +111,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
                 <Link
                   href={`/users/${user.id}/edit`}
                   onClick={closeMenu}
-                  className="transition-opacity hover:opacity-60"
+                  className="hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   Settings
                 </Link>
@@ -127,7 +127,7 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
                 <Link
                   href="/login"
                   onClick={closeMenu}
-                  className="transition-opacity hover:opacity-60"
+                  className="hover:text-accent focus-visible:text-accent transition-colors"
                 >
                   Log in
                 </Link>
