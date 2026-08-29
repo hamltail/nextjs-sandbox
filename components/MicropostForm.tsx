@@ -55,11 +55,7 @@ export default function MicropostForm() {
         className="border-border text-foreground focus:border-primary focus:ring-primary/20 min-h-32 w-full rounded-xl border bg-white p-4 outline-none transition focus:ring-2 dark:bg-slate-950"
       />
 
-      <div className="mt-4">
-        <label htmlFor="micropost-image" className="sr-only">
-          {t("image")}
-        </label>
-
+      <div className="mt-4 flex items-center gap-4">
         <input
           id="micropost-image"
           ref={fileInputRef}
@@ -68,8 +64,32 @@ export default function MicropostForm() {
           onChange={(event) => {
             setImage(event.target.files?.[0] ?? null);
           }}
-          className="text-muted file:bg-primary file:text-primary-foreground hover:file:bg-primary-hover text-sm file:mr-4 file:cursor-pointer file:rounded-full file:border-0 file:px-4 file:py-2 file:font-semibold file:transition"
+          className="sr-only"
         />
+
+        <label
+          htmlFor="micropost-image"
+          className="text-primary inline-flex cursor-pointer items-center gap-2 rounded-full bg-violet-100 px-4 py-2 text-sm font-semibold transition hover:bg-violet-200 dark:bg-violet-950 dark:hover:bg-violet-900"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-5"
+          >
+            <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+          </svg>
+
+          {t("selectImage")}
+        </label>
+
+        <span className="text-muted min-w-0 truncate text-sm">
+          {image ? image.name : t("noImageSelected")}
+        </span>
       </div>
 
       {error && (

@@ -112,6 +112,8 @@
   "MicropostForm": {
     "placeholder": "Write a post",
     "image": "Image",
+    "selectImage": "Choose image",
+    "noImageSelected": "No image selected",
     "error": "Failed to create the post.",
     "submit": "Post"
   },
