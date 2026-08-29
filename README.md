@@ -13,7 +13,7 @@ Next.js を中心に、Web開発・UI・テスト・品質改善などを
 
 | Category       | Technologies                                                                                   |
 | -------------- | ---------------------------------------------------------------------------------------------- |
-| Frontend       | Next.js, React, TypeScript, Tailwind CSS, Three.js, Storybook                                  |
+| Frontend       | Next.js, React, TypeScript, Tailwind CSS, next-intl, Three.js, Storybook                       |
 | Backend / Data | Prisma, PostgreSQL, Supabase, microCMS                                                         |
 | Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation, password reset) |
 | Email          | Resend, React Email                                                                            |
