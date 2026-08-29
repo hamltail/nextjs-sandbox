@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Noto_Sans_JP } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -31,11 +31,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   const messages = await getMessages();
 
   return (
     <html
-      lang="ja"
+      lang={locale}
       className={`${notoSansJp.variable} ${barlowCondensed.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
