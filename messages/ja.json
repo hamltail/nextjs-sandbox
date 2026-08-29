@@ -123,5 +123,15 @@
     "error": "ユーザー情報の更新に失敗しました。",
     "submit": "変更を保存",
     "submitting": "保存中..."
+  },
+  "Following": {
+    "title": "{name} がフォロー中",
+    "count": "{count}人をフォロー中",
+    "empty": "フォローしているユーザーはいません。"
+  },
+  "Followers": {
+    "title": "{name} のフォロワー",
+    "count": "{count}人のフォロワー",
+    "empty": "フォロワーはいません。"
   }
 }

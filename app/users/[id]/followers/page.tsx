@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { prisma } from "@/lib/database/prisma";
 import { getFollowers } from "@/lib/microposts/relationship";
@@ -13,6 +14,7 @@ type FollowersPageProps = {
 };
 
 export default async function FollowersPage({ params }: FollowersPageProps) {
+  const t = await getTranslations("Followers");
   const { id } = await params;
 
   const user = await prisma.user.findFirst({
@@ -38,11 +40,11 @@ export default async function FollowersPage({ params }: FollowersPageProps) {
             </p>
 
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
-              {user.name} のフォロワー
+              {t("title", { name: user.name })}
             </h1>
 
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              {followers.length} followers
+              {t("count", { count: followers.length })}
             </p>
           </div>
 
@@ -61,7 +63,7 @@ export default async function FollowersPage({ params }: FollowersPageProps) {
             </div>
           ) : (
             <p className="rounded-2xl border border-gray-200 bg-white/90 p-6 text-gray-500 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900/80 dark:text-gray-400">
-              フォロワーはいません。
+              {t("empty")}
             </p>
           )}
         </div>
