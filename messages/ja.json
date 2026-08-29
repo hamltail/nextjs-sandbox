@@ -5,5 +5,10 @@
     "test": "Test.",
     "explore": "Explore.",
     "description": "作って、試して、探索するWebのラボ。"
+  },
+  "News": {
+    "label": "NEWS",
+    "title": "お知らせ",
+    "paginationLabel": "お知らせのページネーション"
   }
 }
