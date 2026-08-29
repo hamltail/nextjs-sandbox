@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import { getMicropostFeed } from "@/lib/microposts/micropost";
 
 import MicropostItem from "@/components/MicropostItem";
@@ -7,6 +9,7 @@ type MicropostFeedProps = {
 };
 
 export default async function MicropostFeed({ userId }: MicropostFeedProps) {
+  const t = await getTranslations("MicropostFeed");
   const microposts = await getMicropostFeed(userId);
 
   return (
@@ -16,7 +19,7 @@ export default async function MicropostFeed({ userId }: MicropostFeedProps) {
           MICROPOST FEED
         </p>
 
-        <h1 className="mt-2 text-2xl font-bold">Micropost Feed</h1>
+        <h1 className="mt-2 text-2xl font-bold">{t("title")}</h1>
 
         {microposts.length > 0 ? (
           <div className="mt-6 divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white/90 px-6 shadow-sm transition-colors dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/80">
@@ -25,9 +28,7 @@ export default async function MicropostFeed({ userId }: MicropostFeedProps) {
             ))}
           </div>
         ) : (
-          <p className="mt-6 text-gray-500 dark:text-gray-300">
-            投稿はまだありません。
-          </p>
+          <p className="mt-6 text-gray-500 dark:text-gray-300">{t("empty")}</p>
         )}
       </div>
     </section>

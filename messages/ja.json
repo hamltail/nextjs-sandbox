@@ -70,5 +70,9 @@
     "submit": "パスワードを更新",
     "submitting": "更新中...",
     "error": "パスワードの更新に失敗しました。"
+  },
+  "MicropostFeed": {
+    "title": "投稿フィード",
+    "empty": "投稿はまだありません。"
   }
 }
