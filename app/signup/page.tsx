@@ -81,7 +81,7 @@ export default function SignupPage() {
                 name="name"
                 type="text"
                 autoComplete="name"
-                className="border-border bg-surface text-foreground focus:border-primary focus:ring-primary/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -95,7 +95,7 @@ export default function SignupPage() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="border-border bg-surface text-foreground focus:border-primary focus:ring-primary/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -109,7 +109,7 @@ export default function SignupPage() {
                 name="password"
                 type="password"
                 autoComplete="new-password"
-                className="border-border bg-surface text-foreground focus:border-primary focus:ring-primary/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
@@ -126,7 +126,7 @@ export default function SignupPage() {
                 name="passwordConfirmation"
                 type="password"
                 autoComplete="new-password"
-                className="border-border bg-surface text-foreground focus:border-primary focus:ring-primary/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 

@@ -52,7 +52,7 @@ export default function MicropostForm() {
         onChange={(event) => setContent(event.target.value)}
         maxLength={140}
         placeholder={t("placeholder")}
-        className="border-border text-foreground focus:border-primary focus:ring-primary/20 min-h-32 w-full rounded-xl border bg-white p-4 outline-none transition focus:ring-2 dark:bg-slate-950"
+        className="border-border text-foreground focus:border-accent focus:ring-accent/20 min-h-32 w-full rounded-xl border bg-white p-4 outline-none transition focus:ring-2 dark:bg-slate-950"
       />
 
       <div className="mt-4 flex items-center gap-4">

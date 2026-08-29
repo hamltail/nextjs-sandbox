@@ -83,7 +83,7 @@ export default function PasswordResetsPage() {
                 type="email"
                 autoComplete="email"
                 required
-                className="border-border bg-surface text-foreground focus:border-primary focus:ring-primary/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
+                className="border-border bg-surface text-foreground focus:border-accent focus:ring-accent/20 mt-2 w-full rounded-md border px-4 py-2 outline-none transition focus:ring-2"
               />
             </div>
 
