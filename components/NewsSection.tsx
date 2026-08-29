@@ -33,7 +33,7 @@ export default function NewsSection({
     <section className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
-        className="bg-glow/30 dark:bg-glow/30 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+        className="bg-accent/30 dark:bg-accent/30 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
       />
 
       <Container>
@@ -92,8 +92,8 @@ export default function NewsSection({
                     aria-current={isCurrentPage ? "page" : undefined}
                     className={
                       isCurrentPage
-                        ? "font-en text-primary after:bg-primary relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
-                        : "font-en nav-link text-muted hover:text-primary px-1 py-2 text-base transition-colors"
+                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
+                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
                     }
                   >
                     {pageNumber}

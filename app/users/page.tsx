@@ -82,7 +82,7 @@ export default async function UsersPage({ searchParams }: PageProps) {
                 <div>
                   <Link
                     href={`/users/${user.id}`}
-                    className="hover:text-primary text-lg font-semibold transition"
+                    className="hover:text-accent focus-visible:text-accent text-lg font-semibold transition-colors"
                   >
                     {user.name}
                   </Link>
@@ -102,43 +102,27 @@ export default async function UsersPage({ searchParams }: PageProps) {
           {totalPages > 1 && (
             <nav
               aria-label={t("paginationLabel")}
-              className="mt-8 flex items-center justify-center gap-2"
+              className="mt-8 flex items-center justify-center gap-6"
             >
-              {currentPage > 1 && (
-                <Link
-                  href={`/users?page=${currentPage - 1}`}
-                  className="border-border hover:border-primary hover:text-primary rounded-full border px-4 py-2 text-sm font-medium transition"
-                >
-                  {t("previous")}
-                </Link>
-              )}
-
               {Array.from({ length: totalPages }, (_, index) => {
                 const pageNumber = index + 1;
+                const isCurrentPage = pageNumber === currentPage;
 
                 return (
                   <Link
                     key={pageNumber}
                     href={`/users?page=${pageNumber}`}
+                    aria-current={isCurrentPage ? "page" : undefined}
                     className={
-                      pageNumber === currentPage
-                        ? "bg-primary text-primary-foreground inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
-                        : "border-border hover:border-primary hover:text-primary inline-flex h-10 w-10 items-center justify-center rounded-full border text-sm font-medium transition"
+                      isCurrentPage
+                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
+                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
                     }
                   >
                     {pageNumber}
                   </Link>
                 );
               })}
-
-              {currentPage < totalPages && (
-                <Link
-                  href={`/users?page=${currentPage + 1}`}
-                  className="border-border hover:border-primary hover:text-primary rounded-full border px-4 py-2 text-sm font-medium transition"
-                >
-                  {t("next")}
-                </Link>
-              )}
             </nav>
           )}
         </div>
