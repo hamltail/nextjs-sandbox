@@ -30,7 +30,7 @@ export default function NewsSection({
   const locale = useLocale();
 
   return (
-    <section className="relative overflow-hidden border-t border-gray-100 bg-white px-7 py-16 text-slate-950 transition-colors dark:border-slate-900 dark:bg-slate-950 dark:text-gray-100 md:px-11 md:py-20 xl:px-0">
+    <section className="bg-background text-foreground relative overflow-hidden border-t border-gray-100 px-7 py-16 transition-colors dark:border-slate-900 md:px-11 md:py-20 xl:px-0">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300/30 blur-3xl dark:bg-teal-400/10"

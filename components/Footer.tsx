@@ -13,7 +13,7 @@ const externalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white px-7 py-8 transition-colors dark:border-slate-800 dark:bg-slate-950 md:px-11 xl:px-0">
+    <footer className="bg-background border-t border-gray-200 px-7 py-8 transition-colors dark:border-slate-800 md:px-11 xl:px-0">
       <Container>
         <div className="flex flex-col items-center gap-5 md:grid md:grid-cols-3 md:gap-0">
           <small className="text-sm text-gray-600 dark:text-gray-300 md:col-start-2 md:text-center">

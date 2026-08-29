@@ -39,7 +39,7 @@ export default async function RootLayout({
       lang={locale}
       className={`${notoSansJp.variable} ${barlowCondensed.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-white text-slate-950 transition-colors dark:bg-slate-950 dark:text-gray-100">
+      <body className="bg-background text-foreground flex min-h-screen flex-col transition-colors">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <Header />

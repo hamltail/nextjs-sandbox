@@ -7,7 +7,7 @@ export default function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="relative overflow-hidden bg-white px-7 py-20 text-slate-950 transition-colors dark:bg-slate-950 dark:text-white md:px-11 md:py-28 xl:px-0">
+    <section className="bg-background text-foreground relative overflow-hidden px-7 py-20 transition-colors md:px-11 md:py-28 xl:px-0">
       <Container>
         <div className="relative min-h-150">
           <div className="relative z-10 flex min-h-150 items-center">
