@@ -34,7 +34,7 @@ export default function PasswordResetEmail({
             <Button
               href={resetUrl}
               style={{
-                backgroundColor: "#0f766e",
+                backgroundColor: "#7c3aed",
                 borderRadius: "9999px",
                 color: "#ffffff",
                 padding: "12px 24px",
