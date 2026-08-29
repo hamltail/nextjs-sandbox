@@ -28,7 +28,7 @@ export default function LogoutButton() {
       type="button"
       onClick={handleLogout}
       disabled={isSubmitting}
-      className="font-en inline-flex items-center gap-2 transition-opacity hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-60"
+      className="font-en hover:text-accent focus-visible:text-accent inline-flex items-center gap-2 transition-colors disabled:cursor-not-allowed disabled:opacity-60"
     >
       <svg
         aria-hidden="true"
