@@ -45,3 +45,25 @@ test("Sign upページへ遷移できる", async ({ page }) => {
     }),
   ).toBeVisible();
 });
+
+test("テーマをDarkに切り替えられる", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByRole("button", { name: "Theme" }).click();
+  await page.getByRole("button", { name: "Dark" }).click();
+
+  await expect(page.locator("html")).toHaveClass(/dark/);
+});
+
+test("選択したテーマがリロード後も維持される", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByRole("button", { name: "Theme" }).click();
+  await page.getByRole("button", { name: "Dark" }).click();
+
+  await expect(page.locator("html")).toHaveClass(/dark/);
+
+  await page.reload();
+
+  await expect(page.locator("html")).toHaveClass(/dark/);
+});
