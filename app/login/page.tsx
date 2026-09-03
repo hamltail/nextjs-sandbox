@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { type SubmitEvent, useState } from "react";
 
 import Container from "@/components/Container";
 
 export default function LoginPage() {
+  const router = useRouter();
   const t = useTranslations("Login");
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +40,7 @@ export default function LoginPage() {
       return;
     }
 
-    window.location.assign("/");
+    router.push("/");
   }
 
   return (

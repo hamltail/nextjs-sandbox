@@ -1,7 +1,6 @@
 # hamltail Web Lab
 
-Next.js を中心に、Web開発・UI・テスト・品質改善などを
-実際に作りながら検証する実験サイトです。
+Next.js をベースに、Web開発・UI/UXデザイン・品質改善などを、実際に作りながら検証するプロジェクトです。
 
 ⚠️ 登録されたテストデータは、毎日 03:00（JST）に自動削除されます。
 
@@ -13,7 +12,7 @@ Next.js を中心に、Web開発・UI・テスト・品質改善などを
 
 | Category       | Technologies                                                                                   |
 | -------------- | ---------------------------------------------------------------------------------------------- |
-| Frontend       | Next.js, React, TypeScript, Tailwind CSS, next-intl, Three.js, Storybook                       |
+| Frontend       | Next.js, React, TypeScript, Tailwind CSS, next-intl, R3F, Storybook                            |
 | Backend / Data | Prisma, PostgreSQL, Supabase, microCMS                                                         |
 | Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation, password reset) |
 | Email          | Resend, React Email                                                                            |

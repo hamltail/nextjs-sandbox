@@ -25,15 +25,16 @@ const neonColors = ["#8b5cf6", "#c084fc", "#ff7a00", "#ffc857"];
 
 function Cube({ position, color }: CubeProps) {
   const meshRef = useRef<Mesh>(null);
+  const elapsedTimeRef = useRef(0);
 
-  useFrame((state) => {
+  useFrame((_, delta) => {
     if (!meshRef.current) return;
 
-    const elapsedTime = state.clock.getElapsedTime();
+    elapsedTimeRef.current += delta;
 
     const phase = position[0] * 0.5 + position[1] * 0.5 + position[2] * 0.5;
 
-    const wave = Math.sin(elapsedTime * 1.2 + phase);
+    const wave = Math.sin(elapsedTimeRef.current * 1.2 + phase);
 
     const scale = 1 + wave * 0.05;
     const spread = 1 + wave * 0.12;
@@ -72,15 +73,16 @@ function Cube({ position, color }: CubeProps) {
 
 function CubeGroup() {
   const groupRef = useRef<Group>(null);
+  const elapsedTimeRef = useRef(0);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!groupRef.current) return;
 
-    const elapsedTime = state.clock.getElapsedTime();
+    elapsedTimeRef.current += delta;
 
     groupRef.current.rotation.x += delta * 0.1;
     groupRef.current.rotation.y += delta * 0.2;
-    groupRef.current.position.y = Math.sin(elapsedTime) * 0.15;
+    groupRef.current.position.y = Math.sin(elapsedTimeRef.current) * 0.15;
   });
 
   return (

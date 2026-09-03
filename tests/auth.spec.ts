@@ -22,6 +22,8 @@ test.describe("認証機能", () => {
   test("ログインできる", async ({ page }) => {
     await loginAsE2EUser(page);
 
+    await expect(page).toHaveURL("/");
+
     await expect(
       page.getByRole("heading", {
         name: "Post feed",
