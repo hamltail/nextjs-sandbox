@@ -37,9 +37,10 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      suppressHydrationWarning
       className={`${notoSansJp.variable} ${barlowCondensed.variable}`}
     >
-      <body className="bg-background text-foreground flex min-h-screen flex-col transition-colors">
+      <body className="bg-background text-foreground flex min-h-screen flex-col">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <Header />
