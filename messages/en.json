@@ -11,6 +11,16 @@
     "title": "News",
     "paginationLabel": "News pagination"
   },
+  "Sandbox": {
+    "label": "SANDBOX",
+    "title": "Lab",
+    "description": "A lab for building and experimenting freely.",
+    "StateManagement": {
+      "title": "State Management",
+      "description": "Compare React state management using useState and Redux Toolkit.",
+      "comingSoon": "Coming soon..."
+    }
+  },
   "About": {
     "label": "About",
     "title": "hamltail Web Lab",

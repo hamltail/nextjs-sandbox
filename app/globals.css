@@ -58,6 +58,10 @@
   --color-glow: var(--glow);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-noto-sans-jp), sans-serif;
 }

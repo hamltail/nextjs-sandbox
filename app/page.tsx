@@ -5,6 +5,7 @@ import { getNews } from "@/lib/news/news";
 import Hero from "@/components/Hero";
 import MicropostFeed from "@/components/MicropostFeed";
 import NewsSection from "@/components/NewsSection";
+import SandboxSection from "@/components/sandbox/SandboxSection";
 import SignupSuccessMessage from "@/components/SignupSuccessMessage";
 
 const NEWS_PER_PAGE = 3;
@@ -35,7 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="bg-background text-foreground min-h-screen transition-colors">
-      {!current && (
+      {!current ? (
         <>
           <div className="relative">
             {signupSucceeded && <SignupSuccessMessage />}
@@ -48,9 +49,11 @@ export default async function Home({ searchParams }: HomeProps) {
             totalPages={totalPages}
           />
         </>
+      ) : (
+        <MicropostFeed userId={current.id} />
       )}
 
-      {current && <MicropostFeed userId={current.id} />}
+      <SandboxSection />
     </div>
   );
 }

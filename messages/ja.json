@@ -11,6 +11,16 @@
     "title": "お知らせ",
     "paginationLabel": "お知らせのページネーション"
   },
+  "Sandbox": {
+    "label": "SANDBOX",
+    "title": "Lab",
+    "description": "自由に作って、試すためのラボ。",
+    "StateManagement": {
+      "title": "State Management",
+      "description": "useStateとRedux Toolkitを使って、Reactの状態管理方法を比較します。",
+      "comingSoon": "Coming soon..."
+    }
+  },
   "About": {
     "label": "About",
     "title": "hamltail Web Lab",
