@@ -9,7 +9,10 @@ export default function SandboxSection() {
   const t = useTranslations("Sandbox");
 
   return (
-    <section className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
+    <section
+      id="sandbox"
+      className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0"
+    >
       <div
         aria-hidden="true"
         className="bg-primary/10 pointer-events-none absolute right-0 bottom-0 h-72 w-72 rounded-full blur-3xl"

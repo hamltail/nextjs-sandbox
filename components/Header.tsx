@@ -9,6 +9,7 @@ import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 const navigationItems = [
   { label: "Home", href: "/" },
+  { label: "Sandbox", href: "/#sandbox" },
   { label: "About", href: "/about" },
 ];
 

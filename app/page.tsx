@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="bg-background text-foreground min-h-screen transition-colors">
-      {!current && (
+      {!current ? (
         <>
           <div className="relative">
             {signupSucceeded && <SignupSuccessMessage />}
@@ -48,12 +48,12 @@ export default async function Home({ searchParams }: HomeProps) {
             currentPage={currentPage}
             totalPages={totalPages}
           />
-
-          <SandboxSection />
         </>
+      ) : (
+        <MicropostFeed userId={current.id} />
       )}
 
-      {current && <MicropostFeed userId={current.id} />}
+      <SandboxSection />
     </div>
   );
 }

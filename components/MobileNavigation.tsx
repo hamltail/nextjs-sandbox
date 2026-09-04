@@ -77,6 +77,16 @@ export default function MobileNavigation({ user }: MobileNavigationProps) {
 
           <li>
             <Link
+              href="/#sandbox"
+              onClick={closeMenu}
+              className="hover:text-accent focus-visible:text-accent transition-colors"
+            >
+              Sandbox
+            </Link>
+          </li>
+
+          <li>
+            <Link
               href="/about"
               onClick={closeMenu}
               className="hover:text-accent focus-visible:text-accent transition-colors"
