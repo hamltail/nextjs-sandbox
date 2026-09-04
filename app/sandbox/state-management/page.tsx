@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
+import StateManagementComparison from "@/components/sandbox/state-management/StateManagementComparison";
 
 export default function StateManagementPage() {
+  const tSandbox = useTranslations("Sandbox");
   const t = useTranslations("Sandbox.StateManagement");
 
   return (
@@ -10,7 +12,7 @@ export default function StateManagementPage() {
       <Container>
         <div className="mx-auto max-w-5xl">
           <p className="font-en text-primary text-sm font-semibold tracking-[0.2em] uppercase">
-            Sandbox
+            {tSandbox("label")}
           </p>
 
           <h1 className="mt-2 text-4xl font-bold tracking-tight">
@@ -21,8 +23,8 @@ export default function StateManagementPage() {
             {t("description")}
           </p>
 
-          <div className="border-border bg-surface/90 mt-10 rounded-2xl border p-8 shadow-sm">
-            <p className="text-muted">{t("comingSoon")}</p>
+          <div className="mt-10">
+            <StateManagementComparison />
           </div>
         </div>
       </Container>
