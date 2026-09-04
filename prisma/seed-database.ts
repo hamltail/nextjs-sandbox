@@ -4,7 +4,7 @@ import { prisma } from "../lib/database/prisma";
 export async function seedDatabase() {
   const passwordDigest = await hashPassword("password");
 
-  for (let index = 1; index <= 30; index++) {
+  for (let index = 1; index <= 100; index++) {
     const user = await prisma.user.upsert({
       where: {
         email: `test-user-${index}@example.com`,

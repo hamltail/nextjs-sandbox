@@ -1,9 +1,10 @@
-import Link from "next/link";
 import type { MicroCMSListContent } from "microcms-js-sdk";
 import { useLocale, useTranslations } from "next-intl";
 
-import Container from "@/components/Container";
 import type { News } from "@/lib/news/news.types";
+
+import Container from "@/components/Container";
+import Pagination from "@/components/Pagination";
 
 type NewsSectionProps = {
   newsList: (News & MicroCMSListContent)[];
@@ -75,33 +76,13 @@ export default function NewsSection({
             </div>
           </div>
 
-          {totalPages > 1 && (
-            <nav
-              aria-label={t("paginationLabel")}
-              className="mt-8 flex items-center justify-center gap-6"
-            >
-              {Array.from({ length: totalPages }, (_, index) => {
-                const pageNumber = index + 1;
-                const isCurrentPage = pageNumber === currentPage;
-
-                return (
-                  <Link
-                    key={pageNumber}
-                    href={`/?page=${pageNumber}`}
-                    scroll={false}
-                    aria-current={isCurrentPage ? "page" : undefined}
-                    className={
-                      isCurrentPage
-                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
-                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
-                    }
-                  >
-                    {pageNumber}
-                  </Link>
-                );
-              })}
-            </nav>
-          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            getHref={(page) => `/?page=${page}`}
+            ariaLabel={t("paginationLabel")}
+            scroll={false}
+          />
         </div>
       </Container>
     </section>

@@ -7,6 +7,7 @@ import { prisma } from "@/lib/database/prisma";
 
 import Container from "@/components/Container";
 import DeleteUserButton from "@/components/DeleteUserButton";
+import Pagination from "@/components/Pagination";
 
 const USERS_PER_PAGE = 10;
 
@@ -99,32 +100,12 @@ export default async function UsersPage({ searchParams }: PageProps) {
             ))}
           </div>
 
-          {totalPages > 1 && (
-            <nav
-              aria-label={t("paginationLabel")}
-              className="mt-8 flex items-center justify-center gap-6"
-            >
-              {Array.from({ length: totalPages }, (_, index) => {
-                const pageNumber = index + 1;
-                const isCurrentPage = pageNumber === currentPage;
-
-                return (
-                  <Link
-                    key={pageNumber}
-                    href={`/users?page=${pageNumber}`}
-                    aria-current={isCurrentPage ? "page" : undefined}
-                    className={
-                      isCurrentPage
-                        ? "font-en text-accent after:bg-accent relative px-1 py-2 text-base font-semibold after:absolute after:right-0 after:-bottom-0.5 after:left-0 after:h-px"
-                        : "font-en nav-link text-muted hover:text-accent focus-visible:text-accent px-1 py-2 text-base transition-colors"
-                    }
-                  >
-                    {pageNumber}
-                  </Link>
-                );
-              })}
-            </nav>
-          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            getHref={(page) => `/users?page=${page}`}
+            ariaLabel={t("paginationLabel")}
+          />
         </div>
       </Container>
     </section>
