@@ -78,14 +78,14 @@ export default function ConfirmModal({
           {title}
         </h2>
 
-        <p className="text-muted mt-3 text-sm">{message}</p>
+        <p className="text-muted mt-3 text-sm leading-8">{message}</p>
 
         <div className="mt-6 flex justify-end gap-3">
           <button
             ref={cancelButtonRef}
             type="button"
             onClick={onCancel}
-            className="border-border hover:border-primary rounded-full border px-4 py-2 text-sm font-semibold transition"
+            className="border-border hover:border-primary min-w-24 rounded-full border px-4 py-2 text-sm font-semibold transition"
           >
             {t("cancel")}
           </button>
@@ -94,7 +94,7 @@ export default function ConfirmModal({
             ref={deleteButtonRef}
             type="button"
             onClick={onConfirm}
-            className="rounded-full bg-red-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-800"
+            className="min-w-24 rounded-full bg-red-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-800"
           >
             {t("delete")}
           </button>
