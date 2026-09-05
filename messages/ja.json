@@ -19,6 +19,12 @@
       "title": "State Management",
       "description": "useStateとRedux Toolkitを使って、Reactの状態管理方法を比較します。",
       "comingSoon": "Coming soon..."
+    },
+    "ApiCommunication": {
+      "title": "API Communication",
+      "description": "モダンなバックエンドAPIとの通信を試します。",
+      "renderNotice": "RenderのFreeプランを使用しているため、初回の取得に時間がかかる場合があります。",
+      "fetchError": "APIの取得に失敗しました。"
     }
   },
   "About": {

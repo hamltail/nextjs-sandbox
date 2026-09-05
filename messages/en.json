@@ -19,6 +19,12 @@
       "title": "State Management",
       "description": "Compare React state management using useState and Redux Toolkit.",
       "comingSoon": "Coming soon..."
+    },
+    "ApiCommunication": {
+      "title": "API Communication",
+      "description": "Experiment with communication with modern backend APIs.",
+      "renderNotice": "This API uses Render's Free plan, so the initial request may take some time.",
+      "fetchError": "Failed to fetch the API."
     }
   },
   "About": {
