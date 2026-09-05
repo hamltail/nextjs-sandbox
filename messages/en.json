@@ -19,6 +19,10 @@
       "title": "State Management",
       "description": "Compare React state management using useState and Redux Toolkit.",
       "comingSoon": "Coming soon..."
+    },
+    "ApiCommunication": {
+      "title": "API Communication",
+      "description": "Experiment with communication with modern backend APIs."
     }
   },
   "About": {

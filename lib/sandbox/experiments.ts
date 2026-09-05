@@ -8,4 +8,11 @@ export const sandboxExperiments: SandboxExperiment[] = [
     tags: ["React", "TypeScript", "Redux"],
     access: "public",
   },
+  {
+    slug: "api-communication",
+    title: "API Communication",
+    description: "モダンなバックエンドAPIとの通信を試します。",
+    tags: ["Next.js", "API"],
+    access: "public",
+  },
 ];
