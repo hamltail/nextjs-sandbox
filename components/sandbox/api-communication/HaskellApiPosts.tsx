@@ -37,12 +37,23 @@ export default function HaskellApiPosts() {
 
   return (
     <div className="border-border bg-surface/90 rounded-2xl border p-6 shadow-sm">
-      <div>
-        <p className="font-en text-primary text-sm font-semibold tracking-[0.18em] uppercase">
-          Haskell API
-        </p>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="font-en text-primary text-sm font-semibold tracking-[0.18em] uppercase">
+            Haskell API
+          </p>
 
-        <h2 className="mt-2 text-2xl font-bold tracking-tight">Posts API</h2>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight">Posts API</h2>
+        </div>
+
+        <a
+          href="https://github.com/hamltail/haskell-api"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-link hover:text-accent focus-visible:text-accent text-sm transition-colors"
+        >
+          GitHub ↗
+        </a>
       </div>
 
       <div className="mt-6">
