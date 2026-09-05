@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
+import HaskellApiPosts from "@/components/sandbox/api-communication/HaskellApiPosts";
 
 export default function ApiCommunicationPage() {
   const tSandbox = useTranslations("Sandbox");
@@ -21,6 +22,10 @@ export default function ApiCommunicationPage() {
           <p className="text-muted mt-4 max-w-2xl leading-7">
             {t("description")}
           </p>
+
+          <div className="mt-10">
+            <HaskellApiPosts />
+          </div>
         </div>
       </Container>
     </section>
