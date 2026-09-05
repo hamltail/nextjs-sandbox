@@ -1,10 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import type { HaskellApiPostsResponse } from "@/lib/sandbox/api-communication/haskell-api.types";
 
 export default function HaskellApiPosts() {
+  const t = useTranslations("Sandbox.ApiCommunication");
+
   const [response, setResponse] = useState<HaskellApiPostsResponse | null>(
     null,
   );
@@ -26,7 +29,7 @@ export default function HaskellApiPosts() {
 
       setResponse(data);
     } catch {
-      setError("APIの取得に失敗しました。");
+      setError(t("fetchError"));
     } finally {
       setIsLoading(false);
     }
@@ -51,6 +54,8 @@ export default function HaskellApiPosts() {
         >
           {isLoading ? "Loading..." : "GET /api/v1/posts"}
         </button>
+
+        <p className="text-muted mt-3 text-sm">{t("renderNotice")}</p>
       </div>
 
       {error && <p className="mt-6 text-sm text-red-500">{error}</p>}
