@@ -3,14 +3,12 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import type { HaskellApiPostsResponse } from "@/lib/sandbox/api-communication/haskell-api.types";
+import type { GoApiPostsResponse } from "@/lib/sandbox/api-communication/go-api.types";
 
-export default function HaskellApiPosts() {
+export default function GoApiPosts() {
   const t = useTranslations("Sandbox.ApiCommunication");
 
-  const [response, setResponse] = useState<HaskellApiPostsResponse | null>(
-    null,
-  );
+  const [response, setResponse] = useState<GoApiPostsResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,13 +17,13 @@ export default function HaskellApiPosts() {
     setError(null);
 
     try {
-      const result = await fetch("/api/sandbox/haskell/posts");
+      const result = await fetch("/api/sandbox/go/posts");
 
       if (!result.ok) {
         throw new Error("Failed to fetch posts.");
       }
 
-      const data = (await result.json()) as HaskellApiPostsResponse;
+      const data = (await result.json()) as GoApiPostsResponse;
 
       setResponse(data);
     } catch {
@@ -40,14 +38,14 @@ export default function HaskellApiPosts() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-en text-primary text-sm font-semibold tracking-[0.18em] uppercase">
-            Haskell API
+            Go API
           </p>
 
           <h2 className="mt-2 text-2xl font-bold tracking-tight">Posts API</h2>
         </div>
 
         <a
-          href="https://github.com/hamltail/haskell-api"
+          href="https://github.com/hamltail/go-api"
           target="_blank"
           rel="noopener noreferrer"
           className="nav-link hover:text-accent focus-visible:text-accent text-sm transition-colors"
