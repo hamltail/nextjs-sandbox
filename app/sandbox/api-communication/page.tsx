@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
+import GoApiPosts from "@/components/sandbox/api-communication/GoApiPosts";
 import HaskellApiPosts from "@/components/sandbox/api-communication/HaskellApiPosts";
 
 export default function ApiCommunicationPage() {
@@ -23,8 +24,9 @@ export default function ApiCommunicationPage() {
             {t("description")}
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 space-y-6">
             <HaskellApiPosts />
+            <GoApiPosts />
           </div>
         </div>
       </Container>
