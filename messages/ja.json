@@ -11,14 +11,18 @@
     "label": "SANDBOX",
     "title": "Lab",
     "description": "自由に作って、試すためのラボ。",
+    "ThreeD": {
+      "title": "3D",
+      "description": "React Three Fiberを使った3D表現を試す。"
+    },
     "StateManagement": {
       "title": "State Management",
-      "description": "useStateとRedux Toolkitを使って、Reactの状態管理方法を比較します。",
+      "description": "Redux Toolkitによる状態管理を試す。",
       "comingSoon": "Coming soon..."
     },
     "ApiCommunication": {
       "title": "API Communication",
-      "description": "モダンなバックエンドAPIとの通信を試します。",
+      "description": "APIとの通信を試す。",
       "renderNotice": "RenderのFreeプランを使用しているため、初回の取得に時間がかかる場合があります。",
       "fetchError": "APIの取得に失敗しました。"
     }
