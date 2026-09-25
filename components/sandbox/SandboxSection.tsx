@@ -13,11 +13,6 @@ export default function SandboxSection() {
       id="sandbox"
       className="bg-background text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0"
     >
-      <div
-        aria-hidden="true"
-        className="bg-primary/10 pointer-events-none absolute right-0 bottom-0 h-72 w-72 rounded-full blur-3xl"
-      />
-
       <Container>
         <div className="relative mx-auto max-w-5xl">
           <div className="mb-10">
@@ -25,7 +20,7 @@ export default function SandboxSection() {
               {t("label")}
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight">
+            <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
               {t("title")}
             </h2>
 

@@ -72,14 +72,14 @@ body {
 
 .hero-catchcopy {
   text-shadow:
-    0 0 12px rgb(249 115 22 / 0.18),
-    0 0 24px rgb(139 92 246 / 0.1);
+    0 2px 8px rgb(15 23 42 / 0.12),
+    0 4px 20px rgb(15 23 42 / 0.08);
 }
 
 .dark .hero-catchcopy {
   text-shadow:
-    0 0 12px rgb(251 146 60 / 0.55),
-    0 0 24px rgb(196 181 253 / 0.38);
+    0 0 12px rgb(196 181 253 / 0.45),
+    0 0 24px rgb(196 181 253 / 0.28);
 }
 
 :where(a, button):focus-visible {

@@ -32,11 +32,6 @@ export default function NewsSection({
 
   return (
     <section className="bg-background text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
-      <div
-        aria-hidden="true"
-        className="bg-accent/30 dark:bg-accent/70 pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-      />
-
       <Container>
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-10">
@@ -44,7 +39,7 @@ export default function NewsSection({
               {t("label")}
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight">
+            <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
               {t("title")}
             </h2>
           </div>
