@@ -31,7 +31,7 @@ export default function NewsSection({
   const locale = useLocale();
 
   return (
-    <section className="bg-background text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
+    <section className="text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0">
       <Container>
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-10">
@@ -39,7 +39,7 @@ export default function NewsSection({
               {t("label")}
             </p>
 
-            <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
               {t("title")}
             </h2>
           </div>
