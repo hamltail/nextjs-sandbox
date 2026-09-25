@@ -105,7 +105,7 @@ export default function CubeScene({
 }: CubeSceneProps) {
   return (
     <div className={className}>
-      <Canvas camera={{ position: [0, 0, 6] }}>
+      <Canvas camera={{ position: [0, 0, 4.5] }}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={1.2} />
 

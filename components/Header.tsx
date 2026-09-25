@@ -18,16 +18,25 @@ export default async function Header() {
   const user = await currentUser();
 
   return (
-    <header className="bg-background text-foreground border-border relative border-b px-7 transition-colors md:px-11 xl:px-0">
+    <header className="bg-background text-foreground border-border relative z-10 border-b px-7 transition-colors md:px-11 xl:px-0">
       <Container>
-        <div className="flex min-h-16 items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="font-en flex items-center gap-2 text-2xl font-semibold tracking-wide"
-          >
-            <CubeScene className="h-12 w-12 shrink-0" />
-            <span>Web Lab</span>
-          </Link>
+        <div className="relative flex min-h-16 items-center justify-between gap-6">
+          <div className="flex items-center">
+            <Link
+              href="/"
+              aria-label="Home"
+              className="absolute -top-4 -left-10 z-20 h-32 w-32"
+            >
+              <CubeScene className="h-full w-full" />
+            </Link>
+
+            <Link
+              href="/"
+              className="font-en ml-18 text-2xl font-semibold tracking-wide"
+            >
+              Web Lab
+            </Link>
+          </div>
 
           <div className="hidden items-center gap-6 md:flex">
             <nav aria-label="メインナビゲーション">
