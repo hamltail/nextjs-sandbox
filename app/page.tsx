@@ -19,7 +19,6 @@ type HomeProps = {
 
 export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams;
-
   const currentPage = Math.max(Number(params.page) || 1, 1);
 
   const [response, current] = await Promise.all([
@@ -31,7 +30,6 @@ export default async function Home({ searchParams }: HomeProps) {
   ]);
 
   const signupSucceeded = params.signup === "success";
-
   const totalPages = Math.ceil(response.totalCount / NEWS_PER_PAGE);
 
   return (
@@ -48,12 +46,15 @@ export default async function Home({ searchParams }: HomeProps) {
             currentPage={currentPage}
             totalPages={totalPages}
           />
+
+          <SandboxSection />
         </>
       ) : (
-        <MicropostFeed userId={current.id} />
+        <>
+          <MicropostFeed userId={current.id} />
+          <SandboxSection />
+        </>
       )}
-
-      <SandboxSection />
     </div>
   );
 }

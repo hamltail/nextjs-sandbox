@@ -17,14 +17,14 @@ export default async function Header() {
   const user = await currentUser();
 
   return (
-    <header className="bg-background text-foreground border-border relative border-b px-7 transition-colors md:px-11 xl:px-0">
+    <header className="bg-background text-foreground border-border relative z-10 border-b px-7 transition-colors md:px-11 xl:px-0">
       <Container>
         <div className="flex min-h-16 items-center justify-between gap-6">
           <Link
             href="/"
             className="font-en text-2xl font-semibold tracking-wide"
           >
-            hamltail Web Lab
+            Web Lab
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">

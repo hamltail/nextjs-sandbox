@@ -7,7 +7,7 @@ test("トップページが表示される", async ({ page }) => {
 
   await expect(
     page.getByRole("heading", {
-      name: /Build.*Test.*Explore/i,
+      name: "A lab for experimenting freely.",
     }),
   ).toBeVisible();
 });
