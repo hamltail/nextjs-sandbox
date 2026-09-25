@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
@@ -7,32 +6,22 @@ export default function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="relative overflow-hidden">
-      <Image
-        src="/images/hero/hero-light.webp"
-        alt=""
-        width={1536}
-        height={1024}
-        priority
-        className="h-auto w-full dark:hidden"
+    <section className="bg-background text-foreground relative overflow-hidden px-7 py-20 transition-colors md:px-11 md:py-28 xl:px-0">
+      <div
+        aria-hidden="true"
+        className="bg-primary/5 pointer-events-none absolute -top-24 right-[12%] h-72 w-72 rounded-full blur-3xl"
       />
 
-      <Image
-        src="/images/hero/hero-dark.webp"
-        alt=""
-        width={1536}
-        height={1024}
-        priority
-        className="hidden h-auto w-full dark:block"
+      <div
+        aria-hidden="true"
+        className="bg-accent/5 pointer-events-none absolute -bottom-32 left-[18%] h-80 w-80 rounded-full blur-3xl"
       />
 
-      <div className="absolute inset-0 flex items-center pb-[9%]">
-        <Container>
-          <h1 className="hero-catchcopy text-4xl font-bold tracking-tight text-slate-800 dark:text-slate-200 md:text-5xl xl:text-6xl">
-            {t("title")}
-          </h1>
-        </Container>
-      </div>
+      <Container>
+        <h1 className="hero-catchcopy text-4xl font-bold tracking-tight text-slate-800 dark:text-slate-200 md:text-5xl xl:text-6xl">
+          {t("title")}
+        </h1>
+      </Container>
     </section>
   );
 }
