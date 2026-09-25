@@ -43,6 +43,8 @@ export default async function Home({ searchParams }: HomeProps) {
             <Hero />
           </div>
 
+          <SandboxSection />
+
           <NewsSection
             newsList={response.contents}
             currentPage={currentPage}
@@ -50,10 +52,11 @@ export default async function Home({ searchParams }: HomeProps) {
           />
         </>
       ) : (
-        <MicropostFeed userId={current.id} />
+        <>
+          <MicropostFeed userId={current.id} />
+          <SandboxSection />
+        </>
       )}
-
-      <SandboxSection />
     </div>
   );
 }

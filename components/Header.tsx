@@ -6,7 +6,6 @@ import Container from "./Container";
 import LogoutButton from "./LogoutButton";
 import MobileNavigation from "./MobileNavigation";
 import ThemeSwitcher from "./theme/ThemeSwitcher";
-import CubeScene from "./three/CubeScene";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -20,23 +19,13 @@ export default async function Header() {
   return (
     <header className="bg-background text-foreground border-border relative z-10 border-b px-7 transition-colors md:px-11 xl:px-0">
       <Container>
-        <div className="relative flex min-h-16 items-center justify-between gap-6">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              aria-label="Home"
-              className="absolute -top-4 -left-10 z-20 h-32 w-32"
-            >
-              <CubeScene className="h-full w-full" />
-            </Link>
-
-            <Link
-              href="/"
-              className="font-en ml-18 text-2xl font-semibold tracking-wide"
-            >
-              Web Lab
-            </Link>
-          </div>
+        <div className="flex min-h-16 items-center justify-between gap-6">
+          <Link
+            href="/"
+            className="font-en text-2xl font-semibold tracking-wide"
+          >
+            Web Lab
+          </Link>
 
           <div className="hidden items-center gap-6 md:flex">
             <nav aria-label="メインナビゲーション">
