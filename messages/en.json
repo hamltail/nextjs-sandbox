@@ -1,6 +1,6 @@
 {
   "Hero": {
-    "title": "A lab for experimenting freely."
+    "title": "Build. Test. Explore."
   },
   "News": {
     "label": "NEWS",
@@ -10,7 +10,7 @@
   "Sandbox": {
     "label": "SANDBOX",
     "title": "Lab",
-    "description": "A lab for building and experimenting freely.",
+    "description": "Explore interesting ideas and technologies.",
     "ThreeD": {
       "title": "3D",
       "description": "Experiment with 3D using React Three Fiber."

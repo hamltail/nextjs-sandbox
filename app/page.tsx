@@ -35,20 +35,24 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <div className="bg-background text-foreground min-h-screen transition-colors">
       {!current ? (
-        <>
+        <div className="relative overflow-hidden">
+          <div aria-hidden="true" className="hero-aurora">
+            <div className="hero-aurora-layer hero-aurora-layer-primary" />
+            <div className="hero-aurora-layer hero-aurora-layer-secondary" />
+            <div className="hero-aurora-layer hero-aurora-layer-tertiary" />
+          </div>
+
           <div className="relative">
             {signupSucceeded && <SignupSuccessMessage />}
             <Hero />
+            <SandboxSection />
+            <NewsSection
+              newsList={response.contents}
+              currentPage={currentPage}
+              totalPages={totalPages}
+            />
           </div>
-
-          <NewsSection
-            newsList={response.contents}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-
-          <SandboxSection />
-        </>
+        </div>
       ) : (
         <>
           <MicropostFeed userId={current.id} />
