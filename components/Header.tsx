@@ -6,6 +6,7 @@ import Container from "./Container";
 import LogoutButton from "./LogoutButton";
 import MobileNavigation from "./MobileNavigation";
 import ThemeSwitcher from "./theme/ThemeSwitcher";
+import CubeScene from "./three/CubeScene";
 
 const navigationItems = [
   { label: "Home", href: "/" },
@@ -22,9 +23,10 @@ export default async function Header() {
         <div className="flex min-h-16 items-center justify-between gap-6">
           <Link
             href="/"
-            className="font-en text-2xl font-semibold tracking-wide"
+            className="font-en flex items-center gap-2 text-2xl font-semibold tracking-wide"
           >
-            Web Lab
+            <CubeScene className="h-12 w-12 shrink-0" />
+            <span>Web Lab</span>
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">

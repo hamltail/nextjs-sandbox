@@ -6,6 +6,10 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
 import type { Group, Mesh } from "three";
 
+type CubeSceneProps = {
+  className?: string;
+};
+
 type CubeProps = {
   position: [number, number, number];
   color: string;
@@ -33,9 +37,7 @@ function Cube({ position, color }: CubeProps) {
     elapsedTimeRef.current += delta;
 
     const phase = position[0] * 0.5 + position[1] * 0.5 + position[2] * 0.5;
-
     const wave = Math.sin(elapsedTimeRef.current * 1.2 + phase);
-
     const scale = 1 + wave * 0.05;
     const spread = 1 + wave * 0.12;
 
@@ -98,9 +100,11 @@ function CubeGroup() {
   );
 }
 
-export default function HeroScene() {
+export default function CubeScene({
+  className = "h-150 w-full",
+}: CubeSceneProps) {
   return (
-    <div className="h-150 w-full">
+    <div className={className}>
       <Canvas camera={{ position: [0, 0, 6] }}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[3, 3, 5]} intensity={1.2} />
