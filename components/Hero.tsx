@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
-import HeroCode from "@/components/HeroCode";
 
 export default function Hero() {
   const t = useTranslations("Hero");
@@ -19,15 +18,9 @@ export default function Hero() {
       />
 
       <Container>
-        <div className="relative grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-          <div className="relative z-10">
-            <h1 className="whitespace-nowrap text-3xl font-bold tracking-tight text-slate-800 [text-shadow:0_2px_8px_rgb(15_23_42_/_0.12)] dark:text-slate-200 dark:[text-shadow:0_2px_8px_rgb(255_255_255_/_0.08)] md:text-4xl xl:text-5xl">
-              {t("title")}
-            </h1>
-          </div>
-
-          <HeroCode />
-        </div>
+        <h1 className="hero-catchcopy text-4xl font-bold tracking-tight text-slate-800 dark:text-slate-200 md:text-5xl xl:text-6xl">
+          {t("title")}
+        </h1>
       </Container>
     </section>
   );

@@ -70,6 +70,18 @@ body {
   font-family: var(--font-barlow-condensed), sans-serif;
 }
 
+.hero-catchcopy {
+  text-shadow:
+    0 0 12px rgb(249 115 22 / 0.18),
+    0 0 24px rgb(139 92 246 / 0.1);
+}
+
+.dark .hero-catchcopy {
+  text-shadow:
+    0 0 12px rgb(251 146 60 / 0.55),
+    0 0 24px rgb(196 181 253 / 0.38);
+}
+
 :where(a, button):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
