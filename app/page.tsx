@@ -36,12 +36,19 @@ export default async function Home({ searchParams }: HomeProps) {
     <div className="bg-background text-foreground min-h-screen transition-colors">
       {!current ? (
         <>
-          <div className="relative">
-            {signupSucceeded && <SignupSuccessMessage />}
-            <Hero />
-          </div>
+          <div className="relative overflow-hidden">
+            <div aria-hidden="true" className="hero-aurora">
+              <div className="hero-aurora-layer hero-aurora-layer-primary" />
+              <div className="hero-aurora-layer hero-aurora-layer-secondary" />
+              <div className="hero-aurora-layer hero-aurora-layer-tertiary" />
+            </div>
 
-          <SandboxSection />
+            <div className="relative">
+              {signupSucceeded && <SignupSuccessMessage />}
+              <Hero />
+              <SandboxSection />
+            </div>
+          </div>
 
           <NewsSection
             newsList={response.contents}
