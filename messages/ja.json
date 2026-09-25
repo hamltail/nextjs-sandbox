@@ -1,10 +1,6 @@
 {
   "Hero": {
-    "brand": "hamltail Web Lab",
-    "build": "Build.",
-    "test": "Test.",
-    "explore": "Explore.",
-    "description": "作って、試して、探索するWebのラボ。"
+    "title": "自由気ままに試すラボ。"
   },
   "News": {
     "label": "NEWS",
@@ -86,7 +82,7 @@
     "title": "パスワード再設定",
     "description": "新しいパスワードを入力してください。",
     "password": "新しいパスワード",
-    "passwordConfirmation": "パスワード（確認）",
+    "passwordConfirmation": "新しいパスワード（確認）",
     "submit": "パスワードを更新",
     "submitting": "更新中...",
     "error": "パスワードの更新に失敗しました。"

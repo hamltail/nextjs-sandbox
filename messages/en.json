@@ -1,10 +1,6 @@
 {
   "Hero": {
-    "brand": "hamltail Web Lab",
-    "build": "Build.",
-    "test": "Test.",
-    "explore": "Explore.",
-    "description": "A web lab for building, testing, and exploring."
+    "title": "A lab for experimenting freely."
   },
   "News": {
     "label": "NEWS",

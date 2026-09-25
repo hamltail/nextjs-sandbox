@@ -24,7 +24,7 @@ export default async function Header() {
             href="/"
             className="font-en text-2xl font-semibold tracking-wide"
           >
-            hamltail Web Lab
+            Web Lab
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">
