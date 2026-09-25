@@ -9,8 +9,8 @@
   },
   "Sandbox": {
     "label": "SANDBOX",
-    "title": "Lab",
-    "description": "自由に作って、試すためのラボ。",
+    "title": "ラボ",
+    "description": "気になる表現や技術を試す。",
     "ThreeD": {
       "title": "3D",
       "description": "React Three Fiberを使った3D表現を試す。"

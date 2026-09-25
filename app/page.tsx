@@ -41,13 +41,13 @@ export default async function Home({ searchParams }: HomeProps) {
             <Hero />
           </div>
 
+          <SandboxSection />
+
           <NewsSection
             newsList={response.contents}
             currentPage={currentPage}
             totalPages={totalPages}
           />
-
-          <SandboxSection />
         </>
       ) : (
         <>

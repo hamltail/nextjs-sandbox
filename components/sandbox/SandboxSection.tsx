@@ -11,7 +11,7 @@ export default function SandboxSection() {
   return (
     <section
       id="sandbox"
-      className="bg-background text-foreground border-border relative overflow-hidden border-t px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0"
+      className="bg-background text-foreground relative overflow-hidden px-7 py-16 transition-colors md:px-11 md:py-20 xl:px-0"
     >
       <div
         aria-hidden="true"
