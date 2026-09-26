@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { currentUser } from "@/lib/auth/auth";
@@ -9,7 +10,6 @@ import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 const navigationItems = [
   { label: "Home", href: "/" },
-  { label: "Sandbox", href: "/#sandbox" },
   { label: "About", href: "/about" },
 ];
 
@@ -22,9 +22,16 @@ export default async function Header() {
         <div className="flex min-h-16 items-center justify-between gap-6">
           <Link
             href="/"
-            className="font-en text-2xl font-semibold tracking-wide"
+            className="font-en flex items-center gap-2 text-2xl font-semibold tracking-wide"
           >
-            Web Lab
+            <Image
+              src="/images/web-lab-logo.svg"
+              alt=""
+              width={40}
+              height={40}
+              priority
+            />
+            <span>Web Lab</span>
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">

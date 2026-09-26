@@ -29,17 +29,15 @@
   },
   "About": {
     "label": "About",
-    "title": "hamltail Web Lab",
-    "description": "A personal experimental site for exploring web development, UI, testing, quality improvement, and related technologies, mainly with Next.js.",
+    "title": "Web Lab",
+    "description": "A personal experimental site for exploring web development, UI, testing, quality improvement, and related technologies through hands-on development.",
     "environment": {
       "title": "About the experimental environment",
       "description": "This site is used to experiment with technologies related to web application development, including authentication, databases, external service integrations, UI, and test automation. Test data such as registered users and posts is automatically deleted every day at 03:00 JST."
     },
     "privacy": {
       "title": "Privacy and disclaimer",
-      "data": "Registered information and post data are not guaranteed to be stored permanently and may be deleted or changed without notice.",
-      "sensitiveInformation": "Do not enter important or sensitive information, such as passwords or personal information.",
-      "disclaimer": "The operator is not responsible for any damage or trouble arising from the use of this site."
+      "description": "Registered information and post data are not guaranteed to be stored permanently and may be deleted or changed without notice. Do not enter important information, including personal or confidential information. The operator is not responsible for any damage or trouble arising from the use of this site."
     },
     "prohibitedActs": {
       "title": "Prohibited conduct",
