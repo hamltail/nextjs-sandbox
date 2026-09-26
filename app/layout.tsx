@@ -22,7 +22,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "hamltail Web Lab",
+  title: "Web Lab",
   description: "作って、試して、探索するWebのラボ。",
 };
 
