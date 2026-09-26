@@ -33,13 +33,9 @@ export default function AboutPage() {
             <section>
               <h2 className="text-2xl font-bold">{t("privacy.title")}</h2>
 
-              <div className="text-muted mt-4 space-y-4 leading-8">
-                <p>{t("privacy.data")}</p>
-
-                <p>{t("privacy.sensitiveInformation")}</p>
-
-                <p>{t("privacy.disclaimer")}</p>
-              </div>
+              <p className="text-muted mt-4 leading-8">
+                {t("privacy.description")}
+              </p>
             </section>
 
             <section>
