@@ -16,7 +16,7 @@ Next.js をベースに、Web開発・UI/UXデザイン・品質改善などを�
 | Backend / Data | Prisma, PostgreSQL, Supabase, microCMS                                                         |
 | Authentication | Custom authentication (bcryptjs, database-backed sessions, account activation, password reset) |
 | Email          | Resend, React Email                                                                            |
-| Testing        | Vitest, Playwright, OWASP ZAP, k6, axe-core                                                    |
+| Testing        | Vitest (V8 Coverage), Playwright, OWASP ZAP, k6, axe-core                                      |
 | Infrastructure | Docker, Vercel, Cloudflare R2, GitHub Actions                                                  |
 
 ## Requirements
