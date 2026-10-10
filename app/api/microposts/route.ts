@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { currentUser } from "@/lib/auth/auth";
 import { prisma } from "@/lib/database/prisma";
-import { uploadImage } from "@/lib/integrations/r2";
 import { micropostSchema } from "@/lib/microposts/validation";
 import { getTodayRangeInJst } from "@/lib/shared/date";
 
@@ -16,6 +15,20 @@ export async function POST(request: Request) {
       },
       {
         status: 401,
+      },
+    );
+  }
+
+  const formData = await request.formData();
+  const image = formData.get("image");
+
+  if (image instanceof File) {
+    return NextResponse.json(
+      {
+        message: "画像の新規登録機能は停止しています。",
+      },
+      {
+        status: 403,
       },
     );
   }
@@ -44,10 +57,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const formData = await request.formData();
-
   const content = formData.get("content");
-  const image = formData.get("image");
 
   const result = micropostSchema.safeParse({
     content,
@@ -64,58 +74,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const hasImage = image instanceof File && image.size > 0;
-
-  if (hasImage) {
-    const imageCount = await prisma.micropost.count({
-      where: {
-        imageKey: {
-          not: null,
-        },
-      },
-    });
-
-    if (imageCount >= 3000) {
-      return NextResponse.json(
-        {
-          message:
-            "画像アップロードの上限に達しているため、現在画像を投稿できません。",
-        },
-        {
-          status: 503,
-        },
-      );
-    }
-  }
-
-  let imageKey = null;
-
-  if (hasImage) {
-    try {
-      imageKey = await uploadImage(image);
-    } catch (error) {
-      if (
-        error instanceof Error &&
-        error.message === "Image must be 1MB or smaller"
-      ) {
-        return NextResponse.json(
-          {
-            message: "画像サイズは1MB以下にしてください。",
-          },
-          {
-            status: 413,
-          },
-        );
-      }
-
-      throw error;
-    }
-  }
-
   const micropost = await prisma.micropost.create({
     data: {
       content: result.data.content,
-      imageKey,
+      imageKey: null,
       userId: current.id,
     },
   });
