@@ -15,6 +15,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated test coverage reports:
+    "coverage/**",
   ]),
   ...storybook.configs["flat/recommended"],
 ]);
