@@ -17,7 +17,7 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col items-center gap-5 md:grid md:grid-cols-3 md:gap-0">
           <small className="text-muted text-sm md:col-start-2 md:text-center">
-            © {new Date().getFullYear()} h-waji (hamltail)
+            © {new Date().getFullYear()} hamltail
           </small>
 
           <nav
